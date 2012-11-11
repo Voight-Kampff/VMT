@@ -1,0 +1,69 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="<%=root_path%>">VARIATIONS MUSICALES DE TANNAY</small></a>
+      <div class="nav-collapse pull-right">
+        <ul class="nav" style="align:right">
+          <li class= "<%=cp(root_path)%>" >
+          <%=link_to("Accueil", root_path) %></li>
+          <li class= "<%=cp(programme_path)%>" >
+          <%=link_to("Programme 2012", programme_path) %></li>
+          <li class= "<%=cp(presse_path)%>" >
+          <%=link_to("Presse", presse_path) %></li>
+          <li class= "<%=cp(association_path)%>" >
+          <%=link_to("L'association", association_path) %></li>
+          <li class= "<%=cp(contact_path)%>" >
+          <%=link_to("Contact", contact_path) %></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+</header>
+  <div class="container">
+  <div class="row" style="padding-bottom:30px">
+      <div class="span3">
+        <%= image_tag "Logo_VMT_270.png" %>
+        <%= image_tag "Logo_Mirabaud_270.png", :stlye => "position:center"%>
+      </div>
+      <div class="span9">
+        <div id="myCarousel" class="carousel slide" style="padding-top:30px">
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <div class="active item"><%= image_tag "web01.jpg"%>
+              <div class="carousel-caption">
+                <h4>Laure Favre-Kahn</h4>
+              </div>
+            </div>
+            <div class="item"><%= image_tag "web02.jpg"%>
+              <div class="carousel-caption">
+                <h4>Ophélie Gaillard</h4>
+              </div>
+            </div>
+            <div class="item"><%= image_tag "web03.jpg"%>
+              <div class="carousel-caption">
+                <h4>Khatia Buniatishvili</h4>
+              </div>
+            </div>
+            <div class="item"><%= image_tag "web04.jpg"%>
+              <div class="carousel-caption">
+                <h4>Nemanja Radulovic</h4>
+              </div>
+            </div>
+
+          <!-- Carousel nav 
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $('.carousel').carousel()
+  </script>
+

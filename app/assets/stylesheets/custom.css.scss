@@ -1,0 +1,80 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+$linkColor: #C33;
+$darklinkColor: #8f2424;
+
+a {
+	color: $linkColor;
+	&:link{
+    color: $linkColor;
+  }
+	 &:active, &:hover {
+    color: $darklinkColor;
+  }
+
+}
+
+.red {
+	color: #C33;
+	font-weight:normal;
+	letter-spacing: 0px;
+	font-size: 18px;
+	text-align:center;
+
+}
+
+.date {
+	color: #C33;
+	font-weight:normal;
+	letter-spacing: 0px;
+	font-size: 18px;
+	text-align:left;
+
+}
+
+
+
+.main-row {
+	border-top:solid;
+	border-bottom:solid;
+	border-color: $darklinkColor;
+	border-width:1px;
+	padding-top:10px;
+	
+}
+
+.sub-row {
+	padding-bottom:30px;
+}
+
+.music{
+	font-family: Georgia;
+	font-style: italic;
+	font-size:20px;
+	li {line-height:30px}
+	padding-top:5px;
+	padding-bottom:10px;
+}
+
+
+
+.hlink {
+	color: #333;
+	&:hover {color:$darklinkColor;}
+	&:link {color:#333;}
+}
+
+.dl-horizontal dt {
+  float: left;
+  width: 120px;
+  overflow: hidden;
+  clear: left;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dl-horizontal dd {
+  margin-left: 130px;
+}
+
