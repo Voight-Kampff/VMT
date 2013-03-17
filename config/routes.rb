@@ -5,7 +5,7 @@ VMT::Application.routes.draw do
   match '/presse',   to: 'static#presse'
   match '/association', to: 'static#association'
   match '/contact',     to: 'static#contact'
-  match '/association/status', to: 'static#status'
+  match '/status', to: 'static#status'
   match '/arthus_piano_trio', to: 'static#arthus'
   match '/ophelie_gaillard', to: 'static#ophelie'
   match '/intermezzo', to: 'static#intermezzo'

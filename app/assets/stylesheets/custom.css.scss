@@ -3,6 +3,14 @@
 $linkColor: #C33;
 $darklinkColor: #8f2424;
 
+.main-row {
+	border-bottom-style:solid;
+	border-bottom-color: $darklinkColor;
+	border-bottom-width:1px;
+	padding-top:10px;
+	
+}
+
 a {
 	color: $linkColor;
 	&:link{
@@ -15,8 +23,12 @@ a {
 }
 
 body {
-  padding-top: 60px;
 }
+
+h3 {
+	font-size:22px;
+	margin:0 0 10px
+	}
 
 .red {
 	color: #C33;
@@ -37,16 +49,6 @@ body {
 }
 
 
-
-.main-row {
-	border-top:solid;
-	border-bottom:solid;
-	border-color: $darklinkColor;
-	border-width:1px;
-	padding-top:10px;
-	
-}
-
 .sub-row {
 	padding-bottom:30px;
 }
@@ -66,19 +68,5 @@ body {
 	color: #333;
 	&:hover {color:$darklinkColor;}
 	&:link {color:#333;}
-}
-
-.dl-horizontal dt {
-  float: left;
-  width: 120px;
-  overflow: hidden;
-  clear: left;
-  text-align: right;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.dl-horizontal dd {
-  margin-left: 130px;
 }
 

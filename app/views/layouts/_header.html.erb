@@ -14,9 +14,14 @@
           <li class= "<%=cp(programme_path)%>" >
           <%=link_to("Programme 2012", programme_path) %></li>
           <li class= "<%=cp(presse_path)%>" >
-          <%=link_to("Presse", presse_path) %></li>
-          <li class= "<%=cp(association_path)%>" >
-          <%=link_to("L'association", association_path) %></li>
+          <%=link_to("Presse", presse_path)%></li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">L'Association</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li><%=link_to("Bénévolat & Soutien", association_path)%></li>
+              <li><%=link_to("Comité & Status", status_path)%></li>
+            </ul>
+          </li>
           <li class= "<%=cp(contact_path)%>" >
           <%=link_to("Contact", contact_path) %></li>
         </ul>
