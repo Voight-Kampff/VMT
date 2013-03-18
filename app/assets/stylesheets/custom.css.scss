@@ -9,6 +9,17 @@ body {
 $linkColor: #C33;
 $darklinkColor: #8f2424;
 
+.lone-row {
+	border-top-style:solid;
+	border-top-color: $darklinkColor;
+	border-top-width:1px;
+	border-bottom-style:solid;
+	border-bottom-color: $darklinkColor;
+	border-bottom-width:1px;
+	padding-top:10px;
+	
+}
+
 .main-row {
 	border-bottom-style:solid;
 	border-bottom-color: $darklinkColor;
