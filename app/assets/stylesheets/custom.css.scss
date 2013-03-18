@@ -1,5 +1,11 @@
 @import "bootstrap";
+
+body { 
+  padding-top: 4%;
 @import "bootstrap-responsive";
+	}
+
+
 $linkColor: #C33;
 $darklinkColor: #8f2424;
 
@@ -20,9 +26,6 @@ a {
     color: $darklinkColor;
   }
 
-}
-
-body {
 }
 
 h3 {
