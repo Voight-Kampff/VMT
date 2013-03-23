@@ -1,5 +1,6 @@
 VMT::Application.routes.draw do
 
+  resources :orders
   root to: "static#home"
   match '/programme',   to: 'static#programme'
   match '/presse',   to: 'static#presse'
@@ -11,6 +12,7 @@ VMT::Application.routes.draw do
   match '/intermezzo', to: 'static#intermezzo'
   match '/nemanja_radulovic_et_laure_favre_kahn', to: 'static#nemanja'
   match '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
+  match '/billetterie', to: 'orders#new'
 
 
   # The priority is based upon order of creation:

@@ -1,0 +1,23 @@
+  <% provide(:title, 'Billetterie') %>
+  <div class="main-row">
+    <div class="row">
+      <div class="span3">
+         <h3>TEST</h3>
+      	</div>
+		<div class="span9">
+	        <p class="btn">THIS IS PLACEHOLDER</p>
+
+	        	<%= form_for(@order) do |f| %>
+	    
+	    			<%= f.label :name %>
+	    			<%= f.text_field :name %>
+
+	    			<%= f.label :email %>
+	    			<%= f.text_field :email %>
+
+	  				<%= f.submit "Order" %>
+
+	  			<% end %>
+  		</div>
+	</div>
+  </div>
