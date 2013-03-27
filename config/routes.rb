@@ -1,5 +1,9 @@
 VMT::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   resources :orders
   root to: "static#home"
   match '/programme',   to: 'static#programme'

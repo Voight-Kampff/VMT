@@ -1,0 +1,44 @@
+
+<%= form_for @order do |f| %>
+ 
+  <% concerts= Concert.all %>
+  <% concerts.each do |quants| %>
+
+    <div class="row">
+      <div class = "span4">
+        <h3><%= quants.name %></h3><%= quants.date %>
+      </div>
+
+      <% if quants.price == 0 %>
+
+        <p> Le concert des enfants est généreusement offert par la Banque Mirabaud. Aucune réservation n'est nécessaire <p>
+      <% else %>
+        <%= f.fields_for :quants, remote: true do |builder| %>
+
+            <%= builder.hidden_field :concert_id, :value => quants.id %>
+            
+            <div class = "span4">
+              <p>
+                <%= builder.label :normal, "Billets Ordinaires" %>
+                <%= builder.select(:normal, options_for_select([['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8],['Aucun', nil]]), { }, { :class => 'span1' })%> x <%= quants.price %> CHF
+              </p>
+            </div>
+
+            <div class = "span4">
+              <p>
+                <%= builder.label :student, "Billets Etudiants" %>
+                <%= builder.select(:student, options_for_select([['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8],['Aucun', nil]]), { }, { :class => 'span1' })%> x <%= quants.price/2 %> CHF
+              </p>
+             </div>
+
+        <% end %>
+      <% end %>
+
+    </div>
+
+  <% end %>
+
+  <!--a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a-->
+
+  <p><%= f.submit "Submit", :class => 'btn btn-large', :href => '#myModal' %></p>
+<% end %>

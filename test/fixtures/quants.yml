@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  normal: 1
+  student: 1
+  concert_id: 1
+  membre_id: 1
+  order_id: 1
+
+two:
+  normal: 1
+  student: 1
+  concert_id: 1
+  membre_id: 1
+  order_id: 1

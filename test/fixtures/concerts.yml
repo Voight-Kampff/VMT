@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  date: 2013-03-25 00:49:10
+  price: 1
+  ItemOrder: 
+
+two:
+  name: MyString
+  date: 2013-03-25 00:49:10
+  price: 1
+  ItemOrder: 

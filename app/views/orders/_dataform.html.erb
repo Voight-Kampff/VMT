@@ -1,0 +1,11 @@
+<%= form_for @order do |f| %>
+  <%= f.label :name, "Nom" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email, "Addresse email" %>
+  <%= f.text_field :email %>
+
+<%= f.submit "Payer avec carte de crédit", :class => 'btn btn-large', :name => 'pay_cc' %>
+<%= f.submit "Payer par virement bancaire", :class => 'btn btn-large', :name => 'pay_bank' %>
+
+<% end %>

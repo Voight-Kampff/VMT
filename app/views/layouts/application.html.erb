@@ -5,10 +5,10 @@
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "https://bridge.paymill.com/", "application" %>
     <%= csrf_meta_tags %>
-    <%= render 'layouts/shim' %>
     <script type="text/javascript">
       var PAYMILL_PUBLIC_KEY = '<%=PAYMILL_PUBLIC_KEY%>';
     </script>
+    <%= render 'layouts/shim' %>
     <%= favicon_link_tag '/favicon.ico' %>
   </head>
   <body>
