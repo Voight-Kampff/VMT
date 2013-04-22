@@ -1,4 +1,6 @@
 class Concert < ActiveRecord::Base
-  attr_accessible :date, :description, :head, :subhead
+  serialize :playlist, Array
+  attr_accessible :date, :description, :head, :subhead, :shortname, :playlist
   has_many :artists
+  
 end
