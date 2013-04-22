@@ -1,6 +1,13 @@
 VMT::Application.routes.draw do
 
+  get "order/new"
+
+  get "order/edit"
+
+  get "order/destroy"
+
   root to: "static#home"
+  match '/billetterie',   to: 'order#new'
   match '/programme',   to: 'static#programme'
   match '/presse',   to: 'static#presse'
   match '/association', to: 'static#association'

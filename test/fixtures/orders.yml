@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  email: MyString
+  street: MyString
+  NPA: MyString
+  Ville: MyString
+  price: 1
+  ccpay_id: 1
+  bankpay_id: 1
+  cash_pay: 1
+
+two:
+  name: MyString
+  email: MyString
+  street: MyString
+  NPA: MyString
+  Ville: MyString
+  price: 1
+  ccpay_id: 1
+  bankpay_id: 1
+  cash_pay: 1

@@ -1,0 +1,15 @@
+<h1>Order#new</h1>
+<p>Find me in app/views/order/new.html.erb</p>
+
+<%= form_for :order do |f| %>
+
+	Nom: <%= f.text_field :name %>
+	Email: <%= f.text_field :email %>
+	Rue et Numéro: <%= f.text_field :street %>
+	NPA: <%= f.text_field :NPA %>
+	Ville :<%= f.text_field :Ville %>
+
+	<%= f.submit "Submit", :class => 'btn btn-large' %>
+<% end %>
+
+
