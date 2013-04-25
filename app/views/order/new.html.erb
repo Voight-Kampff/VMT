@@ -1,6 +1,10 @@
 <h1>Order#new</h1>
 <p>Find me in app/views/order/new.html.erb</p>
 
+<table class="table table-hover">
+	<%= render :partial => "line", :collection => @concerts %>
+</table>
+
 <%= form_for :order do |f| %>
 
 	Nom: <%= f.text_field :name %>
