@@ -4,14 +4,11 @@ VMT::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  get "order/new"
-
-  get "order/edit"
-
-  get "order/destroy"
+  resources :orders
+  resources :items
 
   root to: "static#home"
-  match '/billetterie',   to: 'order#new'
+  match '/billetterie',   to: 'orders#new'
   match '/programme',   to: 'static#programme'
   match '/presse',   to: 'static#presse'
   match '/association', to: 'static#association'

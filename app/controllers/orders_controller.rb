@@ -1,8 +1,8 @@
-class OrderController < ApplicationController
+class OrdersController < ApplicationController
   def create
     @concerts=Concert.all
   	@order = Order.new(params[:order])
-    if @user.save
+    if @order.save
       redirect_to root_path
     else
       render 'new'

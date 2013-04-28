@@ -5,7 +5,7 @@
 	<%= render :partial => "line", :collection => @concerts %>
 </table>
 
-<%= form_for :order do |f| %>
+<%= form_for :order, :url => { :action => "create" } do |f| %>
 
 	Nom: <%= f.text_field :name %>
 	Email: <%= f.text_field :email %>
