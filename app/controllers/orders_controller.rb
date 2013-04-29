@@ -20,8 +20,12 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.find(cookies.signed[:order_id])
-    @tickets=@order.tickets
+    unless cookies.signed[:order_id].nil?
+      @order = Order.find(cookies.signed[:order_id])
+      @tickets=@order.tickets
+    else
+      redirect_to '/billetterie'
+    end
   end
 
   def edit
