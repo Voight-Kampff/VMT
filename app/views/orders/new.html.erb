@@ -1,19 +1,41 @@
-<h1>Order#new</h1>
-<p>Find me in app/views/order/new.html.erb</p>
 
-<table class="table table-hover">
-	<%= render :partial => "line", :collection => @concerts %>
-</table>
+<div class="main-row">
+	<div class="row">
+		<div class="span3">
+			<h3>BILLETERIE</h3>
+		</div>
+		<div class="span9">
+			<p class="lead">Vous pouvez dès à présent acheter vos billets ici</p>
+		</div>
+	</div>
+</div>
 
-<%= form_for :order, :url => { :action => "create" } do |f| %>
+<div class="main-row">
+	<%= form_for @order, :url => { :action => "create" } do |f| %>
 
-	Nom: <%= f.text_field :name %>
-	Email: <%= f.text_field :email %>
-	Rue et Numéro: <%= f.text_field :street %>
-	NPA: <%= f.text_field :NPA %>
-	Ville :<%= f.text_field :Ville %>
-
-	<%= f.submit "Submit", :class => 'btn btn-large' %>
-<% end %>
-
-
+		<table class="table table-hover">
+			<%= render :partial => "line", :collection => @concerts, :locals =>  { :f =>f } %>
+		</table>
+		<!-- Button to trigger modal -->
+		<a href="#myModal" role="button" class="btn btn-large" data-toggle="modal">Commander</a>
+	 
+		<!-- Modal -->
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h3 id="myModalLabel caps">VOS COORDONNÉES</h3>
+		  </div>
+		  <div class="modal-body">
+		    <%= f.label :name, "Nom"%><%= f.text_field :name %>
+			<%= f.label :emaol, "Adresse E-mail"%><%= f.text_field :email %>
+			<%= f.label :street, "Rue et Numéro"%> <%= f.text_field :street %>
+			<%= f.label :NPA, "NPA"%><%= f.text_field :NPA %>
+			<%= f.label :Ville, "Ville"%><%= f.text_field :Ville %>
+		  </div>
+		  <div class="modal-footer">
+		  	<%= f.submit "Page Suivante", :class => 'btn btn-primary' %>
+		    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		  </div>
+		</div>
+	<% end %>
+</div>

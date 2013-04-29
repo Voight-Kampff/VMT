@@ -5,9 +5,10 @@ VMT::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :orders
-  resources :items
+  resources :ccpayments
 
   root to: "static#home"
+  
   match '/billetterie',   to: 'orders#new'
   match '/programme',   to: 'static#programme'
   match '/presse',   to: 'static#presse'

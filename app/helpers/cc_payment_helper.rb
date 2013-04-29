@@ -1,0 +1,2 @@
+module CcPaymentHelper
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425212528) do
+ActiveRecord::Schema.define(:version => 20130429104451) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(:version => 20130425212528) do
     t.datetime "updated_at",                :null => false
   end
 
+  create_table "ccpayments", :force => true do |t|
+    t.string   "name"
+    t.integer  "order_id"
+    t.integer  "paymill_id"
+    t.integer  "paymill_card_token"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "ccpays", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "concerts", :force => true do |t|
     t.datetime "date"
     t.string   "head"
@@ -66,15 +80,6 @@ ActiveRecord::Schema.define(:version => 20130425212528) do
     t.integer  "price"
   end
 
-  create_table "items", :force => true do |t|
-    t.integer  "number"
-    t.integer  "number_etu"
-    t.integer  "order_id"
-    t.integer  "concert_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "orders", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -82,10 +87,19 @@ ActiveRecord::Schema.define(:version => 20130425212528) do
     t.string   "NPA"
     t.string   "Ville"
     t.boolean  "released"
-    t.integer  "price"
-    t.integer  "ccpay_id"
-    t.integer  "bankpay_id"
-    t.integer  "cashpay_id"
+    t.integer  "ccpayment_id"
+    t.integer  "bankpayment_id"
+    t.integer  "cashpayment_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "total"
+  end
+
+  create_table "tickets", :force => true do |t|
+    t.integer  "normal"
+    t.integer  "student"
+    t.integer  "order_id"
+    t.integer  "concert_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

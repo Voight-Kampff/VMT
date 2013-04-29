@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
   def create
-    @concerts=Concert.all
   	@order = Order.new(params[:order])
+    @tickets=@order.tickets
     if @order.save
-      redirect_to root_path
+      cookies.signed[:order_id] = @order.id
+      redirect_to :action => "index"
     else
       render 'new'
     end
@@ -12,9 +13,15 @@ class OrdersController < ApplicationController
   def new
     @concerts=Concert.all
     @order = Order.new
+    @order.tickets.build
   end
 
   def show
+  end
+
+  def index
+    @order = Order.find(cookies.signed[:order_id])
+    @tickets=@order.tickets
   end
 
   def edit
