@@ -32,10 +32,25 @@
 		</thead>
 	</table>
 </div>
+
 <div class="sub-row">
 	<div class="row">
 	<%= link_to "Modifier la Commande", redirect_to = 'billetterie', :class => "btn span3" %>
-	<%= link_to "Payer par virement bancaire", redirect_to = 'bankpayments/new', :class => "btn span3 offset2" %>
+	<a href="#myModal" role="button" class="btn span3 offset1" data-toggle="modal">Payer par virement bancaire</a>
 	<%= link_to "Payer par carte de crédit", redirect_to = 'ccpayments/new', :class => "btn span3" %>
-	</div>
+		
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h3 id="myModalLabel"> PAIEMENT PAR VIREMENT BANCAIRE</h3>
+		  </div>
+		  <div class="modal-body">
+		    <p class="lead">En appuyant sur le button "commander", nous vous enverrons toutes les informations nécessaires au virement bancaire à l'addresse <%= mail_to(@order.email) %></p>
+		    <p class="lead">Une fois votre paiement validé, vous recevrez un courrier éléctronique contenant votre reçu. Veuillez noter que ce processus peut prendre plusieurs jours. Nous vous remercions de votre patience</p>
+		  </div>
+		  <div class="modal-footer">
+		  	
+		    <button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+		  </div>
+		</div>
 </div>

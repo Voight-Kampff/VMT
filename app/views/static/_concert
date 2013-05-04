@@ -1,0 +1,31 @@
+<div class="row sub-row">
+      <div class="span3">
+        <a href="<%=arthus_piano_trio_path%>" class="thumbnail">
+          <%= image_tag "1Arthus260.jpg" %>
+        </a>
+      </div>
+      <div class="span9">
+        <h4 class="red date"><%=concert.subhead%></h4>
+        <h3><%=link_to(concert.head, arthus_piano_trio_path, :class => 'hlink')%> </h3>
+        <div class="span8 offset1">
+          <div class="music">
+            <ul class="">
+              <% concert.playlist each do |composition| %>
+              <li>
+                <%=composition%>
+              </li>
+              <%end%>
+              <li>
+                Chostakovitch, premier trio op. 8
+              </li>
+              <li>
+                Schumann, trio en ré min. op. 63
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          Après avoir obtenu un brillant diplôme d’enseignement et de concert à la Haute École de Musique de Genève, Simone Flükiger a poursuivi ses études musicales à Londres et Berlin. Elle est membre remplaçante de l’OSR ainsi que de l’Orchestre de la radio de Berlin avec lequel elle vient d’effectuer une tournée d’un mois au Japon et en Corée. Pianiste coréenne, HunJu Sohn s’est quant à elle produite en soliste et en musique de chambre dans de nombreux pays, en Europe, aux Etats-Unis et en Asie. Elle est régulièrement invitée au Festival de Verbier. Artur Guignard, violoncelliste, est pour sa part lauréat de nombreux prix internationaux. <%=link_to("En savoir plus...", arthus_piano_trio_path)%>
+        </p>
+      </div>
+</div>

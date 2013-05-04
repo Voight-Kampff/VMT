@@ -9,6 +9,7 @@ VMT::Application.routes.draw do
 
   root to: "static#home"
   
+  match '/succes', to: 'static#succes'
   match '/billetterie',   to: 'orders#new'
   match '/programme',   to: 'static#programme'
   match '/presse',   to: 'static#presse'

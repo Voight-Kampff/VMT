@@ -1,0 +1,17 @@
+<tr>
+	<td class="span3"><%=line.shortname%></td>
+	<td class="span3"><%=line.subhead%></td>
+	<%= f.fields_for :tickets do |ff| %>
+		<%= ff.hidden_field :concert_id, :value => line.id %>
+		<td class="offset2"></td>
+		<% if line.price == 0 %>
+			<td colspan ="2">Le concert pour les enfants, ainsi que le goûter est généreusement offert par la Banque Mirabaud. Aucun billet n'est donc nécessaire</td>
+		<% elsif line.category=="abonnement" %>
+			<td class="span2"><%= ff.label :normal, "Abonnement" %>CHF <%=line.price/100%> <%= ff.select(:normal, options_for_select([[' ', 0],['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]]), { }, { :class => 'span1' })%></td>
+			<td></td>
+		<% else %>
+			<td class="span2"><%= ff.label :normal, "Billets Ordinaires" %>CHF <%=line.price/100%> <%= ff.select(:normal, options_for_select([[' ', 0],['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]]), { }, { :class => 'span1' })%></td>
+			<td class="span2"><%= ff.label :student, "Billets Étudiants" %>CHF <%=line.price/200%> <%= ff.select(:student, options_for_select([[' ', 0],['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]]), { }, { :class => 'span1' })%></td>
+		<% end %>
+	<%end%>
+<tr>

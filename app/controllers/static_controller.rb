@@ -33,4 +33,15 @@ class StaticController < ApplicationController
 	def khatia
 	end
 
+	def succes
+	    unless cookies.signed[:order_id].nil?
+	      @order = Order.find(cookies.signed[:order_id])
+	      	unless @order.ccpayment.nil?
+	      		render 'succes'
+	      	end
+	    else
+	      redirect_to '/billetterie'
+	    end
+  	end
+
 end

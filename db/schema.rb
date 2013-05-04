@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429104451) do
+ActiveRecord::Schema.define(:version => 20130503181100) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20130429104451) do
     t.string   "name"
     t.integer  "order_id"
     t.integer  "paymill_id"
-    t.integer  "paymill_card_token"
+    t.string   "paymill_card_token"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130429104451) do
     t.text     "playlist"
     t.string   "shortname"
     t.integer  "price"
+    t.string   "category"
   end
 
   create_table "orders", :force => true do |t|
@@ -90,18 +91,19 @@ ActiveRecord::Schema.define(:version => 20130429104451) do
     t.integer  "ccpayment_id"
     t.integer  "bankpayment_id"
     t.integer  "cashpayment_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.integer  "total"
+    t.string   "code",           :limit => 5
   end
 
   create_table "tickets", :force => true do |t|
-    t.integer  "normal"
-    t.integer  "student"
+    t.integer  "normal",     :default => 0
+    t.integer  "student",    :default => 0
     t.integer  "order_id"
     t.integer  "concert_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
 end

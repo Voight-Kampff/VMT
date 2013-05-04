@@ -1,7 +1,15 @@
-<tr>
-	<td class="span3"><%=checkline.concert.shortname%></td>
-	<td class="span3"><%=checkline.concert.subhead%></td>
-	<td class="offset2"></td>
-	<td class="span2"><%=checkline.normal%> * <%=checkline.concert.price/100%> CHF = <%=checkline.normal*checkline.concert.price/100%> CHF</td>
-	<td class="span2"><%=checkline.student%> * <%=checkline.concert.price/200%> CHF = <%=checkline.student*checkline.concert.price/200%> CHF</td>
-<tr>
+	<tr>
+		<td class="span3"><%=checkline.concert.shortname%></td>
+		<td class="span3"><%=checkline.concert.subhead%></td>
+		<td class="offset2"></td>
+		<%  unless checkline.normal == 0 %>
+			<td class="span2"><%=checkline.normal%> * <%=checkline.concert.price/100%> CHF = <%=checkline.normal*checkline.concert.price/100%> CHF</td>
+		<% else %>
+			<td></td>
+		<%end%>
+		<%  unless checkline.student == 0 %>
+			<td class="span2"><%=checkline.student%> * <%=checkline.concert.price/200%> CHF = <%=checkline.student*checkline.concert.price/200%> CHF</td>
+		<% else %>
+			<td></td>
+		<%end%>
+	</tr>

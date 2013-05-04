@@ -64,51 +64,45 @@
 <div class="main-row">
   <div class="row">
     <div class="span3">
-      <h3>PAIEMENT</h3>
+      <h3>PAYEMENT</h3>
     </div>
     <div class="span9">
-      <p class="lead">Nous acceptons les payements par carte Visa ou MasterCard.</p>
+      <p class="lead">Nous acceptons les payements par carte Visa ou MasterCard</p>
     </div>
   </div>
 </div>
-    
+
 <div class="payment-errors"></div>
 <div class="main-row">
-    <div class="row">
 <!--<form id="payment-form" action="/ccpayments" method="POST">-->
-        <div class="span3">
-            <%= form_for @ccpayment do |f| %>
+<%= form_for @ccpayment do |f| %>
 
-                <div class="form-row"><label>Numéro de Carte</label>
-                    <input class="card-number" type="text" size="20"/></div>
+    <div class="form-row"><label>Numéro de Carte</label>
+        <input class="card-number" type="text" size="20" value="4111111111111111"/></div>
 
-                <div class="form-row"><label>Code CVV</label>
-                    <input class="card-cvc" type="text" size="4"/></div>
+    <div class="form-row"><label>CVC</label>
+        <input class="card-cvc" type="text" size="4" value="111"/></div>
 
-                <div class="form-row"><label>Nom du titulaire</label>
-                    <input class="card-holdername" type="text" size="20"/></div>
+    <div class="form-row"><label>Karteninhaber</label>
+        <input class="card-holdername" type="text" size="20" value="lala"/></div>
 
-                <div class="form-row"><label>Date d'expiration (MM/YYYY)</label>
-                    <input class="card-expiry-month input-mini" type="text"/>
-                
-                <%= f.hidden_field :order_id %>
+    <div class="form-row"><label>Gültigkeitsdatum (MM/YYYY)</label>
+        <input class="card-expiry-month" type="text" size="2" value="12"/>
+    
+    <%= f.hidden_field :order_id %>
 
-                    <input class="card-expiry-year input-small" type="text"/></div>
+        <input class="card-expiry-year" type="text" size="4" value="2015"/></div>
 
-                <%=f.hidden_field :paymill_card_token %>
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
 
-                <!--<input id="ccpayment_paymill_card_token" name="ccpayment[paymill_card_token]" type="hidden">-->
+    <%=f.hidden_field :paymill_card_token %>
 
-                <div class="actions">
-                    <%= f.submit "Payer", :class => "btn btn-large" %>
-                </div>
-            <% end %>
-        </div>
-        <div class="span9">
-            <p class="lead">Tous les payements sont traîtés de manière sécurisée par le système <a href="www.paymill.com">Paymill</a> </p>
-        </div>
-    </div>
-</div>
+    <!--<input id="ccpayment_paymill_card_token" name="ccpayment[paymill_card_token]" type="hidden">-->
+
+    <div class="actions"><%= f.submit "Payer", :class => "btn btn-large" %></div>
+<% end %>
 <!--</form>-->
 </div>
 
