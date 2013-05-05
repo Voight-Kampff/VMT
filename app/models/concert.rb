@@ -3,5 +3,9 @@ class Concert < ActiveRecord::Base
   attr_accessible :date, :description, :head, :subhead, :shortname, :playlist, :price
   has_many :artists
   has_many :items
+
+
+  private
+  	
   
 end

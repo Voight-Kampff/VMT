@@ -5,7 +5,7 @@ class Ccpayment < ActiveRecord::Base
 
   def save_with_payment
     if valid?
-        order = Paymill::Transaction.create amount: self.order.total, currency:'CHF', token: paymill_card_token, description: 'Testing paymill-ruby'
+        order = Paymill::Transaction.create amount: self.order.total, currency:'CHF', token: paymill_card_token, description: "#{self.order.id}, #{self.order.email}, #{self.order.name}"
         self.paymill_id = order.id
         save!
     end

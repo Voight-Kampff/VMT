@@ -1,0 +1,28 @@
+<% provide(:title, @concert.shortname) %>
+  <div class="title-row">
+    <div class="row">
+      <div class="span6">
+         <h3><%=@concert.shortname%></h3>
+      </div>
+      <div class="span6">
+        <p class="lead"><%=@concert.subhead%></p>
+      </div>
+    </div>
+  </div>
+  <div class="main-row">
+    <div class="row">
+      <div class="span6">
+        <ul class="thumbnails">
+          <li class="span6">
+            <%= image_tag "570/#{@concert.id}.jpg" %>
+          </li>
+        </ul>
+      </div>
+      <div class="span6">
+      	<%=@concert.description%>
+      	<%= render :partial => "artist", :collection => @artists %>
+      </div>
+    </div>
+  </div>
+
+

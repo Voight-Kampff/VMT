@@ -33,13 +33,13 @@
                 $('.submit-button').attr("disabled", "disabled");
 
                 if (false == paymill.validateCardNumber($('.card-number').val())) {
-                    $(".payment-errors").text("Ungueltige Kartennummer");
+                    $(".payment-errors").text("Carte invalable");
                     $(".submit-button").removeAttr("disabled");
                     return false;
                 }
 
                 if (false == paymill.validateExpiry($('.card-expiry-month').val(), $('.card-expiry-year').val())) {
-                    $(".payment-errors").text("Ungueltiges Gueltigkeitsdatum");
+                    $(".payment-errors").text("Date d'expiration invalable");
                     $(".submit-button").removeAttr("disabled");
                     return false;
                 }

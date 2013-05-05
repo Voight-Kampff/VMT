@@ -31,11 +31,24 @@
 			<p class="lead">Soutenez l'association en devenant membre. Notez que les billets offerts aux membres s'ajoutent aux billets que vous commandez ci-dessus</p>
 		</div>
 	</div>
-
 	
-		
+		<table class="table table-hover">
+			<tr>
+				<td class="span2">
+					<%= f.label :membership_id, "Catégorie de membre" %>
+				</td>
+				<td class="span5">
+					<%= f.select(:membership_id, options_for_select([[' ', nil],['membre individuel : 50.- CHF', 1], ['membre bienfaiteur : 250.- CHF (avantage : 2 billets)', 2], ["membre grand donateur : dès 1'000.- CHF (accès libre au festival de l'année)", 3],["membre entreprise : 500.- CHF (avantage : 4 billets)", 4],["membre entreprise : 1'000.- CHF (avantage : 8 billets)", 5]]), { }, { :class => 'span5' }) %>
+				</td>
+				<td class="span3"><a href="#myModal" role="button" class="btn btn-large" data-toggle="modal">Commander</a></td>
+			</tr>
+
+		</table>
+
+
 </div>
-<td class="span3"><a href="#myModal" role="button" class="btn btn-large" data-toggle="modal">Commander</a></td>
+
+
 
 	 
 		<!-- Modal -->

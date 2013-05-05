@@ -1,29 +1,34 @@
 
 
-#prepare concerts
-#preapre programm view
+#prepare concerts					DONE
+#preapre programm views				DONE
 
-#membership 						
+#membership 		IMPORTANT		DONE		
 #abonnements						DONE					
 
-#photos
-#bew artists page
-#old artists page
+#programm photos					DONE
+#general photos						
+#new artists page					DONE
+#all artists page
 
-#bankpayment model 
+#bankpayment model
 #cashpayment model
 
-#validation for orders
+#validation for orders				DONE
 #validation for orders not = 0 		DONE
 #validations for tickets:			DONE
 
-#error handling and messages
+#error handling and messages		DONE
+for orders							DONE
+for payments						DONE
 
-#email views
+#email views		IMPORTANT		DONE
+#button for email					DONE
 
 #qr code png 					 	DONE
 
-
+#Change member page
+#Change Front page
 
 #login/users/for checking		^
 #cancel emission button 			

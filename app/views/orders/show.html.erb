@@ -9,7 +9,12 @@
 				<th>Billets Etudiants</th>
 			</tr>
 		</thead>
+		<% unless @order.membership.nil? %>
 			<%= render :partial => "handle", :collection => @tickets %>
+		<% end %>
+		<% unless @order.membership.nil? %>
+			<%= render :partial => "member"%>
+		<% end %>
 	</table>
 	<ul>
 		<li><%= @order.name %></li>

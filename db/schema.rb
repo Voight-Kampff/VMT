@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503181100) do
+ActiveRecord::Schema.define(:version => 20130504213853) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -81,6 +81,14 @@ ActiveRecord::Schema.define(:version => 20130503181100) do
     t.string   "category"
   end
 
+  create_table "memberships", :force => true do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.string   "avantage"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "orders", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -88,14 +96,14 @@ ActiveRecord::Schema.define(:version => 20130503181100) do
     t.string   "NPA"
     t.string   "Ville"
     t.boolean  "released"
-    t.integer  "ccpayment_id"
-    t.integer  "bankpayment_id"
-    t.integer  "cashpayment_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "total"
-    t.string   "code",           :limit => 5
+    t.string   "code",          :limit => 5
+    t.integer  "membership_id"
   end
+
+  add_index "orders", ["code"], :name => "index_orders_on_code", :unique => true
 
   create_table "tickets", :force => true do |t|
     t.integer  "normal",     :default => 0

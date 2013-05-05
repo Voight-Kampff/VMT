@@ -62,6 +62,7 @@ Concert.seed do |s|
 	s.price = 0
 	s.playlist = ['Bastien et Bastienne, de Mozart, avec un orchestre de musiciens de l’Orchestre de 
 		chambre de Genève et de l’ensemble da Capo, un chœur d’enfants ainsi qu’une récitante.']
+	s.category = 'concert'
 end
 
 Concert.seed do |s|
@@ -90,51 +91,8 @@ Concert.seed do |s|
 	s.date = DateTime.new(2013,9,1,17,0,0,'+1')
 	s.head = 'Abonnement 2013'
 	s.subhead = "Libre accès à tous les concerts de l'éditition 2013"
+	s.description = "Optez pour l'abonnement des Variations Musicales de Tannay pour avoir accès à l'entier de la programmation à tariff avantageux. Vous pouvez l'acheter à la billetterie."
 	s.shortname = 'Abonnement'
 	s.price = 20000
 	s.category = 'abonnement'
-end
-
-Concert.seed do |s|
-	s.id = 7
-	s.head = 'Membre individuel'
-	s.shortname = 'Membre individuel'
-	s.price = 5000
-	s.category = 'membre'
-end
-
-Concert.seed do |s|
-	s.id = 8
-	s.head = 'Membre bienfaiteur'
-	s.subhead = "Avantage 2 billets"
-	s.shortname = 'Membre bienfaiteur'
-	s.price = 25000
-	s.category = 'membre'
-end
-
-Concert.seed do |s|
-	s.id = 9
-	s.head = 'Membre grand donateur'
-	s.subhead = "Accès libre au festival de l'année"
-	s.shortname = 'Membre grand donateur'
-	s.price = 100000
-	s.category = 'membre'
-end
-
-Concert.seed do |s|
-	s.id = 10
-	s.head = 'Membre entreprise'
-	s.subhead = "Avantage 4 billets"
-	s.shortname = 'Membre entreprise'
-	s.price = 50000
-	s.category = 'membre'
-end
-
-Concert.seed do |s|
-	s.id = 11
-	s.head = 'Membre entreprise'
-	s.subhead = "Avantage 8 billets"
-	s.shortname = 'Membre entreprise'
-	s.price = 100000
-	s.category = 'membre'
 end

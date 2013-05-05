@@ -1,0 +1,23 @@
+<div class="row sub-row">
+      <div class="span3">
+        <%=link_to(image_tag("260/#{program_line.id}.jpg"), program_line, :class => 'thumbnail')%>
+      </div>
+      <div class="span9">
+        <h4 class="red date"><%=program_line.subhead%></h4>
+        <h3><%=link_to(program_line.head, program_line, :class => 'hlink')%> </h3>
+        <div class="span8 offset1">
+          <div class="music">
+            <ul class="">
+              <% program_line.playlist.each do |composition| %>
+              <li>
+                <%=composition%>
+              </li>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+        <p>
+         <%= program_line.description %> <%=link_to("En savoir plus...", program_line)%>
+        </p>
+      </div>
+</div>

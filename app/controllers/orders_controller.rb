@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
       cookies.signed[:order_id] = @order.id
       redirect_to :action => "index"
     else
-      redirect_to '/billetterie'
+      redirect_to '/billetterie', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
     end
   end
 
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   def index
     unless cookies.signed[:order_id].nil?
       @order = Order.find(cookies.signed[:order_id])
-      @tickets=@order.tickets.where("normal != ? OR student!= ?",0,0)
+      @tickets=@order.tickets#.where("normal != ? OR student!= ?",0,0)
     else
       redirect_to '/billetterie'
     end
@@ -41,8 +41,10 @@ class OrdersController < ApplicationController
   end
 
   def payment_info_mail
+    @order = Order.find(cookies.signed[:order_id])
     TicketMailer.payment_info(@order).deliver
-    redirect_to root_path
+    redirect_to root_path, :flash => { :success => "Vous trouverez toutes les informations de paiement dans notre email" }
+    cookies.delete(:order_id)
   end
 
   def destroy

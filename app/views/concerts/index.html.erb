@@ -1,0 +1,17 @@
+
+
+<% provide(:title, 'Programme 2013') %>
+  <div class="main-row">
+    <div class="row">
+      <div class="span3">
+         <h3>PROGRAMME</h3>
+      </div>
+      <div class="span9">
+        <p class="lead">C'est avec grand plaisir que nous vous proponsons les concerts suivants pour l'édition 2013. Vous pouvez achetez vos billets à la <%=link_to('billetterie')%></p>
+      </div>
+    </div>
+  </div>
+  <div class="main-row">
+  	<%= render :partial => "program_line", :collection => @concerts %>
+    <%= render :partial => "abo_line", :collection => @abonnement %>
+  </div>

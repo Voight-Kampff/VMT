@@ -38,6 +38,7 @@ class StaticController < ApplicationController
 	      @order = Order.find(cookies.signed[:order_id])
 	      	unless @order.ccpayment.nil?
 	      		render 'succes'
+	      		cookies.delete(:order_id)
 	      	end
 	    else
 	      redirect_to '/billetterie'

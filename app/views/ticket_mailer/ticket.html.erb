@@ -26,11 +26,52 @@
 </style>
 
 <div class="container">
-
-  <div class="row span6 main-row">
-    <h3>Vos Billets</h3>
+  <%= image_tag attachments["#{@order.code}.png"].url %>
+  <div class="main-row">
+    <div class="row">
+      <div class="span6">
+        <h3>Vos Billets</h3>
+        <table class="table table-hover">
+        <% unless @tickets.nil? %>
+          <thead>
+            <tr>
+              <th>Concert</th>
+              <th>Date & Lieu</th>
+              <th></th>
+              <th>Billets Ordinaires</th>
+              <th>Billets Etudiants</th>
+            </tr>
+          </thead>
+          <%= render :partial => "checkline", :collection => @tickets %>
+        <% end %>
+        <% unless @order.membership.nil? %>
+          <%= render :partial => "member"%>
+        <% end %>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>TOTAL</th>
+              <th><%=@order.total/100%> CHF</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="span6">
+       <h3>Facturé à</h3>
+        <ul class="">
+          <li><%= @order.name %></li>
+          <li><%= @order.email %></li>
+          <li><%= @order.street %></li>
+          <li><%= @order.NPA %><%= @order.Ville %></li>
+        </ul>
+      </div>
+      <div>
+        <h4>En cas de problème, n'hésitez pas à contacter la <%=mail_to('billetterie@musicales-tannay.ch','billetterie')
+      </div>
+    </div>
   </div>
-<%= image_tag attachments["#{@order.id}.png"].url %>
 
 </div>
     

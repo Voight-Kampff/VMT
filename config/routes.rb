@@ -1,17 +1,21 @@
 VMT::Application.routes.draw do
 
+
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :orders
   resources :ccpayments
+  resources :concerts
 
   root to: "static#home"
   
+  match '/send_payment_info', to: 'orders#payment_info_mail'
   match '/succes', to: 'static#succes'
   match '/billetterie',   to: 'orders#new'
-  match '/programme',   to: 'static#programme'
+  match '/programme',   to: 'concerts#index'
   match '/presse',   to: 'static#presse'
   match '/association', to: 'static#association'
   match '/contact',     to: 'static#contact'
