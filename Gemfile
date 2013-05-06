@@ -16,6 +16,7 @@ gem 'seed-fu'
 
 group :development do
   gem 'sqlite3'
+  gem 'seed_dump'
 end
 
 # Gems used only for assets and not required

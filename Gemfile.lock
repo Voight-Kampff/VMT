@@ -151,6 +151,7 @@ GEM
     seed-fu (2.2.0)
       activerecord (~> 3.1)
       activesupport (~> 3.1)
+    seed_dump (0.4.2)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -188,6 +189,7 @@ DEPENDENCIES
   rqrcode_png
   sass-rails (~> 3.2.4)
   seed-fu
+  seed_dump
   sqlite3
   thin
   uglifier (>= 1.0.3)
