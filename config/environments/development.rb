@@ -29,6 +29,18 @@ VMT::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
+  config.action_mailer.raise_delivery_errors = true
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "mail.musicales-tannay.ch",
+      :port                 => 587,
+      :domain               => 'musicales-tannay.ch',
+      :user_name            => 'billetterie@musicales-tannay.ch',
+      :password             => BILLETTERIE_PASSWORD,
+      :authentication       => :plain,
+      :enable_starttls_auto => true  }
+
   # Do not compress assets
   config.assets.compress = false
 

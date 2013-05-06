@@ -59,16 +59,5 @@ module VMT
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.action_mailer.raise_delivery_errors = true
-
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :address              => "mail.musicales-tannay.ch",
-      :port                 => 587,
-      :domain               => 'musicales-tannay.ch',
-      :user_name            => 'billetterie@musicales-tannay.ch',
-      :password             => BILLETTERIE_PASSWORD,
-      :authentication       => :plain,
-      :enable_starttls_auto => true  }
     end
 end
