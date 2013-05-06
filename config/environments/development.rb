@@ -37,7 +37,7 @@ VMT::Application.configure do
       :port                 => 587,
       :domain               => 'musicales-tannay.ch',
       :user_name            => 'billetterie@musicales-tannay.ch',
-      :password             => BILLETTERIE_PASSWORD,
+      :password             => ENV["BILLETTERIE_PASSWORD"],
       :authentication       => :plain,
       :enable_starttls_auto => true  }
 
