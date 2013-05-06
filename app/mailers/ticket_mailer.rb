@@ -4,7 +4,7 @@ class TicketMailer < ActionMailer::Base
   def ticket(order)
   	@order = order
     @tickets=@order.tickets
-  	@qr = RQRCode::QRCode.new("http://vmt2.herokuapp.com/orders/#{@order.code}")
+  	@qr = RQRCode::QRCode.new("vmt2.herokuapp.com/orders/#{@order.code}")
 
 	png = @qr.to_img
 	png.resize(200,200).save("#{@order.code}.png")
