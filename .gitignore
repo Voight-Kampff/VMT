@@ -16,6 +16,4 @@
 
 .DS_Store
 
-/config/initializers/secret_token.rb
-/config/initializers/paymill.rb
 /config/local_env.yml
