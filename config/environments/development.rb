@@ -39,7 +39,7 @@ VMT::Application.configure do
       :user_name            => 'billetterie@musicales-tannay.ch',
       :password             => "Kttk13vw",
       :authentication       => :plain,
-      :enable_starttls_auto => true
+      :enable_starttls_auto => true,
       :openssl_verify_mode  => 'none' }
 
   # Do not compress assets

@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(:version => 20130504213853) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
-    t.text     "bio",        :limit => 255
+    t.text     "bio"
     t.integer  "concert_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ccpayments", :force => true do |t|
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(:version => 20130504213853) do
     t.datetime "date"
     t.string   "head"
     t.string   "subhead"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.text     "playlist"
     t.string   "shortname"
     t.integer  "price"
@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(:version => 20130504213853) do
     t.string   "NPA"
     t.string   "Ville"
     t.boolean  "released"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "total"
-    t.string   "code",          :limit => 5
+    t.string   "code"
     t.integer  "membership_id"
   end
 
