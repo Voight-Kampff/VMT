@@ -11,7 +11,7 @@
 #new artists page					DONE
 #all artists page
 
-#bankpayment model
+#bankpayment model				
 #cashpayment model
 
 #validation for orders				DONE
@@ -27,8 +27,8 @@ for payments						DONE
 
 #qr code png 					 	DONE
 
-#Change member page
-#Change Front page
+#Change member page					DONE
+#Change Front page					DONE
 
 #login/users/for checking		^
 #cancel emission button 			
