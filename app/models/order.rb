@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  has_many :tickets
+  has_many :tickets, :dependent => :destroy
   accepts_nested_attributes_for :tickets
   attr_accessible :tickets_attributes, :NPA, :Ville, :email, :name, :price, :street, :released, :membership_id
   has_one :ccpayment
@@ -9,14 +9,14 @@ class Order < ActiveRecord::Base
   validates :code, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
-  #validates :total, :numericality => { :greater_than => 0}
+  validates :total, :numericality => { :greater_than => 0}
   validates :NPA, presence: true
   validates :street, presence: true
   validates :Ville, presence: true
   validates :name, presence: true
 
-
-  before_save :total_price_and_code
+  before_validation :total_price_and_code
+  #before_save :total_price_and_code
   #after_save :save_order_id
 
   private
