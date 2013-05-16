@@ -50,9 +50,9 @@
 		    <h3 id="myModalLabel"> PAIEMENT PAR VIREMENT BANCAIRE</h3>
 		  </div>
 		  <div class="modal-body">
-		    <p class="lead">En appuyant sur le button "commander", nous vous enverrons toutes les informations nécessaires au virement bancaire à l'addresse <%= mail_to(@order.email) %></p>
-		    <p class="lead">Une fois votre paiement validé, vous recevrez un courrier éléctronique contenant votre reçu. Veuillez noter que ce processus peut prendre plusieurs jours. Nous vous remercions de votre patience. Votre commande sera considérée  comme étant terminée qu'une fois que vous aurez reçu le courrier électronique contenant votre code d'accès.</p>
-		    <p class="lead">En cas de problème, n'hésitez pas à nous contacter en envoyant un courrier à <%= mail_to ('billetterie@musicales-tannay.ch')%></p>
+		    <p class="lead">En appuyant sur "commander", nous vous enverrons recapitualtif de votre commande à l'addresse <%= mail_to(@order.email) %>. Vous recevrez très prochainement une facture par courrier électronique, contenant toutes les coordonnées bancaires nécessaires au paiement.</p>
+		    <p class="lead">Une fois le paiement validé, vous recevrez un courrier éléctronique contenant votre code d'accès. Veuillez noter que ce processus peut prendre plusieurs jours. Nous vous remercions de votre patience. Votre commande sera considérée  comme étant terminée qu'une fois que vous aurez reçu le courrier électronique contenant votre code d'accès.</p>
+		    <p class="lead">En cas de problème, n'hésitez pas à nous contacter en envoyant un courrier à <%= mail_to('billetterie@musicales-tannay.ch')%></p>
 		  </div>
 		  <div class="modal-footer">
 		  	<a href="send_payment_info" role="button" class="btn">Confirmer</a>

@@ -2,8 +2,9 @@
 
 body { 
   padding-top: 4%;
-@import "bootstrap-responsive";
 	}
+
+@import "bootstrap-responsive";
 
 
 $linkColor: #C33;
@@ -43,6 +44,10 @@ a {
 p {font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;}
 h1,h2,h3,h4 {font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;}
 
+h1 {
+	font-size:60px
+}
+
 h3 {
 	font-size:22px;
 	margin:0 0 10px
@@ -53,7 +58,7 @@ h3 {
 	font-weight:normal;
 	letter-spacing: 0px;
 	font-size: 18px;
-	text-align:center;
+	text-align:left;
 
 }
 

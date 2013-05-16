@@ -77,6 +77,7 @@
     <div class="row">
 <!--<form id="payment-form" action="/ccpayments" method="POST">-->
         <div class="span3">
+            <% unless @order.paid == true %>
             <%= form_for @ccpayment do |f| %>
 
                 <div class="form-row"><label>Numéro de Carte</label>
@@ -102,6 +103,9 @@
                 <div class="actions">
                     <%= f.submit "Payer", :class => "btn btn-large" %>
                 </div>
+            <% end %>
+            <% else %>
+                <p class="lead">Votre paiement à déjà été validé</p>
             <% end %>
         </div>
         <div class="span9">

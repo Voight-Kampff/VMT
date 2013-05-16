@@ -11,6 +11,7 @@ class CcpaymentsController < ApplicationController
 
 		if @ccpayment.save_with_payment
 			TicketMailer.ticket(@order).deliver
+			@order.update_column(:paid,true)
       		redirect_to '/succes', :flash => { :success => "Merci de votre commande!" }
     	else
       		render :new

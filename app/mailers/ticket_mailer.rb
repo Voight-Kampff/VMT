@@ -15,6 +15,7 @@ class TicketMailer < ActionMailer::Base
 
   def payment_info(order)
   	@order = order
+    @tickets=@order.tickets
 
   	mail(:to => order.email, :subject => "Payement de vos billets des variations musicales de Tanany")
   end

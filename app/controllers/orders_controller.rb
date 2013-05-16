@@ -42,8 +42,9 @@ class OrdersController < ApplicationController
 
   def payment_info_mail
     @order = Order.find(cookies.signed[:order_id])
+    @order.update_column(:transfer, true)
     TicketMailer.payment_info(@order).deliver
-    redirect_to root_path, :flash => { :success => "Vous trouverez toutes les informations de paiement dans notre email" }
+    redirect_to root_path, :flash => { :success => "Vous recevrez prochainement votre facture par e-mail" }
     cookies.delete(:order_id)
   end
 

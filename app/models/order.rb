@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :tickets, :dependent => :destroy
   accepts_nested_attributes_for :tickets
-  attr_accessible :tickets_attributes, :NPA, :Ville, :email, :name, :price, :street, :released, :membership_id
+  attr_accessible :tickets_attributes, :NPA, :Ville, :email, :name, :street, :membership_id
   has_one :ccpayment
   belongs_to :membership
 

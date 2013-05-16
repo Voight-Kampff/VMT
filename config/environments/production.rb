@@ -59,6 +59,7 @@ VMT::Application.configure do
       :port                 => 587,
       :domain               => 'musicales-tannay.ch',
       :user_name            => 'billetterie@musicales-tannay.ch',
+      #changed password old one in commits is invalid
       :password             => ENV["EMAIL_PASSWORD"],
       :authentication       => :plain,
       :enable_starttls_auto => true,
