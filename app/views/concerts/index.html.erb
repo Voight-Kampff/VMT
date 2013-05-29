@@ -11,7 +11,7 @@
         <p class="lead">Le programme officiel sera dévoilé le 7 juin</p>
         <% else %>
         <p class="lead">C'est avec grand plaisir que nous vous proposons les concerts suivants pour l'édition 2013. Vous pouvez achetez vos billets à la <%=link_to('billetterie', 'billetterie')%></p>
-        <% end %>
+        
       </div>
     </div>
   </div>
@@ -19,3 +19,4 @@
   	<%= render :partial => "program_line", :collection => @concerts %>
     <%= render :partial => "abo_line", :collection => @abonnement %>
   </div>
+<% end %>
