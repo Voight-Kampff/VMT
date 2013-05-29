@@ -7,7 +7,11 @@
          <h3>PROGRAMME</h3>
       </div>
       <div class="span9">
+        <% if @concerts.nil? %>
+        <p class="lead">Le programme officiel sera dévoilé le 7 juin></p>
+        <% else %>
         <p class="lead">C'est avec grand plaisir que nous vous proposons les concerts suivants pour l'édition 2013. Vous pouvez achetez vos billets à la <%=link_to('billetterie', 'billetterie')%></p>
+        <% end %>
       </div>
     </div>
   </div>
