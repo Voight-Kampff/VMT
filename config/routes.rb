@@ -35,6 +35,7 @@ VMT::Application.routes.draw do
   match '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
   match '/espacepresse', to: 'static#espacepresse'
   match '/YVXjUe4', to: 'static#YVXjUe4'
+  match '/conditionsgenerales', to: 'static#cge'
 
 
   # The priority is based upon order of creation:

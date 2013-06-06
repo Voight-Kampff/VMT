@@ -44,6 +44,9 @@ class StaticController < ApplicationController
 	def espacepresse
 	end
 
+	def cge
+	end
+
 	def succes
 	    unless cookies.signed[:order_id].nil?
 	      @order = Order.find(cookies.signed[:order_id])
