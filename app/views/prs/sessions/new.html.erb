@@ -1,0 +1,28 @@
+<div class="main-row">
+	<div class="row">
+		<div class="span3">
+			<h3>LOGIN PRESSE</h3>
+		</div>
+	</div>
+</div>
+<div class="main-row">
+	<div class="row">
+		<div class="span9 offset3">
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			  <div><%= f.label :email, "Utilisateur" %><br />
+			  <%= f.email_field :email, :autofocus => true %></div>
+
+			  <div><%= f.label :password, "Mot de passe" %><br />
+			  <%= f.password_field :password %></div>
+
+			  <% if devise_mapping.rememberable? -%>
+			    <div><%= f.check_box :remember_me %> <%= f.label :remember_me, "Rester connecté" %></div>
+			  <% end -%>
+
+			  <div><%= f.submit "Connexion", :class => 'btn btn-large'%></div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<%= render "devise/shared/links" %>
