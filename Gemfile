@@ -10,6 +10,7 @@ gem 'rqrcode'
 gem 'roadie'
 gem 'rqrcode_png'
 gem 'seed-fu'
+gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

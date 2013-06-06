@@ -1,5 +1,13 @@
 class StaticController < ApplicationController
 
+	before_filter :authenticate_pr!, :only => [:espacepresse]
+
+	def YVXjUe4
+		respond_to do |format|
+			format.html { render "static/YVXjUe4", :layout => false  }
+		end
+	end
+
 	def home
 	end
 
@@ -31,6 +39,9 @@ class StaticController < ApplicationController
 	end
 
 	def khatia
+	end
+
+	def espacepresse
 	end
 
 	def succes

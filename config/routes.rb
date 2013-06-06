@@ -2,6 +2,14 @@ VMT::Application.routes.draw do
 
 
 
+  devise_for :prs
+
+  devise_scope :pr do
+    
+    get "presse/login", :to => "devise/sessions#new"
+
+  end
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -25,6 +33,8 @@ VMT::Application.routes.draw do
   match '/intermezzo', to: 'static#intermezzo'
   match '/nemanja_radulovic_et_laure_favre_kahn', to: 'static#nemanja'
   match '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
+  match '/espacepresse', to: 'static#espacepresse'
+  match '/YVXjUe4', to: 'static#YVXjUe4'
 
 
   # The priority is based upon order of creation:

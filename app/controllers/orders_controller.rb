@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+
+  before_filter :authenticate_user!, :only => [:show]
  
   def create
   	@order = Order.new(params[:order])
