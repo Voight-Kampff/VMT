@@ -1,5 +1,7 @@
 class CcpaymentsController < ApplicationController
 
+	before_filter :authenticate_user!, :only => [:show, :create, :new, :index, :edit, :delete]
+
 	def new
 		@order = Order.find(cookies.signed[:order_id])
 		@ccpayment = @order.build_ccpayment

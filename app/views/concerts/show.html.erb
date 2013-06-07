@@ -19,9 +19,18 @@
             <% end %>
           </li>
         </ul>
+        <div class="music">
+            <ul class="">
+              <% @concert.playlist.each do |composition| %>
+              <li>
+                <%=composition%>
+              </li>
+              <%end%>
+            </ul>
+          </div>
       </div>
       <div class="span6">
-      	<p><%=@concert.description%></p>
+      	<p align="justify"><%=@concert.description%></p>
       	<%= render :partial => "artist", :collection => @artists %>
       </div>
     </div>

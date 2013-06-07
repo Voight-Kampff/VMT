@@ -34,7 +34,7 @@
 				<th>TOTAL</th>
 				<th><%=@order.total/100%> CHF</th>
 			</tr>
-		</thead> /conditionsgenerales
+		</thead>
 	</table>
 	<p>En procédant à l'achat des billets, vous acceptez les <%=link_to('conditions générales de vente', '/conditionsgenerales') %> </p>
 </div>
@@ -43,7 +43,7 @@
 	<div class="row">
 	<%= link_to "Modifier la Commande", redirect_to = 'billetterie', :class => "btn span3" %>
 	<a href="#myModal" role="button" class="btn span3 offset1" data-toggle="modal">Payer par virement bancaire</a>
-	<%= link_to "Payer par carte de crédit", redirect_to = 'ccpayments/new', :class => "btn span3" %>
+	<%= link_to "Payement par carte de crédit disponbile prochainement", redirect_to = '#', :class => "btn span3 disabled" %>
 		
 		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-header">
