@@ -15,7 +15,10 @@
         <ul class="thumbnails">
           <li class="span6">
             <% unless @concert.id == 4 %>
-            <%= image_tag "570/#{@concert.id}.jpg" %>
+              <%= image_tag "570/#{@concert.id}.jpg" %>
+            <% end %>
+            <% if @concert.id == 2%>
+              <%=image_tag "GECA.jpg"%>
             <% end %>
           </li>
         </ul>
