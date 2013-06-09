@@ -11,6 +11,7 @@ gem 'roadie'
 gem 'rqrcode_png'
 gem 'seed-fu'
 gem 'devise'
+gem "friendly_id", "~> 4.0.9"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

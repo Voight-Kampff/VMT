@@ -5,6 +5,8 @@ class Order < ActiveRecord::Base
   has_one :ccpayment
   belongs_to :membership
 
+  extend FriendlyId
+  friendly_id :code
 
   validates :code, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
