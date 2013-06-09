@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by_code(params[:id])     #find_by_code(params[:id])
+    @order = Order.find(params[:id])     #find_by_code(params[:id])
     @tickets=@order.tickets
     @order.update_column(:released, true)
   end

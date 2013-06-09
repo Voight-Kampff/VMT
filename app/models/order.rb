@@ -35,9 +35,9 @@ class Order < ActiveRecord::Base
       self.code = SecureRandom.urlsafe_base64(5)
   	end
 
-    def to_param
-      code
-    end
+    #def to_param
+    #  code
+    #end
 
     
 
