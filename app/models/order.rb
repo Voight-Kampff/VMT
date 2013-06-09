@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :tickets, :dependent => :destroy
   accepts_nested_attributes_for :tickets
-  attr_accessible :tickets_attributes, :NPA, :Ville, :email, :name, :street, :membership_id
+  attr_accessible :tickets_attributes, :NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released
   has_one :ccpayment
   belongs_to :membership
 
@@ -32,7 +32,9 @@ class Order < ActiveRecord::Base
           price = price + tt.concert.price*tt.normal + tt.concert.price/2*tt.student 
   		  end
   		self.total = price
-      self.code = SecureRandom.urlsafe_base64(5)
+        if self.code.nil?
+          self.code = SecureRandom.urlsafe_base64(5)
+        end
   	end
 
     #def to_param
