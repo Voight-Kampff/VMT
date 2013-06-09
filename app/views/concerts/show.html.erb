@@ -2,7 +2,7 @@
   <div class="title-row">
     <div class="row">
       <div class="span6">
-         <h3><%=@concert.shortname%></h3>
+         <h3><%=@concert.head%></h3>
       </div>
       <div class="span6">
         <p class="lead"><%=@concert.subhead%></p>
@@ -34,7 +34,9 @@
           </div>
       </div>
       <div class="span6">
-      	<p align="justify"><%=@concert.description%></p>
+        <% unless @concert.id == 4 %>
+          <p align="justify"><%=@concert.description%></p>
+        <% end %>
       	<%= render :partial => "artist", :collection => @artists %>
       </div>
     </div>

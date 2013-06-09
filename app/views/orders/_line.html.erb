@@ -9,7 +9,7 @@
 			<%= ff.hidden_field :concert_id, :value => line.id %>
 			<td class="offset2"></td>
 			<% if line.id == 4 %>
-				<td colspan="2">Le concert des enfants est offert par la Fondation Gandur pour la jeunesse. Aucun billet n'est nécessaire</td>
+				<td colspan="2">Le concert des enfants est offert. Aucun billet n'est nécessaire</td>
 			<% elsif line.id == 6 %>
 				<td class="span2"><%= ff.label :normal, "Abonnements" %>CHF <%=line.price/100%> <%= ff.select(:normal, options_for_select([[' ', 0],['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]]), { }, { :class => 'span1' })%></td>
 				<td></td>
