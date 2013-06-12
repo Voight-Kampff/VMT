@@ -17,10 +17,6 @@
             <% unless @concert.id == 4 %>
               <%= image_tag "570/#{@concert.id}.jpg" %>
             <% end %>
-            <% if @concert.id == 2%>
-              </br>
-              <%=image_tag "GECA.jpg"%>
-            <% end %>
           </li>
         </ul>
         <div class="music">
@@ -32,9 +28,14 @@
               <%end%>
             </ul>
           </div>
+          <% if @concert.id == 2%>
+          </br>
+              <%=image_tag "GECA.jpg"%>
+              <%=image_tag "FEAC.png"%></br>
+            <% end %>
       </div>
       <div class="span6">
-        <% unless @concert.id == 4 %>
+        <% if @concert.id == 4 %>
           <p align="justify"><%=@concert.description%></p>
         <% end %>
       	<%= render :partial => "artist", :collection => @artists %>
