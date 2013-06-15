@@ -17,10 +17,10 @@ class TicketMailer < ActionMailer::Base
   	@order = order
     @tickets=@order.tickets
 
-  	mail(:to => order.email, :subject => "Payement de vos billets des variations musicales de Tanany")
-    mail(:to => "b.fournier@musicales-tannay.ch", :subject => "Nouveau paiement par virement bancaire")
-    mail(:to => "elwa.hauser@bluewin.ch", :subject => "Nouveau paiement par virement bancaire")
-    mail(:to => "valfells@gmail.com", :subject => "Nouveau paiement par virement bancaire")
+  	mail(:to => order.email, :bcc => "valfells@gmail.com", :bcc => "b.fournier@musicales-tannay.ch", :subject => "Payement de vos billets des variations musicales de Tanany")
+    #mail(:to => "b.fournier@musicales-tannay.ch", :subject => "Nouveau paiement par virement bancaire")
+    #mail(:to => "elwa.hauser@bluewin.ch", :subject => "Nouveau paiement par virement bancaire")
+    #mail(:to => "valfells@gmail.com", :subject => "Nouveau paiement par virement bancaire")
   end
 
 
