@@ -2,8 +2,8 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.authentication_keys = [ :username ]
-  config.authentication_keys = [ :email ]
+  #config.authentication_keys = [ :username ]
+  #config.authentication_keys = [ :email ]
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
