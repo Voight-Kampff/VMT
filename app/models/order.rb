@@ -31,7 +31,7 @@ class Order < ActiveRecord::Base
     		  price= self.membership.price
         end
   	  	t.each do |tt|  
-          price = price + tt.concert.price*tt.normal + tt.concert.price/2*tt.student 
+          price = price + tt.concert.price*tt.normal + 2500*tt.student 
   		  end
   		self.total = price
         if self.code.nil?
