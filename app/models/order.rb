@@ -1,4 +1,8 @@
 class Order < ActiveRecord::Base
+
+  scope :transferts_non_payes, Order.where(:paid => nil, :transfer => true)
+  scope :paid, where(:paid => true)
+
   has_many :tickets, :dependent => :destroy
   accepts_nested_attributes_for :tickets
   attr_accessible :tickets_attributes, :NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released

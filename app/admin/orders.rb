@@ -9,8 +9,10 @@ ActiveAdmin.register Order do
       end
     end
 
-
-    index do
+    scope :transferts_non_payes
+    scope :paid
+    scope :all, :default => true
+    index :default => true do
     	selectable_column
     	id_column
     	column("Nom", :name)
@@ -39,6 +41,7 @@ ActiveAdmin.register Order do
     	default_actions
     end
 
+    
    #  index :as => :block do |order|
    #  	div :for => order do
    #    		h2 auto_link(order.name)
