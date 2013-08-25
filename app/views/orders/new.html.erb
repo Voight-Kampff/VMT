@@ -7,6 +7,9 @@
 		<div class="span9">
 			<% if @concerts.none? %>
         	<p class="lead">La billetterie ouvre le 7 juin</p>
+        	<% elsif Date.today >=  @concerts.first.date.to_date %>
+        	<p class="lead"> La commande par internet n'est plus disponible, mais il est possible de se procurer des billets à la billetterie avant les concerts. Pour faire une réservation merci de téléphoner au <strong>+41 79 946 13 06</strong></p>
+        	<p class="lead">Durant la semaine, les billets sont en vente à l'administration commmunale de Tannay du lundi au vendredi, de 8:00 à 12:00, et de 13:00 à 17:00</p>
         	<% else %>
 			<p class="lead">Vous pouvez dès à présent acheter vos billets ici. Le paiement peut se faire par virement bancaire. Il vous est également possible de vous procurer vos billets par l'un des moyens suivants</p>
 			<p class="lead">Les billets sont en vente à l'administration commmunale de Tannay du lundi au vendredi, de 8:00 à 12:00, et de 13:00 à 17:00</p>
@@ -78,3 +81,4 @@
 	<% end %>
 
 <% end %><!--end of if condition-->
+</div>
