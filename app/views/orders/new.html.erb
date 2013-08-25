@@ -7,7 +7,7 @@
 		<div class="span9">
 			<% if @concerts.none? %>
         	<p class="lead">La billetterie ouvre le 7 juin</p>
-        	<% elsif Date.today >=  @concerts.first.date.to_date %>
+        	<% elsif Date.today >=  "2013-08-25".to_date %>
         	<p class="lead"> La commande par internet n'est plus disponible, mais il est possible de se procurer des billets à la billetterie avant les concerts. Pour faire une réservation merci de téléphoner au <strong>+41 79 946 13 06</strong></p>
         	<p class="lead">Durant la semaine, les billets sont en vente à l'administration commmunale de Tannay du lundi au vendredi, de 8:00 à 12:00, et de 13:00 à 17:00</p>
         	<% else %>
