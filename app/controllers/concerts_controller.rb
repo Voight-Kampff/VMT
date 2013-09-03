@@ -5,7 +5,7 @@ class ConcertsController < ApplicationController
   end
 
   def index
-  	@concerts=Concert.where(["date > ? AND category = ?", Time.now, 'concert'])
+  	@concerts=Concert.all #where(["date > ? AND category = ?", Time.now, 'concert'])
   	@abonnement=Concert.where(["date > ? AND category = ?", Time.now, 'abonnement'])
   end
 
