@@ -1,6 +1,9 @@
 VMT::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  #Adding eager_load as specified by console for rails 4
+  config.eager_load = true
+
   # Code is not reloaded between requests
   config.cache_classes = true
 

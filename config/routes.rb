@@ -20,22 +20,23 @@ VMT::Application.routes.draw do
 
   root to: "static#home"
   
-  match '/send_payment_info', to: 'orders#payment_info_mail'
-  match '/succes', to: 'static#succes'
-  match '/billetterie',   to: 'orders#new'
-  match '/programme',   to: 'concerts#index'
-  match '/presse',   to: 'static#presse'
-  match '/association', to: 'static#association'
-  match '/contact',     to: 'static#contact'
-  match '/status', to: 'static#status'
-  match '/arthus_piano_trio', to: 'static#arthus'
-  match '/ophelie_gaillard', to: 'static#ophelie'
-  match '/intermezzo', to: 'static#intermezzo'
-  match '/nemanja_radulovic_et_laure_favre_kahn', to: 'static#nemanja'
-  match '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
-  match '/espacepresse', to: 'static#espacepresse'
-  match '/YVXjUe4', to: 'static#YVXjUe4'
-  match '/conditionsgenerales', to: 'static#cge'
+  get '/send_payment_info', to: 'orders#payment_info_mail'
+  get '/succes', to: 'static#succes'
+  get '/billetterie',   to: 'orders#new'
+  get '/programme',   to: 'concerts#index'
+  get '/presse',   to: 'static#presse'
+  get '/medias',    to: 'photos#index'
+  get '/association', to: 'static#association'
+  get '/contact',     to: 'static#contact'
+  get '/status', to: 'static#status'
+  get '/arthus_piano_trio', to: 'static#arthus'
+  get '/ophelie_gaillard', to: 'static#ophelie'
+  get '/intermezzo', to: 'static#intermezzo'
+  get '/nemanja_radulovic_et_laure_favre_kahn', to: 'static#nemanja'
+  get '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
+  get '/espacepresse', to: 'static#espacepresse'
+  get '/YVXjUe4', to: 'static#YVXjUe4' #ssl identity thing
+  get '/conditionsgenerales', to: 'static#cge'
 
 
   # The priority is based upon order of creation:

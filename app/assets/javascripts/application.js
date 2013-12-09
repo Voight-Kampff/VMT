@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require fancybox
 //= require_tree .
+
+	$(document).ready(function() {
+		$("a.fancybox").fancybox();
+	});
