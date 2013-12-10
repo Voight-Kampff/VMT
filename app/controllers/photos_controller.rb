@@ -4,4 +4,8 @@ class PhotosController < ApplicationController
 		@photo = Photo.new
 	end
 
+	def create
+		@photo = Photo.new(params[:photo])
+	end
+
 end
