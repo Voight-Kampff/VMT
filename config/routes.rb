@@ -17,6 +17,7 @@ VMT::Application.routes.draw do
   resources :orders
   resources :ccpayments
   resources :concerts
+  resources :photos
 
   root to: "static#home"
   

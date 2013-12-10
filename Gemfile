@@ -14,7 +14,13 @@ gem 'rqrcode_png'
 gem 'seed-fu'
 gem 'devise'
 gem "friendly_id"
+
+#for compatability with rails 4
 gem 'protected_attributes'
+
+#for photo processing and storage
+gem 'paperclip'
+gem 'aws-sdk'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
