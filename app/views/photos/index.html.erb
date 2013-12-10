@@ -20,8 +20,8 @@
       <div class="row-fluid">
         <ul class="thumbnails">
           <li class="span2">
-            <a class="thumbnail" rel="gallery1" href="/assets/1Contact260.jpg">
-              <%= image_tag "1Contact260.jpg" %>
+            <a class="thumbnail" rel="gallery1" href="#{@photo.url}">
+              <%= image_tag @photo.url(:thumb) %>
             </a>
           </li>
           <li class="span2">

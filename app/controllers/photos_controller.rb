@@ -14,4 +14,8 @@ class PhotosController < ApplicationController
       	end
     end
 
+    def index
+    	@photo=photo.last
+    end
+
 end
