@@ -6,6 +6,12 @@ class PhotosController < ApplicationController
 
 	def create
 		@photo = Photo.new(params[:photo])
-	end
+		
+    	if @photo.save
+        	redirect_to @photo, notice: 'Friend was successfully created.'
+    	else
+        	render action: "new"
+      	end
+    end
 
 end
