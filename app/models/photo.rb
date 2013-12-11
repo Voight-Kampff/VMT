@@ -3,6 +3,10 @@ class Photo < ActiveRecord::Base
 	attr_accessible :image
 	attr_accessible :gallery
 
+	Paperclip.interpolates :gallery do |attachement, style|
+		attachment.instance.gallery
+	end
+
 	has_attached_file :image, styles: {
 		thumb: '158x110'
 	},
