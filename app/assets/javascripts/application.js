@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require fancybox
+//= requrire jquery.mousewheel-3.0.6.pack.js
 
 
 $(document).ready(function() {
