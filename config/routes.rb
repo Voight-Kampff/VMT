@@ -17,7 +17,7 @@ VMT::Application.routes.draw do
   resources :orders
   resources :ccpayments
   resources :concerts
-  resources :photos
+  resources :photos, only: [:index,:new]
 
   root to: "static#home"
   
@@ -26,7 +26,6 @@ VMT::Application.routes.draw do
   get '/billetterie',   to: 'orders#new'
   get '/programme',   to: 'concerts#index'
   get '/presse',   to: 'static#presse'
-  get '/medias',    to: 'photos#index'
   get '/association', to: 'static#association'
   get '/contact',     to: 'static#contact'
   get '/status', to: 'static#status'

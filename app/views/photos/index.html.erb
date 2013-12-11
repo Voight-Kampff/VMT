@@ -17,11 +17,27 @@
         <h3>2013</h3>
       </div>
     </div>
+    <% Photo.select(:gallery).distinct.each do |f| %>
+      <% @gallery=Photo.where('gallery' => f.gallery) %>
+      <% @gallery.each_slice(6) do |row| %>
+        <div class="row-fluid">
+          <ul class="thumbnails">
+          <% row.each do |pic| %>
+            <li class="span2">
+              <a class="thumbnail" rel="<%=@gallery.name%>" href="<%=pic.image.url%>" >
+              <%= image.tag pic.image.url(:thumb) %>
+            </li>
+          <%end%>
+          </ul>
+        </div>
+      <%end%>
+    <%end%>
+
       <div class="row-fluid">
         <ul class="thumbnails">
           <li class="span2">
-            <a class="thumbnail" rel="gallery1" href="<%=@photo.image.url%>" >
-              <%= image_tag @photo.image.url(:thumb) %>
+            <a class="thumbnail" rel="gallery1" href="empty" >
+            
             </a>
           </li>
           <li class="span2">

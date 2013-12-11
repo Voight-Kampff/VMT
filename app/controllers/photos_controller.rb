@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+    before_filter :authenticate_admin_user!, :only => [:new]
+
 	def new
 		@photo = Photo.new
 	end
@@ -15,7 +17,7 @@ class PhotosController < ApplicationController
     end
 
     def index
-    	@photo=Photo.last
+        
     end
 
 end
