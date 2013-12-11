@@ -25,7 +25,7 @@
           <% row.each do |pic| %>
             <li class="span2">
               <a class="thumbnail" rel="<%=@gallery.name%>" href="<%=pic.image.url%>" >
-              <%= image.tag pic.image.url(:thumb) %>
+              <%= image_tag pic.image.url(:thumb) %>
             </li>
           <%end%>
           </ul>
