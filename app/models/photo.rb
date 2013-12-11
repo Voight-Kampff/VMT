@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
 	attr_accessible :gallery
 
 	Paperclip.interpolates :gallery do |attachement, style|
-		attachment.instance.gallery
+		attachment.instance.self.gallery
 	end
 
 	has_attached_file :image, styles: {
