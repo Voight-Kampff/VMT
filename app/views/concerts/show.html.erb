@@ -18,10 +18,7 @@
               <%= image_tag @concert.image1.url %>
             <% end %>
             <% unless @concert.image2 == nil %>
-              <%= image_tag @concert.image1.url %>
-            <% end %>
-            <% unless @concert.id == 4 %>
-              <%= image_tag "570/#{@concert.id}.jpg" %>
+              <%= image_tag @concert.image2.url %>
             <% end %>
           </li>
         </ul>
