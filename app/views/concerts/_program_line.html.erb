@@ -1,6 +1,6 @@
 <div class="row sub-row">
       <div class="span3">
-        <% unless program_line.front.file? == nil %>
+        <% unless program_line.front.file? == false %>
               <%= image_tag program_line.front.url(:thumb) %>
         <% end %>
       </div>
