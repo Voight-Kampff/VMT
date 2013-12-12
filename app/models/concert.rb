@@ -10,15 +10,15 @@ class Concert < ActiveRecord::Base
 
   #front: images that will appear on program page
   has_attached_file :front, styles: {
-  		thumb: '260x'
+  		thumb: '260x260'
   }
 
   #image 1 and 2, that will appear on dedicated page
   has_attached_file :image1, styles: {
-  		full: '570x'
+  		full: '570x260'
   }
   has_attached_file :image2, styles: {
-  		full: '570x'
+  		full: '570x260'
   }
 
 
