@@ -1,0 +1,34 @@
+<%= form_for(@concert) do |f| %>
+
+  <div class="field span3">
+    <%= f.label :head %>
+    <%= f.text_field :head %>
+  </div>
+  <div class="field span3">
+    <%= f.label :shortname %>
+    <%= f.text_field :shortname %>
+  </div>
+  <div class="field span6">
+    <%= f.label :subhead %>
+    <%= f.text_field :subhead %>
+  </div>
+  <div class="field span6">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field span3">
+    <%= f.label :front %>
+    <%= f.file_field :front %>
+  </div>
+  <div class="field span3">
+    <%= f.label :image1 %>
+    <%= f.file_field :image1 %>
+  </div>
+  <div class="field span3">
+    <%= f.label :image2 %>
+    <%= f.file_field :image2 %>
+  </div>
+  <div class="actions span3">
+    <%= f.button 'Ajouter', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

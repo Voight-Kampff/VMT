@@ -1,7 +1,10 @@
 <div class="row sub-row">
       <div class="span3">
+        <% unless program_line.front == nil %>
+              <%= image_tag program_line.front.url %>
+        <% end %>
         <% unless program_line.id == 4 %>
-        <%=link_to(image_tag("260/#{program_line.id}.jpg"), program_line, :class => 'thumbnail')%>
+          <%=link_to(image_tag("260/#{program_line.id}.jpg"), program_line, :class => 'thumbnail')%>
         <% end %> 
       </div>
       <div class="span9">

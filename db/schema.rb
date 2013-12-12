@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210215300) do
+ActiveRecord::Schema.define(version: 20131212023037) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "resource_id",   null: false
@@ -73,12 +73,24 @@ ActiveRecord::Schema.define(version: 20131210215300) do
     t.string   "head"
     t.string   "subhead"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.text     "playlist"
     t.string   "shortname"
     t.integer  "price"
     t.string   "category"
+    t.string   "front_file_name"
+    t.string   "front_content_type"
+    t.integer  "front_file_size"
+    t.datetime "front_updated_at"
+    t.string   "image1_file_name"
+    t.string   "image1_content_type"
+    t.integer  "image1_file_size"
+    t.datetime "image1_updated_at"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
   end
 
   create_table "memberships", force: true do |t|
