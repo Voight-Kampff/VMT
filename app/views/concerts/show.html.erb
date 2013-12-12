@@ -14,10 +14,10 @@
       <div class="span6">
         <ul class="thumbnails">
           <li class="span6">
-            <% unless @concert.image1.file? == nil %>
+            <% unless @concert.image1.file? == false %>
               <%= image_tag @concert.image1.url %>
             <% end %>
-            <% unless @concert.image2.file? == nil %>
+            <% unless @concert.image2.file? == false %>
               <%= image_tag @concert.image2.url %>
             <% end %>
           </li>
