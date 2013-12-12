@@ -18,6 +18,7 @@
               <%= image_tag @concert.image1.url(:full) %>
             <% end %>
             <% unless @concert.image2.file? == false %>
+              </br>
               <%= image_tag @concert.image2.url(:full) %>
             <% end %>
           </li>

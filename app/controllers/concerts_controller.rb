@@ -12,6 +12,14 @@ class ConcertsController < ApplicationController
   	@abonnement=Concert.where(["date > ? AND category = ?", Time.now, 'abonnement'])
   end
 
+  def programme2012
+    @concerts=Concert.where(["date > ? AND date < ? AND category = ?", '20120801', '20120930', 'concert'])
+  end
+
+  def programme2013
+    @concerts=Concert.where(["date > ? AND date < ? AND category = ?", '20130824', '20130902', 'concert'])
+  end
+
   def new
   	@concert=Concert.new
   end
