@@ -28,6 +28,7 @@ VMT::Application.routes.draw do
   get '/programme',   to: 'concerts#index'
   get '/programme2012', to: 'concerts#programme2012'
   get '/programme2013', to: 'concerts#programme2013'
+  get '/programme2011', to: 'concerts#programme2011'
   get '/presse',   to: 'static#presse'
   get '/association', to: 'static#association'
   get '/contact',     to: 'static#contact'
