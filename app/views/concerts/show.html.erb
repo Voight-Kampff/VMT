@@ -1,4 +1,8 @@
 <% provide(:title, @concert.shortname) %>
+  <div class="main-row">
+    <div class="row">
+    </div>
+  </div>
   <div class="title-row">
     <div class="row">
       <div class="span6">
@@ -17,6 +21,7 @@
             <% unless @concert.image1.file? == false %>
               <%= image_tag @concert.image1.url(:full) %>
             <% end %>
+            </br>
             <% unless @concert.image2.file? == false %>
               </br>
               <%= image_tag @concert.image2.url(:full) %>
