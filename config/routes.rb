@@ -41,7 +41,6 @@ VMT::Application.routes.draw do
   get '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
   get '/espacepresse', to: 'static#espacepresse'
   get '/YVXjUe4', to: 'static#YVXjUe4' #ssl identity thing
-  get '/conditionsgenerales', to: 'static#cge'
 
 
   # The priority is based upon order of creation:
