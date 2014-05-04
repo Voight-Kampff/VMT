@@ -20,6 +20,9 @@ class StaticController < ApplicationController
 	def association
 	end
 
+	def billetterie
+  	end
+
 	def contact
 	end
 

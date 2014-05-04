@@ -24,7 +24,7 @@ VMT::Application.routes.draw do
   
   get '/send_payment_info', to: 'orders#payment_info_mail'
   get '/succes', to: 'static#succes'
-  get '/billetterie',   to: 'orders#new'
+  get '/billetterie',   to: 'static#billetterie'
   get '/programme',   to: 'concerts#programme2014'
   get '/programme2012', to: 'concerts#programme2012'
   get '/programme2013', to: 'concerts#programme2013'
