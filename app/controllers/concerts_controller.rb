@@ -8,8 +8,7 @@ class ConcertsController < ApplicationController
   end
 
   def index
-  	@concerts=Concert.where(["date > ? AND date < ? AND category = ?", '20130824', '20130902', 'concert'])
-  	@abonnement=Concert.where(["date > ? AND category = ?", Time.now, 'abonnement'])
+  	@concerts=Concert.where(["date > ? AND date < ?", Date.today.beginning_of_year, Date.today.end_of_year])
   end
 
   def programme2011
