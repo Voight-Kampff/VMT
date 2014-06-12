@@ -3,7 +3,7 @@
   <head>
     <title>Variations Musicales Tannay | <%= yield(:title) %></title>
     <%= stylesheet_link_tag    "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "https://bridge.paymill.com/", "application" %>
     <%= csrf_meta_tags %>
     <script type="text/javascript">
       var PAYMILL_PUBLIC_KEY = '<%=PAYMILL_PUBLIC_KEY%>';
