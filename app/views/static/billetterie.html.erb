@@ -13,10 +13,19 @@
 		<div class="span3">
 		</div>
 		<div class="span9">
-        	<p class="lead"> Les billets seront en vente sur Ticketcorner d'ici quelques jours. En attednant si vous souhaitez faire des réservations et pour toute question vous pouvez nous contacter à l'adresse suivante: <%= mail_to ("billetterie@musicales-tannay.ch")%></p>
+        	<p class="lead"> Les billets sont en vente auprès de Ticketcorner. Vous pouvez passez par <%=link_to("le site de Ticketcorner", "http://www.ticketcorner.ch/tickets.html?affiliate=TCS&doc=artistPages%2Ftickets&fun=artist&action=tickets&erid=1421293&includeOnlybookable=false&x10=1&x11=variations%20musicales%20de")%>, téléphoner au 0900 800 800 (CHF 1.19/min) ou encore l'un des nombreux <%=link_to("points de vente de Tickercorner","http://www.ticketcorner.ch/tickets.html?affiliate=TCS&doc=search/ticketAgency")%></p>
+        	<p class="lead">Des billet peuvent aussi être réservés en nous contactant à l'adresse suivante: <%= mail_to ("billetterie@musicales-tannay.ch")%>. Les enfants de moins de 16 ans bénéficient d'une entrée gratuite. Vous pouvez nous contacter à l'adresse ci-dessus pour leur réserver une place.</p>
+        	<p class="lead">Le concert des enfants le samedi après-midi est gratuit. Aucune réservation n'est nécessaire et un goûter est offert. Ce dernier commence une heure avant le début du concert.</p>
+
+
+
+        		réservations et pour toute question vous pouvez nous contacter à l'adresse suivante: <%= mail_to ("billetterie@musicales-tannay.ch")%></p>
+ 
         	<!--<div class="hero-unit">
 
         		<p class="lead"><a>Des billets sont toujours disponibles pour les concerts du jeudi 28 au dimanche 31 août.</a> Vous pouvez les acheter en passant par la billetterie le soir du concert ou en nous contactant à l'addresse suivante: <%= mail_to ("billetterie@musicales-tannay.ch")%></p>
+
+        		http://www.ticketcorner.ch/tickets.html?affiliate=TCS&doc=artistPages%2Ftickets&fun=artist&action=tickets&erid=1421293&includeOnlybookable=false&x10=1&x11=variations%20musicales%20de
 
 	        	<p class="lead">Veuillez noter que dû au temps d’envoi, Ticketcorner n’expédie plus les billets par la poste quelques jours  avant chaque concert. Si des billets sont encore disponibles, ils peuvent être achetés auprès de la commune de Tannay ou l’un des <%=link_to("points de vente de Tickercorner","http://www.ticketcorner.ch/tickets.html?affiliate=TCS&doc=search/ticketAgency")%> (Coop, poste, CFF, Manor,...).</p>
 	        	<p class="lead">Si vous avez des questions, n'hésitez pas à nous contacter en envoyant un courrier à <%= mail_to ("billetterie@musicales-tannay.ch")%> ou en téléphonant au <a>079 946 13 06</a>.</p>
