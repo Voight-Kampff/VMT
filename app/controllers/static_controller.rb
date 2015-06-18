@@ -2,9 +2,9 @@ class StaticController < ApplicationController
 
 	before_filter :authenticate_pr!, :only => [:espacepresse]
 
-	def YVXjUe4
+	def Y0yNFY88
 		respond_to do |format|
-			format.html { render "static/YVXjUe4", :layout => false  }
+			format.html { render "static/Y0yNFY88", :layout => false  }
 		end
 	end
 
