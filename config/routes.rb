@@ -41,7 +41,7 @@ VMT::Application.routes.draw do
   get '/nemanja_radulovic_et_laure_favre_kahn', to: 'static#nemanja'
   get '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
   get '/espacepresse', to: 'static#espacepresse'
-  get '/YVXjUe4', to: 'static#YVXjUe4' #ssl identity thing
+  get '/YVXjUe4', to: 'static#Y0yNFY88' #ssl identity thing
 
 
   # The priority is based upon order of creation:
