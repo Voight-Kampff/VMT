@@ -9,7 +9,7 @@
         <h3><%=link_to(program_line.head, program_line, :class => 'hlink')%> </h3>
         <div class="span8 offset1">
           <div class="music">
-            <ul class="">
+            <ul class="unstyled">
               <% program_line.playlist.each.with_index do |composition, index| %>
               <% if index % 2 == 1 %>
                 <li>
