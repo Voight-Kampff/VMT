@@ -11,11 +11,13 @@
           <div class="music">
             <ul class="unstyled">
               <% program_line.playlist.each.with_index do |composition, index| %>
-              <% if index % 2 == 1 %>
                 <li>
-                  <%=composition%>
+                  <% if index % 2 == 0 %>
+                    <b><%=composition%></b>
+                  <% else %>
+                    <%=composition%>
+                  <% end %>
                 </li>
-              <%end%>
               <%end%>
             </ul>
           </div>
