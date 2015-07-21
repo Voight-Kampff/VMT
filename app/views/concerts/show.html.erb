@@ -29,7 +29,7 @@
             <ul class="">
               <% @concert.playlist.each.with_index do |composition, index| %>
               <li>
-                <% if index % 2 == 1 %>
+                <% if index % 2 == 0 %>
                   <b><%=composition%></b>
                 <% else %>
                   <%=composition%>

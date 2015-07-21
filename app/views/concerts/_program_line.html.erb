@@ -10,9 +10,11 @@
         <div class="span8 offset1">
           <div class="music">
             <ul class="">
-              <% program_line.playlist.each do |composition| %>
+              <% program_line.playlist.each.with_index do |composition, index| %>
               <li>
-                <%=composition%>
+                <% if index % 2 == 1 %>
+                  <%=composition%>
+                <%end%>
               </li>
               <%end%>
             </ul>
