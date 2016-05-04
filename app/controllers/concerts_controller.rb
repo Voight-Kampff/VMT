@@ -31,6 +31,10 @@ class ConcertsController < ApplicationController
     @concerts=Concert.where(["date > ? AND date < ?", '20150801', '20150930'])
   end
 
+  def programme2016
+    
+  end
+
   def new
   	@concert=Concert.new
   end
