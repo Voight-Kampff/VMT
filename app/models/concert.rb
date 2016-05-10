@@ -3,7 +3,6 @@ class Concert < ActiveRecord::Base
   serialize :playlist, Array
   attr_accessible :date, :description, :head, :subhead, :shortname, :playlist, :category
   has_many :artists
-  has_many :items
 
 
   attr_accessible :image1, :image2, :front #paperclip attributes 
