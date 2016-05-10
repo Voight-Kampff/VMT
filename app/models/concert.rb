@@ -1,5 +1,5 @@
 class Concert < ActiveRecord::Base
-  default_scope order('date ASC')
+  default_scope  { order('created_at ASC') }
   serialize :playlist, Array
   attr_accessible :date, :description, :head, :subhead, :shortname, :playlist, :category
   has_many :artists
