@@ -60,5 +60,7 @@ module VMT
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.assets.precompile += %w( active_admin.js active_admin.css.scss )
+
     end
 end
