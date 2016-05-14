@@ -1,18 +1,7 @@
 VMT::Application.routes.draw do
 
-
-
-  devise_for :prs
-
-  devise_scope :pr do
-    
-    get "presse/login", :to => "devise/sessions#new"
-
-  end
-
+  devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :orders
   resources :ccpayments
