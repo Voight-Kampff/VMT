@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
  
   def create
   	@order = Order.new(params[:order])
-    @tickets=@order.tickets
     if @order.save
       d = @order.tickets.where("normal = ? AND student=?",0,0)
       d.each do |dd|
@@ -21,6 +20,7 @@ class OrdersController < ApplicationController
     @concerts=Concert.where("date > ?", '2015-02-03 18:41:26.454325')
     @order = Order.new
     @order.tickets.build
+    @tickets=@order.tickets
   end
 
   def show

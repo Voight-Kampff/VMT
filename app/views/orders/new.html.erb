@@ -28,7 +28,7 @@
 	<%= form_for @order, :url => { :action => "create" } do |f| %>
 
 		<table class="table table-hover">
-			
+			<%= render :partial => "line", :collection => @concerts, :locals =>  { :f =>f } %>
 		</table>
 		<!-- Button to trigger modal -->
 
