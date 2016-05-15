@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
 
   def new
     @concerts=Concert.where("date > ?", '2015-02-03 18:41:26.454325')
-    @members=Concert.where("category = ?", 'membre')
     @order = Order.new
     @order.tickets.build
   end
