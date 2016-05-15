@@ -6,6 +6,7 @@
 		</div>
 		<div class="span9">
 			<% if @concerts.none? %>
+			<%= @concerts %>
         	<p class="lead">La billetterie est actuellement fermée</p>
         	<% elsif Date.today >=  "2015-01-25".to_date %>
         	<p class="lead"> La billetterie est actuellement ouverte. Vous pouvez réserver vos places auprès de Ticketcorner soit par <%=link_to('internet',"http://www.ticketcorner.ch/billets.html?affiliate=TCS&fun=search&action=search&doc=search%2Fsearch&detailadoc=erdetaila&detailbdoc=evdetailb&kudoc=artist&sort_by=score&sort_direction=desc&fuzzy=yes&suchbegriff=tannay")%>, par téléphone au 0900 800 800 (CHF 1.19 / min., tarif réseau fixe), ou à l'un de leurs nombreux <%=link_to('points de vente','http://www.ticketcorner.ch/tickets.html?affiliate=TCS&doc=search/ticketAgency')%>.</p>
