@@ -3,7 +3,6 @@ ruby "2.3.1"
 
 gem 'rails', '4.2.3'
 gem 'puma' #heroku recommended
-gem 'bootstrap'
 gem 'jquery-rails'
 gem 'fancybox2-rails', '~> 0.2.4'
 gem 'rqrcode'
