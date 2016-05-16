@@ -5,23 +5,25 @@ class OrdersController < ApplicationController
   def create
   	@order = Order.new(params[:order])
     if @order.save
-      d = @order.tickets.where("normal = ? AND student=?",0,0)
-      d.each do |dd|
-        dd.delete
+      emptyticket = @order.tickets.where("normal = ? AND student=?",0,0)
+      emptyticket.each do |item|
+        item.delete
       end
       cookies.signed[:order_id] = @order.id
       redirect_to :action => "index"
     else
-      redirect_to '/billetterie', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
+      redirect_to '/orders/new', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
     end
   end
 
   def new
-    @concerts=Concert.where("date > ?", '2015-02-03 18:41:26.454325')
+    @concerts=Concert.where("date > ?", '2011-02-03 18:41:26.454325')
     @order = Order.new
-    @order.tickets.build
-    @tickets=@order.tickets
+    #@concerts.each do
+    tickets = @order.tickets.build
+    #end
   end
+
 
   def show
     @order = Order.find(params[:id])     #find_by_code(params[:id])

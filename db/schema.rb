@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510085551) do
+ActiveRecord::Schema.define(version: 20160516130636) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -126,6 +126,14 @@ ActiveRecord::Schema.define(version: 20160510085551) do
   end
 
   add_index "prs", ["email"], name: "index_prs_on_email", unique: true
+
+  create_table "seats", force: :cascade do |t|
+    t.integer  "concert_id"
+    t.integer  "column"
+    t.string   "row"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tickets", force: :cascade do |t|
     t.integer  "normal",     default: 0
