@@ -19,9 +19,7 @@ class OrdersController < ApplicationController
   def new
     @concerts=Concert.where("date > ?", '2011-02-03 18:41:26.454325')
     @order = Order.new
-    #@concerts.each do
     tickets = @order.tickets.build
-    #end
   end
 
 

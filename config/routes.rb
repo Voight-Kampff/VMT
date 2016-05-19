@@ -4,7 +4,7 @@ VMT::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :orders
-  resources :ccpayments
+  resources :reservations
   resources :concerts
   resources :artists, only: [:new, :create]
   resources :photos, only: [:index,:new, :create]

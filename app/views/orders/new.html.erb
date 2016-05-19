@@ -39,10 +39,16 @@
 				<%end%>
 			</tr>
 			<%end%>
+			<tr>
+				<td class="offset3"></td>
+				<td class="offset2"></td>
+				<td class="offset2"></td>
+				<td class="span2">
+					<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch modal</a>
+				</td>
+			</tr>
 		</table>
 		<!-- Button to trigger modal -->
-		<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch modal</a>
-
 	
 </div>
 
@@ -60,6 +66,7 @@
 		<%= f.label :street, "Rue et Numéro"%> <%= f.text_field :street, :value => @order.street %>
 		<%= f.label :NPA, "NPA"%><%= f.text_field :NPA, :value => @order.NPA %>
 		<%= f.label :Ville, "Ville"%><%= f.text_field :Ville, :value => @order.Ville %>
+		<button class"btn btl-mini">Test</button>
 	  </div>
 	  <div class="modal-footer">
 	  	<%= f.submit "Page Suivante", :class => 'btn btn-primary' %>

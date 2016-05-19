@@ -1,0 +1,57 @@
+
+<div class="main-row">
+	<div class="row">
+		<div class="span3">
+			<h3>CHOIX DE PLACE</h3>
+		</div>
+		<div class="span9">
+		</div>
+	</div>
+</div>
+
+
+
+<div class="main-row">
+	<table class="talble table-hover">
+		<% @tickets.each do |ticket| %>
+			<tr>
+				<td><%=ticket.concert.subhead%></td>
+				<td><%=ticket.concert.id%></td>
+				<td><a href=<%="#"+"#{ticket.concert.id}"%> role="button" class="btn" data-toggle="modal">Launch modal</td>
+				<div id=<%=ticket.concert.id%> class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="myModalLabel caps">VOS COORDONNÉES</h3>
+					</div>
+					<div class="modal-body">
+						<%=ticket.concert_id%>
+							<p>body_test3</p>
+							<% @seats.where('concert_id=?',ticket.concert.id).each do |seat| %>
+								<%if seat.reservation.nil? == true %>
+								<div id="follow_form">
+									<%= render partial: 'selection', :locals => {seat: seat}%>
+								<% elsif seat.reservation.order_id == @order.id %>
+									<%= render partial:  'unselection', :locals => {seat: seat}%> 
+								<% else %>
+									<button class="btn btn-mini disabled"><%=seat.id%></button>
+								<% end %>
+							<%end%>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+					</div>
+				</div>
+			</tr>
+		<%end%>
+	</table>
+
+	
+</div>
+
+
+
+
+</div>
+</div>
+</div>

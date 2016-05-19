@@ -6,6 +6,10 @@ body {
   padding-top: 4%;
 	}
 
+.modal.large {
+    width: 800px; /* respsonsive width */
+    margin-left:-400px; /* width/2) */ 
+}
 
 
 $linkColor: #C33;
