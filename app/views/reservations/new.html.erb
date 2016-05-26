@@ -23,6 +23,7 @@
 			current_seat=parent.id
 		}
 		document.getElementById(current_seat).id="test"
+		parent.getElementsByClassName("seat_id")[0].value= current_seat.slice(5);
 	}
 </script>
 <script>
@@ -30,6 +31,7 @@
 		parent2=button.parentNode.parentNode
 		current_seat=parent2.id
 		document.getElementById(current_seat).id="test"
+		parent.getElementsByClassName("seat_id")[0].value= current_seat.slice(5);
 	}
 </script>
 <script>
