@@ -1,6 +1,6 @@
 class ConcertsController < ApplicationController
 
-	before_filter :authenticate_admin_user!, :only => [:new]
+	before_filter :authenticate_user!, :only => [:new]
 
   def show
   	 @concert = Concert.find(params[:id])

@@ -45,6 +45,7 @@ class ReservationsController < ApplicationController
 
 	def custom
 		seat_id = params[:seat_id]
+		@order = Order.find(cookies.signed[:order_id])
 		Seat.find(seat_id).reservation.destroy
 		respond_to do |format|
 			format.html { render nothing: true } 

@@ -22,16 +22,22 @@
 		} else {
 			current_seat=parent.id
 		}
+		if (document.getElementById("test") != null) {
+			parent.id=current_seat
+		}
 		document.getElementById(current_seat).id="test"
 		parent.getElementsByClassName("seat_id")[0].value= current_seat.slice(5);
 	}
 </script>
 <script>
 	function getdiv2(button) {
+		if (document.getElementById("test") != null) {
+			parent.id=current_seat
+		}
 		parent2=button.parentNode.parentNode
 		current_seat=parent2.id
 		document.getElementById(current_seat).id="test"
-		parent.getElementsByClassName("seat_id")[0].value= current_seat.slice(5);
+		parent2.getElementsByClassName("seat_id")[0].value= current_seat.slice(5);
 	}
 </script>
 <script>
@@ -56,19 +62,24 @@
 					<div class="modal-body">
 						<%=ticket.concert_id%>
 							<% @seats.where('concert_id=?',ticket.concert.id).each do |seat| %>
-								<%if seat.reservation.nil? == true %>
-									<div id=<%="seat_"+"#{seat.id}"%>>
-										<%= render partial: 'selection'%>
+								<% if seat.id == 13 %>
+									<div class="span1">
+										<p>space</p>
 									</div>
-								<% elsif seat.reservation.order_id == @order.id %>
-									<div id=<%="seat_"+"#{seat.id}"%>>
-										<%= render partial:  'selection2'%> 
-									</div>
-								<% else %>
-									<div id=<%="seat_"+"#{seat.id}"%>>
-										<button class="btn btn-mini disabled"><%=seat.id%></button>
-									</div>
-								<% end %>
+								<% end%>
+									<%if seat.reservation.nil? == true %>
+										<div id=<%="seat_"+"#{seat.id}"%>>
+											<%= render partial: 'selection'%>
+										</div>
+									<% elsif seat.reservation.order_id == @order.id %>
+										<div id=<%="seat_"+"#{seat.id}"%>>
+											<%= render partial: 'selection3'%> 
+										</div>
+									<% else %>
+										<div id=<%="seat_"+"#{seat.id}"%>>
+											<button class="btn btn-mini disabled"><%=seat.id%></button>
+										</div>
+									<% end %>
 							<%end%>
 					</div>
 					<div class="modal-footer">
