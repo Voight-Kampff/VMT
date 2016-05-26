@@ -3,6 +3,6 @@
 <% if artist.id < 62 %>
 <p><%=simple_format(artist.bio, :align => "justify")%></p>
 <% else %> 
-<p><%=((artist.bio).gsub(/\n/, '<br/>')).html_safe%></p>
+<p align="justify"><%=((artist.bio).gsub(/\n/, '<br/>')).html_safe%></p>
 <% end %>
         

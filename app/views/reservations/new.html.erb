@@ -57,30 +57,36 @@
 				<div id=<%="ticket_"+"#{ticket.concert.id}"%> class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel caps">VOS COORDONNÉES</h3>
+						<h3 id="myModalLabel caps"><%=ticket.concert.shortname%> <small>Cliquez sur les places que vous souhaitez réserver</test></h3>
 					</div>
 					<div class="modal-body">
-						<%=ticket.concert_id%>
+						<div class="row">
 							<% @seats.where('concert_id=?',ticket.concert.id).each do |seat| %>
-								<% if seat.id == 13 %>
-									<div class="span1">
-										<p>space</p>
+								<% if seat.id % 25 == 14 %>
+									<div class="span1 seat_button">
+										<p></p>
+									</div>
+								<% elsif seat.id%25 == 1 %>
+									</br>
+									<div class="span1 seat_button">
+										<p><%=(seat.id % 480)/25%></p>
 									</div>
 								<% end%>
 									<%if seat.reservation.nil? == true %>
-										<div id=<%="seat_"+"#{seat.id}"%>>
+										<div id=<%="seat_"+"#{seat.id}"%>  class="span1 seat_button">
 											<%= render partial: 'selection'%>
 										</div>
 									<% elsif seat.reservation.order_id == @order.id %>
-										<div id=<%="seat_"+"#{seat.id}"%>>
+										<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
 											<%= render partial: 'selection3'%> 
 										</div>
 									<% else %>
-										<div id=<%="seat_"+"#{seat.id}"%>>
+										<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
 											<button class="btn btn-mini disabled"><%=seat.id%></button>
 										</div>
 									<% end %>
 							<%end%>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
