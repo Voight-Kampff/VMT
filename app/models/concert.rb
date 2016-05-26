@@ -6,7 +6,7 @@ class Concert < ActiveRecord::Base
   has_many :tickets
   has_many :seats
 
-  #validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
+  do_not_validate_attachment_file_type :image1, :image2, :front
 
 
   attr_accessible :image1, :image2, :front #paperclip attributes 
