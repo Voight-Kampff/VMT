@@ -1,8 +1,8 @@
 
 <h4><%=artist.name%></h4>
-<%= if artist.id < 62 %>
+<% if artist.id < 62 %>
 <p><%=simple_format(artist.bio, :align => "justify")%></p>
 <% else %> 
-<p><%=nlbr(artist.bio)%></p>
+<p><%=nl2br(artist.bio)%></p>
 <% end %> 
         
