@@ -1,4 +1,3 @@
-	<p>UNSELECTION</p>
 	<%= form_for(seat.reservation, html: {method: :delete}, remote: true ) do |f| %>
-		<%= f.submit "#{seat.id}", class: "btn btn-mini btn-primary" %>
+		<%= f.submit "#{seat.id}", class: "btn btn-mini btn-primary", onclick: "changediv#{seat.id}()"%>
 	<%end%>

@@ -9,6 +9,13 @@ VMT::Application.routes.draw do
   resources :artists, only: [:new, :create]
   resources :photos, only: [:index,:new, :create]
 
+  resources :reservations do
+    collection do
+      post :custom
+      put :custom
+    end
+  end
+
   root to: "static#home"
   
   get '/send_payment_info', to: 'orders#payment_info_mail'

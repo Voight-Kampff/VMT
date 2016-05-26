@@ -5,7 +5,6 @@ class ReservationsController < ApplicationController
 		@order = Order.find(cookies.signed[:order_id])
 		@tickets = @order.tickets
 		@reservation=Reservation.new
-		@reservation_idex=Reservation.all
 		@seats= Seat.all
 
 	end
@@ -40,10 +39,17 @@ class ReservationsController < ApplicationController
 		Reservation.find(params[:id]).destroy
 		respond_to do |format|
 			format.html { render nothing: true } 
-			format.js { render nothing: true } 
+			format.js { } 
     	end
-    	if @reservation.delete
-    	end
+	end
+
+	def custom
+		seat_id = params[:seat_id]
+		Seat.find(seat_id).reservation.destroy
+		respond_to do |format|
+			format.html { render nothing: true } 
+			format.js { } 
+		end
 	end
 
 end

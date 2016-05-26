@@ -1,0 +1,16 @@
+	<% @seats=Seat.all %>
+	<% @seats.where('concert_id=?',ticket.concert.id).each do |seat| %>
+								<%if seat.reservation.nil? == true %>
+									<div id=<%="seat_"+"#{seat.id}"%>>
+										<%= render partial: 'selection', :locals => {seat: seat}%>
+									</div>
+								<% elsif seat.reservation.order_id == @order.id %>
+									<div id=<%="seat_"+"#{seat.id}"%>>
+										<%= render partial:  'selection2', :locals => {seat: seat}%> 
+									</div>
+								<% else %>
+									<div id=<%="seat_"+"#{seat.id}"%>>
+										<button class="btn btn-mini disabled"><%=seat.id%></button>
+									</div>
+								<% end %>
+							<%end%>

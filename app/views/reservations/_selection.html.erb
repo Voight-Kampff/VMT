@@ -1,4 +1,8 @@
+
+<% if @reservation.nil? %>
+	<% @reservation=Reservation.new %>
+<% end %>
 <%= form_for(@reservation, remote: true ) do |f| %>
-	<%= f.hidden_field :seat_id, :value => seat.id %>
-	<%= f.submit "#{seat.id}", class: "btn btn-mini" %>
+	<%= f.hidden_field :seat_id,:value=>"1", :class => "seat_id"%>
+	<%= f.submit "seat id here", class: "btn btn-mini",id:"button", onclick: "getdiv(this)" %>
 <%end%>

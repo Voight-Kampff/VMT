@@ -9,7 +9,35 @@
 	</div>
 </div>
 
+<script>
+	current_seat=0;
+</script>
 
+<script>
+	function getdiv(button) {
+		parent=button.parentNode
+		if (parent.id == "new_reservation") {
+			parent=parent.parentNode
+			current_seat=parent.id
+		} else {
+			current_seat=parent.id
+		}
+		document.getElementById(current_seat).id="test"
+	}
+</script>
+<script>
+	function getdiv2(button) {
+		parent2=button.parentNode.parentNode
+		current_seat=parent2.id
+		document.getElementById(current_seat).id="test"
+	}
+</script>
+<script>
+	function afteraction() {
+		alert(current_seat);
+		document.getElementById("test").id=current_seat
+	}
+</script>
 
 <div class="main-row">
 	<table class="talble table-hover">
@@ -17,26 +45,29 @@
 			<tr>
 				<td><%=ticket.concert.subhead%></td>
 				<td><%=ticket.concert.id%></td>
-				<td><a href=<%="#"+"#{ticket.concert.id}"%> role="button" class="btn" data-toggle="modal">Launch modal</td>
-				<div id=<%=ticket.concert.id%> class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<td><a href=<%="#ticket_"+"#{ticket.concert.id}"%> role="button" class="btn" data-toggle="modal">Launch modal</td>
+				<div id=<%="ticket_"+"#{ticket.concert.id}"%> class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 						<h3 id="myModalLabel caps">VOS COORDONNÉES</h3>
 					</div>
 					<div class="modal-body">
 						<%=ticket.concert_id%>
-							<p>body_test3</p>
 							<% @seats.where('concert_id=?',ticket.concert.id).each do |seat| %>
 								<%if seat.reservation.nil? == true %>
-								<div id="follow_form">
-									<%= render partial: 'selection', :locals => {seat: seat}%>
+									<div id=<%="seat_"+"#{seat.id}"%>>
+										<%= render partial: 'selection'%>
+									</div>
 								<% elsif seat.reservation.order_id == @order.id %>
-									<%= render partial:  'unselection', :locals => {seat: seat}%> 
+									<div id=<%="seat_"+"#{seat.id}"%>>
+										<%= render partial:  'selection2'%> 
+									</div>
 								<% else %>
-									<button class="btn btn-mini disabled"><%=seat.id%></button>
+									<div id=<%="seat_"+"#{seat.id}"%>>
+										<button class="btn btn-mini disabled"><%=seat.id%></button>
+									</div>
 								<% end %>
 							<%end%>
-						</div>
 					</div>
 					<div class="modal-footer">
 						<button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>

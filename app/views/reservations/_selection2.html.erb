@@ -1,0 +1,4 @@
+
+<%=form_tag({controller: "reservations", action: "custom"}, remote: true, method: "post")%>
+<%=hidden_field_tag(:seat_id,"1", :class => "seat_id")%>
+<%=submit_tag "Test", class: "btn btn-mini", id:"button", onclick: "getdiv2(this)"%>
