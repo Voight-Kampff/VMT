@@ -13,3 +13,8 @@
 <%=form_for(seat.reservation, html: {method: :delete}, remote: true ) do |f| %>
 	<%=f.submit "seat id to be deleted", class: "btn btn-mini btn-primary", onclick: "getdiv(this)"%>
 <%end%>
+
+<%= seat=18 %>
+<%=form_for(seat.reservation, html: {method: :delete}, remote: true ) do |f| %>
+	<%=f.submit "seat id to be deleted", class: "btn btn-mini btn-primary", onclick: "getdiv(this)"%>
+<%end%>
