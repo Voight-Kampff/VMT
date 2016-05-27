@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518190407) do
+ActiveRecord::Schema.define(version: 20160526231111) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -138,8 +138,12 @@ ActiveRecord::Schema.define(version: 20160518190407) do
     t.integer  "concert_id"
     t.integer  "column"
     t.string   "row"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "price"
+    t.boolean  "reserved_for_invitation"
+    t.boolean  "reserved_for_ticketcorner"
+    t.boolean  "reserved_by_email"
   end
 
   create_table "tickets", force: :cascade do |t|

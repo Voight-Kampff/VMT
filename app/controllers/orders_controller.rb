@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
   def create
   	@order = Order.new(params[:order])
     if @order.save
-      emptyticket = @order.tickets.where("normal = ? AND student=?",0,0)
-      emptyticket.each do |item|
-        item.delete
-      end
+      #emptyticket = @order.tickets.where("normal = ? AND student=?",0,0)
+      #emptyticket.each do |item|
+      #  item.delete
+      #end
       cookies.signed[:order_id] = @order.id
       redirect_to :action => "index"
     else

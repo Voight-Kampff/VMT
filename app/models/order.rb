@@ -12,12 +12,12 @@ class Order < ActiveRecord::Base
 
   #validates :code, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  #validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
-  #validates :total, :numericality => { :greater_than => 0}
-  #validates :NPA, presence: true
-  #validates :street, presence: true
-  #validates :Ville, presence: true
-  #validates :name, presence: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :total, :numericality => { :greater_than => 0}
+  validates :NPA, presence: true
+  validates :street, presence: true
+  validates :Ville, presence: true
+  validates :name, presence: true
 
   #before_validation :total_price_and_code
   #before_save :total_price_and_code
