@@ -6,6 +6,7 @@ class ReservationsController < ApplicationController
 		@tickets = @order.tickets
 		@reservation=Reservation.new
 		@seats= Seat.all
+		@rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"]
 
 	end
 

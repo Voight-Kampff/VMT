@@ -66,10 +66,10 @@
 									<div class="span1 seat_button">
 										<p></p>
 									</div>
-								<% elsif seat.id%25 == 1 %>
+								<% elsif seat.id % 25 == 1 %>
 									</br>
 									<div class="span1 seat_button">
-										<p><%=(seat.id % 480)/25%></p>
+										<p><%=@rows[(seat.id % 480)/25]%></p>
 									</div>
 								<% end%>
 									<%if seat.reservation.nil? == true %>
@@ -83,6 +83,11 @@
 									<% else %>
 										<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
 											<button class="btn btn-mini disabled"><%=seat.id%></button>
+										</div>
+									<% end %>
+									<% if seat.id % 250 == 0 %>
+										<div>
+											<br><p>"  "</p>
 										</div>
 									<% end %>
 							<%end%>
