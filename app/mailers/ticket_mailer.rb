@@ -1,5 +1,5 @@
 class TicketMailer < ActionMailer::Base
-  default from: "Billetterie@musicales-tannay.ch"
+  default :from => "Billetterie@musicales-tannay.ch",
 
   def ticket(order)
   	@order = order
@@ -9,7 +9,7 @@ class TicketMailer < ActionMailer::Base
 	 #png.resize(200,200).save("#{@order.code}.png")
 	 #attachments.inline["#{@order.code}.png"] =File.read("#{@order.code}.png")
 
-  	mail(:to => @order.email, :subject => "Vos billets pour les variations musicales de Tannay")
+  	mail(:to => @order.email, :from => "Billetterie@musicales-tannay.ch", :subject => "Vos billets pour les variations musicales de Tannay")
   end
 
 
