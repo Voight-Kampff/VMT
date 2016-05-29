@@ -1,2 +1,2 @@
-$('#test').html("<%= escape_javascript(render partial: 'selection')%>");
-$(afteraction)
+$('#test').html("<%= escape_javascript(render partial: 'selection', locals: {seat: nil})%>");
+$(afteraction);

@@ -8,6 +8,8 @@ gem 'fancybox2-rails', '~> 0.2.4'
 gem 'rqrcode'
 gem 'roadie'
 
+gem 'stripe'
+
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise', '~> 3.2' #used with active admin
 

@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
 
 	def new
 		@order = Order.find(cookies.signed[:order_id])
-		@tickets = @order.tickets
+		@concerts = Concert.all
 		@reservation=Reservation.new
 		@seats= Seat.all
 		@rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"]

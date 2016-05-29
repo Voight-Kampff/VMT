@@ -1,6 +1,5 @@
 
 @import "bootstrap";
-@import "bootstrap-responsive";
 
 .seat_button {
 		width:8px;
@@ -10,11 +9,19 @@
 		p {
 		margin: 0 0 0px;
 		}
+		btn-mini {
+		width: 30px
+		}
 }
 
 body { 
   padding-top: 4%;
 	}
+
+.unresp-container {
+	width: 750px;
+	margin:0 auto;
+}
 
 .modal.large {
     width: 800px; /* respsonsive width */

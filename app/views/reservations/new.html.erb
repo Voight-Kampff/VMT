@@ -2,7 +2,7 @@
 <div class="main-row">
 	<div class="row">
 		<div class="span3">
-			<h3>CHOIX DE PLACE</h3>
+			<h3>BILLETTERIE</h3>
 		</div>
 		<div class="span9">
 		</div>
@@ -40,73 +40,89 @@
 		parent2.getElementsByClassName("seat_id")[0].value= current_seat.slice(5);
 	}
 </script>
+
 <script>
 	function afteraction() {
-		alert(current_seat);
 		document.getElementById("test").id=current_seat
+		if (current_seat.slice(5)%25==0) {
+			parent.getElementsByClassName("btn")[0].value="25";
+		} else {
+			parent.getElementsByClassName("btn")[0].value=current_seat.slice(5)%25;
+		}
 	}
 </script>
 
 <div class="main-row">
-	<table class="talble table-hover">
-		<% @tickets.each do |ticket| %>
+	<table class="table table-hover">
+		<tbody>
+			<% @concerts.each do |concert| %>
 			<tr>
-				<td><%=ticket.concert.subhead%></td>
-				<td><%=ticket.concert.id%></td>
-				<td><a href=<%="#ticket_"+"#{ticket.concert.id}"%> role="button" class="btn" data-toggle="modal">Launch modal</td>
-				<div id=<%="ticket_"+"#{ticket.concert.id}"%> class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel caps"><%=ticket.concert.shortname%> <small>Cliquez sur les places que vous souhaitez réserver</test></h3>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<% @seats.where('concert_id=?',ticket.concert.id).each do |seat| %>
-								<% if seat.id % 25 == 14 %>
-									<div class="span1 seat_button">
-										<p></p>
-									</div>
-								<% elsif seat.id % 25 == 1 %>
-									</br>
-									<div class="span1 seat_button">
-										<p><%=@rows[(seat.id % 480)/25]%></p>
-									</div>
-								<% end%>
-									<%if seat.reservation.nil? == true %>
-										<div id=<%="seat_"+"#{seat.id}"%>  class="span1 seat_button">
-											<%= render partial: 'selection'%>
+				<td class="span4"><%=concert.subhead%></td>
+				<td class="span4"><strong><%=concert.shortname%></strong></td>
+				<% if concert.free == true %>
+					<td class="span2"></td>
+					<td class="span2"></td>
+					<td class="span2">Gratuit</td>
+				<% else %>
+					<td class="span2">Catégorie A:<br><%=concert.seats.first.price/100%>.-</td>
+					<td class="span2">Catégorie B:<br><%=concert.seats.last.price/100%>.-</td>
+					<td class="span3"><a href=<%="#concert_"+"#{concert.id}"%> role="button" class="btn" data-toggle="modal"><small><strong>CHOIX DE PLACES</strong></small></a></td>
+					<div id=<%="concert_"+"#{concert.id}"%> class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel caps"><%=concert.shortname%> <small>Cliquez sur les places que vous souhaitez réserver</small></h3>
+							<p><strong>CAT A:</strong> <%=@seats.where('concert_id=?',concert.id).first.price/100%>.- <br><strong>CAT B:</strong> <%=@seats.where('concert_id=?',concert.id).last.price/100%>.-</p>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<% @seats.where('concert_id=?',concert.id).each do |seat| %>
+									<% if seat.id % 25 == 14 %>
+										<div class="span1 seat_button">
+											<p></p>
 										</div>
-									<% elsif seat.reservation.order_id == @order.id %>
-										<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
-											<%= render partial: 'selection3'%> 
+									<% elsif seat.id % 25 == 1 %>
+										</br>
+										<div class="span1 seat_button">
+											<p><%=@rows[(seat.id % 480)/25]%></p>
 										</div>
-									<% else %>
-										<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
-											<button class="btn btn-mini disabled"><%=seat.id%></button>
-										</div>
-									<% end %>
-									<% if seat.id % 250 == 0 %>
-										<div>
-											<br><p>"  "</p>
-										</div>
-									<% end %>
-							<%end%>
+									<% end%>
+										<%if seat.reservation.nil? == true %>
+											<div id=<%="seat_"+"#{seat.id}"%>  class="span1 seat_button">
+												<%= render partial: 'selection', locals: {seat: seat} %>
+											</div>
+										<% elsif seat.reservation.order_id == @order.id %>
+											<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
+												<%= render partial: 'selection3', locals: {seat: seat} %> 
+											</div>
+										<% else %>
+											<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
+												<button class="btn btn-mini disabled"><%=seat.id%></button>
+											</div>
+										<% end %>
+										<% if seat.id % 250 == 0 %>
+											<div>
+												<br><br><br>
+											</div>
+										<% end %>
+								<%end%>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true">Valider</button>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
-					</div>
-				</div>
+				<% end%>
 			</tr>
-		<%end%>
+			<%end%>
+		</tbody>
 	</table>
-
+<div class="row span2 offset10">
+	Button goes here
+</div>
 	
 </div>
 
 
 
 
-</div>
-</div>
 </div>

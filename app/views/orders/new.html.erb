@@ -5,19 +5,23 @@
 			<h3>BILLETTERIE</h3>
 		</div>
 		<div class="span9">
+		</div>
+	</div>
+</div>
+<div class="main-row">
+	<div class="row">
+		<div class="span3">
+		</div>
+		<div class="span9">
 			<% if @concerts.none? %>
         	<p class="lead">La billetterie est actuellement fermée</p>
-        	<% #elsif Date.today >=  "2015-01-25".to_date %>
-        	<!-- <p class="lead"> La billetterie est actuellement ouverte. Vous pouvez réserver vos places auprès de Ticketcorner soit par <%=link_to('internet',"http://www.ticketcorner.ch/billets.html?affiliate=TCS&fun=search&action=search&doc=search%2Fsearch&detailadoc=erdetaila&detailbdoc=evdetailb&kudoc=artist&sort_by=score&sort_direction=desc&fuzzy=yes&suchbegriff=tannay")%>, par téléphone au 0900 800 800 (CHF 1.19 / min., tarif réseau fixe), ou à l'un de leurs nombreux <%=link_to('points de vente','http://www.ticketcorner.ch/tickets.html?affiliate=TCS&doc=search/ticketAgency')%>.</p>
-        	<p class="lead">Le concert des enfants le samedi après-midi est gratuit. Aucune réservation n'est nécessaire et un goûter est offert. Ce dernier commence une heure avant le début du concert.</p>
-        	<p class="lead">Des billets étudiants sont disponibles à la caisse du soir à l'entrée du festival. Les enfants jusqu'à l'âge de 16 ans bénéficient d'une entrée gratuite. Ces places sont assurées dans la mesure des disponibilités-</p>
-        	<p class="lead">En cas de questions, n'hésitez pas à nous contacter en envoyant un courrier à <%= mail_to ('billetterie@musicales-tannay.ch')%></p> -->
         	<% else %>
-			<p class="lead">Vous pouvez dès à présent acheter vos billets ici. Le paiement peut se faire par virement bancaire. Il vous est également possible de vous procurer vos billets par l'un des moyens suivants</p>
-			<p class="lead">Les billets sont en vente à l'administration commmunale de Tannay du lundi au vendredi, de 8:00 à 12:00, et de 13:00 à 17:00</p>
-			<p class="lead">La billetterie sera ouverte dans la cour du château les jours de concerts, 90 minutes avant le début des concerts.</p>
-			<p class="lead">Il est possible de commander en téléphonant au <strong>+41 79 946 13 06</strong></p>
-			<p class="lead">En cas de problème, n'hésitez pas à nous contacter en envoyant un courrier à <%= mail_to ('billetterie@musicales-tannay.ch')%></p>
+        	<p class="lead">La billetterie est actuellement ouverte</p>
+        	<p class="lead">Les enfants de moins de 16 ans bénéficient d'une entrée gratuite. Vous pouvez nous contacter à l'adresse ci-dessus pour leur réserver une place.</p>
+        	<p class="lead">Le concert des enfants le samedi après-midi est gratuit. Aucune réservation n'est nécessaire et un goûter est offert. Ce dernier commence une heure avant le début du concert.</p>
+        	<p class="lead">Si vous avez des questions, vous pouvez nous contacter à l'addresse suivante: <%= mail_to ("billetterie@musicales-tannay.ch")%>.</p>
+        	<a href="#myModal" role="button" class="btn btn-large" data-toggle="modal" style="font-size:21px">Lancer la commande</a></br>
+        	</br>
 		</div>
 	</div>
 </div>
@@ -28,25 +32,24 @@
 	<%= form_for @order do |f| %>
 
 		<table class="table table-hover">
-			<% @concerts.each do |ff| %>
+		<tbody>
+			<% @concerts.each do |concert| %>
 			<tr>
-				<td class="span3"><%=ff.subhead%></td>
-				<%= f.fields_for :tickets do |fff| %>
-					<%= fff.hidden_field :concert_id, :value => ff.id %>
-					<td class="offset2"></td>
-				    <td class="span2"><%= fff.label :normal, "Billets Ordinaires" %>CHF <%=100%> <%= fff.select(:normal, options_for_select([[' ', 0],['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]]), { }, { :class => 'span1' })%></td>
-					<td class="span2"><%= fff.label :student, "Billets Étudiants" %>CHF 25 <%= fff.select(:student, options_for_select([[' ', 0],['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]]), { }, { :class => 'span1' })%></td>
-				<%end%>
+				<td class="span3"><%=concert.subhead%></td>
+				<td class="span5"><strong><%=concert.head%></strong></td>
+				<%if concert.free == true %>
+					<td class="span2"></td>
+					<td class="span2">Gratuit</td>
+				<% elsif concert.not_numbered == true %>
+					<td class="span2"></td>
+					<td class="span2">Prix unique<br><%=concert.seats.first.price/100%>.-</td>
+				<% else %>
+					<td class="span2">Catégorie A<br><%=concert.seats.first.price/100%>.-</td>
+					<td class="span2">Catégorie B<br><%=concert.seats.last.price/100%>.-<br></td>
+				<% end%>
 			</tr>
 			<%end%>
-			<tr>
-				<td class="offset3"></td>
-				<td class="offset2"></td>
-				<td class="offset2"></td>
-				<td class="span2">
-					<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch modal</a>
-				</td>
-			</tr>
+		</tbody>
 		</table>
 		<!-- Button to trigger modal -->
 	
@@ -66,7 +69,6 @@
 		<%= f.label :street, "Rue et Numéro"%> <%= f.text_field :street, :value => @order.street %>
 		<%= f.label :NPA, "NPA"%><%= f.text_field :NPA, :value => @order.NPA %>
 		<%= f.label :Ville, "Ville"%><%= f.text_field :Ville, :value => @order.Ville %>
-		<button class"btn btl-mini">Test</button>
 	  </div>
 	  <div class="modal-footer">
 	  	<%= f.submit "Page Suivante", :class => 'btn btn-primary' %>
@@ -75,6 +77,4 @@
 	<% end %>
 	</div>
 <% end %><!--end of if condition-->
-</div>
-</div>
 </div>
