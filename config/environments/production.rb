@@ -59,7 +59,7 @@ VMT::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :address              => "webmail.musicales-tannay.ch",
+      :address              => "mail.infomaniak.com",
       :port                 => 587,
       :domain               => 'musicales-tannay.ch',
       :user_name            => 'billetterie@musicales-tannay.ch',
