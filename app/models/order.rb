@@ -33,16 +33,12 @@ class Order < ActiveRecord::Base
       return total
     end
 
-  private
   	def generate_code
         if self.code.nil?
           self.code = SecureRandom.urlsafe_base64(5)
+          self.paid = 1
         end
   	end
-
-    #def to_param
-    #  code
-    #end
 
     
 
