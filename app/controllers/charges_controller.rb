@@ -7,19 +7,18 @@ class ChargesController < ApplicationController
 	def create
 		# Amount in cents
 		@order = Order.find(cookies[:order_id])
-	  	@amount = 500
-
+	  	@amount = @order.total
 
 		customer = Stripe::Customer.create(
-			:email => params[:stripeEmail],
+			:email => @order.email,
 		    :source  => params[:stripeToken]
 		)
 
 		charge = Stripe::Charge.create(
 			:customer    => customer.id,
 			:amount      => @amount,
-		    :description => 'Rails Stripe customer',
-		    :currency    => 'usd'
+		    :description => @order.reservations,
+		    :currency    => 'chf'
 		  )
 
 		rescue Stripe::CardError => e

@@ -39,15 +39,11 @@ class OrdersController < ApplicationController
     end
   end
 
-  def edit
-    @order = Order.find(params[:id])
-    redirect_to '/billetterie'
-  end
 
   def update
     @order = Order.find(params[:id])
     if @order.update(params[:order])
-      redirect_to new_charges_path
+      redirect_to 'charges/new'
     else
       render 'basket', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
     end
