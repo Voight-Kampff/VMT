@@ -1,5 +1,5 @@
 class TicketMailer < ActionMailer::Base
-  default :from => "Billetterie@musicales-tannay.ch",
+  default :from => "Billetterie@musicales-tannay.ch"
 
   def ticket(order)
   	@order = order
