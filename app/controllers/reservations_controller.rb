@@ -3,9 +3,9 @@ class ReservationsController < ApplicationController
 
 	def new
 		@order = Order.find(cookies[:order_id])
-		@concerts=Concert.find(44) #Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
+		@concert=Concert.find_by_id(params[:concert_id])
 		@reservation=Reservation.new
-		@seats= Seat.all
+		@seats= @concert.seats
 		@rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"]
 
 	end
@@ -52,6 +52,12 @@ class ReservationsController < ApplicationController
 			format.html { render nothing: true } 
 			format.js { } 
 		end
+	end
+
+	def cancel
+		#@order = Order.find(cookies[:order_id])
+		#@order.reservations.destroy
+		#redirect_to 'orders#new'
 	end
 
 end

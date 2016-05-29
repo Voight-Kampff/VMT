@@ -20,7 +20,6 @@
         	<p class="lead">Les enfants de moins de 16 ans bénéficient d'une entrée gratuite. Vous pouvez nous contacter à l'adresse ci-dessus pour leur réserver une place.</p>
         	<p class="lead">Le concert des enfants le samedi après-midi est gratuit. Aucune réservation n'est nécessaire et un goûter est offert. Ce dernier commence une heure avant le début du concert.</p>
         	<p class="lead">Si vous avez des questions, vous pouvez nous contacter à l'addresse suivante: <%= mail_to ("billetterie@musicales-tannay.ch")%>.</p>
-        	<a href="#myModal" role="button" class="btn btn-large" data-toggle="modal" style="font-size:21px">Lancer la commande</a></br>
         	</br>
 		</div>
 	</div>
@@ -29,23 +28,28 @@
 
 
 <div class="main-row">
-	<%= form_for @order do |f| %>
 
 		<table class="table table-hover">
 		<tbody>
 			<% @concerts.each do |concert| %>
 			<tr>
-				<td class="span3"><%=concert.subhead%></td>
-				<td class="span5"><strong><%=concert.head%></strong></td>
+				<td class="span4"><%=concert.subhead%></td>
+				<td class="span4"><strong><%=concert.shortname%></strong></td>
 				<%if concert.free == true %>
+					<td class="span2"></td>
 					<td class="span2"></td>
 					<td class="span2">Gratuit</td>
 				<% elsif concert.not_numbered == true %>
+					<td class="span2"></td>
 					<td class="span2"></td>
 					<td class="span2">Prix unique<br><%=concert.seats.first.price/100%>.-</td>
 				<% else %>
 					<td class="span2">Catégorie A<br><%=concert.seats.first.price/100%>.-</td>
 					<td class="span2">Catégorie B<br><%=concert.seats.last.price/100%>.-<br></td>
+					<td class="span2">
+						<%= form_for @order do |f| %>
+						<%= hidden_field_tag 'concert_id', concert.id %>
+						<%= f.submit "Acheter", :class => 'btn btn-primary' %><% end %></td>
 				<% end%>
 			</tr>
 			<%end%>
@@ -58,23 +62,7 @@
 
 	 
 		<!-- Modal -->
-	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-header">
-	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	    <h3 id="myModalLabel caps">VOS COORDONNÉES</h3>
-	  </div>
-	  <div class="modal-body">
-	    <%= f.label :name, "Nom"%><%= f.text_field :name, :value => @order.name %>
-		<%= f.label :emaol, "Adresse E-mail"%><%= f.text_field :email, :value => @order.email %>
-		<%= f.label :street, "Rue et Numéro"%> <%= f.text_field :street, :value => @order.street %>
-		<%= f.label :NPA, "NPA"%><%= f.text_field :NPA, :value => @order.NPA %>
-		<%= f.label :Ville, "Ville"%><%= f.text_field :Ville, :value => @order.Ville %>
-	  </div>
-	  <div class="modal-footer">
-	  	<%= f.submit "Page Suivante", :class => 'btn btn-primary' %>
-	    <button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
-	  </div>
-	<% end %>
+
 	</div>
 <% end %><!--end of if condition-->
 </div>

@@ -1,0 +1,67 @@
+
+<div class="main-row">
+	<div class="row">
+		<div class="span3">
+			<h3>PANIER</h3>
+		</div>
+		<div class="span9">
+		</div>
+	</div>
+</div>
+
+<div class="main-row">
+	<% if @reservations.nil? %>
+		<p>Votre panier est vide</p>
+	<% else %> 
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<td><strong>Date</strong></td>
+					<td><strong>Concert</strong></td>
+					<td><strong>Rangée</strong></td>
+					<td><strong>Colonne</strong></td>
+					<td></td>
+					<td><strong>Prix</strong></td>
+				</tr>
+			</thead>
+			<tbody>
+				<%@reservations.each do |reservation|%>
+				<tr>
+					<td><%=reservation.seat.concert.subhead%></td>
+					<td><%=reservation.seat.concert.shortname%></td>
+					<td><%=reservation.seat.row%></td>
+					<td><%=reservation.seat.column%></td>
+					<td></td>
+					<td><%=reservation.seat.price/100%>.-</td>
+				</tr>
+				<% end %>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><strong>Total</strong></td>
+					<td><%=@order.total/100%>.-</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row span3 offset9">
+			</br>
+				<%= button_to "Réserver d'autres billets","#myModal", :class => "btn btn-primary span3", 'role' => 'button', 'data-toggle' => "modal", 'onclick'=> "$('#myModal').modal(open)" %>
+				<%= button_to "Payer", order_basket_path(@order.id), :class => "btn btn-primary span3"%>
+		</div>
+	<% end %> 
+</div>
+	<div id="myModal" class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="myModalLabel caps">CONCERTS</h3>
+	  </div>
+	  <div class="modal-body">
+	  	
+	  	<%= render partial: "concert", :locals => {:concert => @concerts} %>
+	  </div>
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+	  </div>
+	</div>

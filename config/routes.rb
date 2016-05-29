@@ -3,11 +3,16 @@ VMT::Application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :orders
+  resources :orders do
+    get :basket
+  end
   resources :reservations
-  resources :concerts
+  resources :concerts do
+    resources :reservations
+  end
   resources :artists, only: [:new, :create]
   resources :photos, only: [:index,:new, :create]
+
 
   resources :reservations do
     collection do
@@ -28,7 +33,6 @@ VMT::Application.routes.draw do
   get '/programme2014', to: 'concerts#programme2014'
   get '/programme2015', to: 'concerts#programme2015'
   get '/programme2016', to: 'concerts#programme2016'
-  get '/orders/new', to: 'orders#new'
   get '/presse',   to: 'static#presse'
   get '/association', to: 'static#association'
   get '/contact',     to: 'static#contact'

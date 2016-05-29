@@ -4,13 +4,14 @@ class OrdersController < ApplicationController
  
   def create
   	@order = Order.new(params[:order])
+    @concerts = Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
     if @order.save
       #emptyticket = @order.tickets.where("normal = ? AND student=?",0,0)
       #emptyticket.each do |item|
       #  item.delete
       #end
       cookies[:order_id] = @order.id
-      redirect_to '/reservations/new'
+      redirect_to new_concert_reservation_path(params[:concert_id])
     else
       redirect_to '/orders/new', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
     end
@@ -38,7 +39,16 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+  end
+
   def edit
+  end
+
+  def basket
+    @order = Order.find(cookies[:order_id])
+    @reservations = @order.reservations 
+    @concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
   end
 
   def payment_info_mail
