@@ -55,7 +55,7 @@
 <div class="main-row">
 	<table class="table table-hover">
 		<tbody>
-			<% @concerts.each do |concert| %>
+			<% concert=@concerts %>
 			<tr>
 				<td class="span4"><%=concert.subhead%></td>
 				<td class="span4"><strong><%=concert.shortname%></strong></td>
@@ -117,7 +117,7 @@
 					</div>
 				<% end%>
 			</tr>
-			<%end%>
+			
 		</tbody>
 	</table>
 <div class="row span2 offset10">
