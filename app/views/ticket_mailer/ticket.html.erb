@@ -4,57 +4,17 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+
 <div class="container">
-  <%= image_tag attachments["#{@order.code}.png"].url %>
+
   <div class="main-row">
-    <div class="row">
-      <div class="span6">
-        <h3>Vos Billets</h3>
-        <table class="table table-hover">
-        <% unless @tickets.nil? %>
-          <thead>
-            <tr>
-              <th>Concert</th>
-              <th>Date & Lieu</th>
-              <th></th>
-              <th>Billets Ordinaires</th>
-              <th>Billets Etudiants</th>
-            </tr>
-          </thead>
-          <%= render :partial => "checkline", :collection => @tickets %>
-        <% end %>
-        <% unless @order.membership.nil? %>
-          <%= render :partial => "member"%>
-        <% end %>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>TOTAL</th>
-              <th><%=@order.total/100%> CHF</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-      <div class="span6">
-       <h3>Facturé à</h3>
-        <ul class="">
-          <li><%= @order.name %></li>
-          <li><%= @order.email %></li>
-          <li><%= @order.street %></li>
-          <li><%= @order.NPA %><%= @order.Ville %></li>
-        </ul>
-      </div>
-      <div>
-        <p class="lead">IMPORTANT: avant d'avoir accès à la tente vous devez récupérer vos billets à l'entrée du chateau. Prévoyez un peu de temps avant le début du concert</p>
-        <p class="lead">En cas de problème, n'hésitez pas à contacter <a>billetterie@musicales-tannay.ch</a></p>
-      </div>
-    </div>
+    <h3>Votre commande</h3>
+    <p class="lead"><%=@order.id%></p>
+    <p class="lead">En cas de problème, n'hésitez pas à contacter <a>billetterie@musicales-tannay.ch</a></p>
   </div>
 
 </div>
-    
+
   </body>
 </html>
 

@@ -10,39 +10,6 @@
   <div class="main-row">
     <h3>Votre commande</h3>
     <p class="lead">Vous recevrez prochainement un deuxième e-mail contenant votre facture et les coordonnées bancaires pour le paiement de celle-ci. Ce n'est qu'une fois que votre facture est payée, que vous recevrez vos billets</a></p>
-    <table class="table table-hover">
-        <% unless @tickets.nil? %>
-          <thead>
-            <tr>
-              <th>Concert</th>
-              <th>Date & Lieu</th>
-              <th></th>
-              <th>Billets Ordinaires</th>
-              <th>Billets Etudiants</th>
-            </tr>
-          </thead>
-          <%= render :partial => "checkline", :collection => @tickets %>
-        <% end %>
-        <% unless @order.membership.nil? %>
-          <%= render :partial => "member"%>
-        <% end %>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>TOTAL</th>
-              <th><%=@order.total/100%> CHF</th>
-            </tr>
-          </thead>
-        </table>
-        <h3>Facturé à</h3>
-        <ul class="">
-          <li><%= @order.name %></li>
-          <li><%= @order.email %></li>
-          <li><%= @order.street %></li>
-          <li><%= @order.NPA %><%= @order.Ville %></li>
-        </ul>
     <p class="lead">En cas de problème, n'hésitez pas à contacter <a>billetterie@musicales-tannay.ch</a></p>
   </div>
 
