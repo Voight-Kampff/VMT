@@ -11,10 +11,14 @@ rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S
 	end
 	s.column=column
 
-	rownum=i/25
+	rownum=i%475/25
+	if i%25==0
+		rownum=i%475/25-1
+	end
+
 	s.row=rows[rownum]
 
-	if i>250
+	if (i%475)>250
 		s.price= 4500
 	else
 		s.price= 6000
@@ -23,3 +27,136 @@ rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S
 	s.save
 end
 
+(476..950).each do |i|
+	s=Seat.new
+	s.id=i
+	s.concert_id= 45
+
+	column= i % 25
+	if column==0
+		column=25
+	end
+	s.column=column
+
+	rownum=i%475/25
+	if i%25==0
+		rownum=i%475/25-1
+	end
+
+	s.row=rows[rownum]
+
+	if (i%475)>250
+		s.price= 5500
+	else
+		s.price= 7000
+	end
+
+	s.save
+end
+
+(951..1425).each do |i|
+	s=Seat.new
+	s.id=i
+	s.concert_id= 47
+
+	column= i % 25
+	if column==0
+		column=25
+	end
+	s.column=column
+
+	rownum=i%475/25
+	if i%25==0
+		rownum=i%475/25-1
+	end
+
+	s.row=rows[rownum]
+
+	if (i%475)>250
+		s.price= 7000
+	else
+		s.price= 8000
+	end
+
+	s.save
+end
+
+s=Seat.find(1425)
+s.price=7000
+s.save
+
+(1426..1900).each do |i|
+	s=Seat.new
+	s.id=i
+	s.concert_id= 48
+
+	column= i % 25
+	if column==0
+		column=25
+	end
+	s.column=column
+
+	rownum=i%475/25
+	if i%25==0
+		rownum=i%475/25-1
+	end
+
+	s.row=rows[rownum]
+
+	if (i%475)>250
+		s.price= 4500
+	else
+		s.price= 6000
+	end
+
+	s.save
+end
+
+s=Seat.find(1900)
+s.price=4500
+s.save
+
+(1901..2375).each do |i|
+	s=Seat.new
+	s.id=i
+	s.concert_id= 51
+
+	column= i % 25
+	if column==0
+		column=25
+	end
+	s.column=column
+
+	rownum=i%475/25
+	if i%25==0
+		rownum=i%475/25-1
+	end
+
+	s.row=rows[rownum]
+
+	if (i%475)>250
+		s.price= 6000
+	else
+		s.price= 7000
+	end
+
+	s.save
+end
+
+s=Seat.find(2375)
+s.price=6000
+s.save
+
+(2376..2725).each do |i|
+	s=Seat.new
+	s.id=i
+	s.concert_id= 50
+	s.price= 5000
+	s.save
+end
+
+(2726..2840).each do |i|
+	s=Seat.new
+	s.id=i
+	s.save
+end
