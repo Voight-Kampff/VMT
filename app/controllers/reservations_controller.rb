@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
 
 	def create
 		@reservation=Reservation.new(params[:reservation])
-		@order = Order.find(cookies.signed[:order_id])
+		@order = Order.find(cookies[:order_id])
 		@reservation.order_id=@order.id
 		if @reservation.save
 		end
