@@ -9,8 +9,8 @@ class OrdersController < ApplicationController
       #emptyticket.each do |item|
       #  item.delete
       #end
-      cookies.signed[:order_id] = @order.id
-      redirect_to :action => "/reservations/new"
+      cookies[:order_id] = @order.id
+      redirect_to '/reservations/new'
     else
       redirect_to '/orders/new', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
     end
