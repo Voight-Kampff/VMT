@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
 
 
 	def new
-		@order = Order.find(cookies.signed[:order_id])
+		@order = Order.find(cookies[:order_id])
 		@concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
 		@reservation=Reservation.new
 		@seats= Seat.all
