@@ -80,16 +80,7 @@
 						<div class="modal-body">
 							<div class="row">
 								<% @seats.where('concert_id=?',concert.id).each do |seat| %>
-									<% if seat.id % 25 == 14 %>
-										<div class="span1 seat_button">
-											<p></p>
-										</div>
-									<% elsif seat.id % 25 == 1 %>
-										</br>
-										<div class="span1 seat_button">
-											<p><%=@rows[(seat.id % 475)/25]%></p>
-										</div>
-									<% end%>
+									
 										<%if seat.reservation.nil? == true %>
 											<div id=<%="seat_"+"#{seat.id}"%>  class="span1 seat_button">
 												<%= render partial: 'selection', locals: {seat: seat} %>
