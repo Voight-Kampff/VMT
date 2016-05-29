@@ -10,14 +10,14 @@ class Order < ActiveRecord::Base
   belongs_to :membership
 
 
-  validates :code, uniqueness: true
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { with: VALID_EMAIL_REGEX }
-  validates :total, :numericality => { :greater_than => 0}
-  validates :NPA
-  validates :street
-  validates :ville
-  validates :name
+  #validates :code, uniqueness: true
+  #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  #validates :email, format: { with: VALID_EMAIL_REGEX }
+  #validates :total, :numericality => { :greater_than => 0}
+  #validates :NPA
+  #validates :street
+  #validates :ville
+  #validates :name
 
   #before_validation :total_price_and_code
   #before_save :total_price_and_code
