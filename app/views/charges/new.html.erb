@@ -1,18 +1,35 @@
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span><%=@order.total%></span>
-    </label>
-  </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Vos billets"
-          data-amount="<%=escape_javascript(@order.total.to_s)%>"
-          data-locale="auto"></script>
-<% end %>
+<div class="main-row">
+  <div class="row">
+    <div class="span3">
+      <h3>PAIEMENT</h3>
+    </div>
+    <div class="span9">
+      <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+      </article>
+        <% end %>
+        <div class="span3">
+         <p class="lead"><strong>Total à payer:</br></strong><%=@order.total/100%>.-</p>
+        </div>
+        <div class="span3">
+         <p class="lead"><strong>Livré à:</br></strong><%=@order.email%></p>
+        </div>
+        <div class="span2">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Vos billets"
+              data-amount="<%=escape_javascript(@order.total.to_s)%>"
+              data-currency="chf"
+              data-label="Payer par carte"
+              data-locale="fr"></script>
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>

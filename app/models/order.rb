@@ -34,17 +34,7 @@ class Order < ActiveRecord::Base
     end
 
   private
-  	def total_price_and_code
-    		t = self.tickets
-        if self.membership.nil?
-          price= 0
-        else
-    		  price= self.membership.price
-        end
-  	  	t.each do |tt|  
-          price = price + tt.concert.price*tt.normal + 2500*tt.student 
-  		  end
-  		self.total = price
+  	def generate_code
         if self.code.nil?
           self.code = SecureRandom.urlsafe_base64(5)
         end

@@ -10,7 +10,7 @@
 </div>
 
 <div class="main-row">
-	<% if @reservations.nil? %>
+	<% if @reservations.none? %>
 		<p>Votre panier est vide</p>
 	<% else %> 
 		<table class="table table-hover">
@@ -45,12 +45,14 @@
 				</tr>
 			</tbody>
 		</table>
+	<% end %>
 		<div class="row span3 offset9">
 			</br>
 				<%= button_to "Réserver d'autres billets","#myModal", :class => "btn btn-primary span3", 'role' => 'button', 'data-toggle' => "modal", 'onclick'=> "$('#myModal').modal(open)" %>
+			<% unless @reservations.none? %>
 				<%= button_to "Payer","#order_modal", :class => "btn btn-primary span3", 'role' => 'button', 'data-toggle' => "modal", 'onclick'=> "$('#order_modal').modal(open)" %>
-		</div>
-	<% end %> 
+			<% end %>
+		</div> 
 </div>
 	<div id="myModal" class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-header">

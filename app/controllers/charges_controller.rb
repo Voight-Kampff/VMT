@@ -21,6 +21,8 @@ class ChargesController < ApplicationController
 		    :currency    => 'chf'
 		  )
 
+		@order.generate_code
+
 		TicketMailer.ticket(@order).deliver
 
 		rescue Stripe::CardError => e
