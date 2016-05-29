@@ -9,8 +9,15 @@
 
   <div class="main-row">
     <h3>Votre commande</h3>
-    <p class="lead"><%=@order.id%></p>
-    <p class="lead">En cas de problème, n'hésitez pas à contacter <a>billetterie@musicales-tannay.ch</a></p>
+    <%=@order.reservation.each do |reservation|%>
+      <p class="lead"><%=reservation.seat.concert.subhead%> <%=reservation.seat.concert.shortname%> <strong><%=reservation.seat.row%> <%=reservation.seat.column%></strong> <%=reservation.seat.price%></p>
+    <% end %>
+    <h3>Addresse de facturation</h3>
+    <p class="lead"><%=@order.name%></p>
+    <p class="lead"><%=@order.street%></p>
+    <p class="lead"><%=@order.NPA%> <%=@order.Ville%></p>
+    <h3>Questions?</h3>
+    <p class="lead">En cas de problème ou si vous avez des questions, n'hésitez pas à contacter <a>billetterie@musicales-tannay.ch</a></p>
   </div>
 
 </div>

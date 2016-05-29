@@ -10,14 +10,14 @@ class Order < ActiveRecord::Base
   belongs_to :membership
 
 
-  #validates :code, uniqueness: true
-  #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  #validates :email, format: { with: VALID_EMAIL_REGEX }
-  #validates :total, :numericality => { :greater_than => 0}
-  #validates :NPA, presence: true
-  #validates :street, presence: true
-  #validates :Ville, presence: true
-  #validates :name, presence: true
+  validates :code, uniqueness: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, format: { with: VALID_EMAIL_REGEX }
+  validates :total, :numericality => { :greater_than => 0}
+  validates :NPA
+  validates :street
+  validates :ville
+  validates :name
 
   #before_validation :total_price_and_code
   #before_save :total_price_and_code
@@ -35,7 +35,7 @@ class Order < ActiveRecord::Base
 
   	def generate_code
         if self.code.nil?
-          self.code = SecureRandom.urlsafe_base64(5)
+          self.code = SecureRandom.urlsafe_base64(20)
           self.paid = 1
         end
   	end
