@@ -5,9 +5,15 @@ gem 'rails', '4.2.3'
 gem 'puma' #heroku recommended
 gem 'jquery-rails'
 gem 'fancybox2-rails', '~> 0.2.4'
-gem 'rqrcode'
-gem 'roadie'
 
+#for qr code gneration
+gem 'rqrcode'
+#for the .to_img method
+gem 'rqrcode_png'
+
+#to make e-mail styles easier
+gem 'roadie'
+#for payments
 gem 'stripe'
 
 gem 'activeadmin', '~> 1.0.0.pre2'
