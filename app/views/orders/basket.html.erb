@@ -48,7 +48,7 @@
 		<div class="row span3 offset9">
 			</br>
 				<%= button_to "Réserver d'autres billets","#myModal", :class => "btn btn-primary span3", 'role' => 'button', 'data-toggle' => "modal", 'onclick'=> "$('#myModal').modal(open)" %>
-				<%= button_to "Payer", order_basket_path(@order.id), :class => "btn btn-primary span3"%>
+				<%= button_to "Payer","#order_modal", :class => "btn btn-primary span3", 'role' => 'button', 'data-toggle' => "modal", 'onclick'=> "$('#order_modal').modal(open)" %>
 		</div>
 	<% end %> 
 </div>
@@ -62,6 +62,25 @@
 	  	<%= render partial: "concert", :locals => {:concert => @concerts} %>
 	  </div>
 	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+	  </div>
+	</div>
+	<div id="order_modal" class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="myModalLabel caps">VOS COORDONNÉES</h3>
+	  </div>
+	  <div class="modal-body">
+	  	<%= form_for @order, :action => 'update' do |f|%>
+		    <%= f.label :name, "Nom"%><%= f.text_field :name, :value => @order.name %>
+			<%= f.label :emaol, "Adresse E-mail"%><%= f.text_field :email, :value => @order.email %>
+			<%= f.label :street, "Rue et Numéro"%> <%= f.text_field :street, :value => @order.street %>
+			<%= f.label :NPA, "NPA"%><%= f.text_field :NPA, :value => @order.NPA %>
+			<%= f.label :Ville, "Ville"%><%= f.text_field :Ville, :value => @order.Ville %>
+	  </div>
+	  <div class="modal-footer">
+	  		<%= f.submit "Page Suivante", :class => 'btn btn-primary' %>
+	  	<%end%>
 	    <button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
 	  </div>
 	</div>

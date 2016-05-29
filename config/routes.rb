@@ -10,6 +10,7 @@ VMT::Application.routes.draw do
   resources :concerts do
     resources :reservations
   end
+  resources :charges
   resources :artists, only: [:new, :create]
   resources :photos, only: [:index,:new, :create]
 

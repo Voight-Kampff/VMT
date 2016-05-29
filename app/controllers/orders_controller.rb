@@ -39,14 +39,22 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
+  def edit
+    @order = Order.find(params[:id])
+    redirect_to '/billetterie'
   end
 
-  def edit
+  def update
+    @order = Order.find(params[:id])
+    if @order.update(params[:order])
+      redirect_to new_charges_path
+    else
+      render 'basket', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
+    end
   end
 
   def basket
-    @order = Order.find(cookies[:order_id])
+    @order = Order.find(params[:order_id])
     @reservations = @order.reservations 
     @concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
   end
