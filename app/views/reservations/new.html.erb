@@ -63,6 +63,10 @@
 					<td class="span2"></td>
 					<td class="span2"></td>
 					<td class="span2">Gratuit</td>
+				<% elsif concert.not_numbered == true %>
+					<td class="span2"></td>
+					<td class="span2"></td>
+					<td class="span2">Prix unique<br><%=concert.seats.first.price/100%>.-</td>
 				<% else %>
 					<td class="span2">Catégorie A:<br><%=concert.seats.first.price/100%>.-</td>
 					<td class="span2">Catégorie B:<br><%=concert.seats.last.price/100%>.-</td>

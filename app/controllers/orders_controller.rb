@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
       #  item.delete
       #end
       cookies.signed[:order_id] = @order.id
-      redirect_to :action => "reservation#new"
+      redirect_to :action => "/reservations/new"
     else
       redirect_to '/orders/new', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
     end
