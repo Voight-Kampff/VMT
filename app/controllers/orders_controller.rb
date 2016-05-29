@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
+    @concerts=Concert.find(44) #Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
     @order = Order.new
     tickets = @order.tickets.build
   end
