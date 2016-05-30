@@ -15,9 +15,6 @@ class TicketMailer < ActionMailer::Base
     qr_image = MiniMagick::Image.open("#{@order.code}.png")
 
     ticket_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/ticket_#{reservation.seat.concert_id}.png")
-  
-    column_image
-    row_image
 
     result = ticket_image.composite(qr_image) do |c|
         c.compose "Over"    # OverCompositeOp
