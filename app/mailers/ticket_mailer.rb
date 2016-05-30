@@ -14,7 +14,7 @@ class TicketMailer < ActionMailer::Base
     png.resize(200,200).save("#{@order.code}.png")
     qr_image = MiniMagick::Image.open("#{@order.code}.png")
 
-    ticket_image = MiniMagick::Image.open("photos.musicales-tannay.ch/ticket/ticket_#{reservation.seat.concert_id}")
+    ticket_image = MiniMagick::Image.open("photos.musicales-tannay.ch/tickets/ticket_#{reservation.seat.concert_id}.png")
   
     column_image
     row_image
