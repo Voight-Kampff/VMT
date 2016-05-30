@@ -21,9 +21,9 @@ class TicketMailer < ActionMailer::Base
       c.geometry "+500+100" # copy second_image onto first_image from (500, 100)
     end
 
-    result.write ["reservation_#{@reservations.id}.png"]
+    result.write ["reservation_#{reservation.id}.png"]
 
-    attachments.inline["reservation_#{@reservation.id}.png"] =File.read("reservation_#{@reservation.id}.png")
+    attachments.inline["reservation_#{reservation.id}.png"] =File.read("reservation_#{@reservation.id}.png")
   end
 
     mail(:to => @order.email, :from => "Billetterie@musicales-tannay.ch", :subject => "Vos billets pour les variations musicales de Tannay")
