@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
 		@seats= @concert.seats
 		@first_seat = @concert.seats.first
 		@last_seat = @concert.seats.last
-		@taken_seat_array=Array.new(@last_seat.id)
+		@taken_seat_array=Array.new(475)
 		@taken_by_user_seat_array=Array.new(475)
 		Reservation.where(seat_id: (@first_seat.id..@last_seat.id)).each do |r|
 			if r.order_id==@order.id

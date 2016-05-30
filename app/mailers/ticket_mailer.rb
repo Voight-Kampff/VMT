@@ -39,6 +39,7 @@ class TicketMailer < ActionMailer::Base
   end
 
     mail(:to => @order.email, :from => "Billetterie@musicales-tannay.ch", :subject => "Vos billets pour les variations musicales de Tannay")
+    mail(:to => 'webmaster@musicales-tannay.ch', :from => "Billetterie@musicales-tannay.ch", :subject => "Vos billets pour les variations musicales de Tannay")
   end
 
 
