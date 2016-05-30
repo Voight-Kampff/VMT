@@ -5,6 +5,7 @@ class Concert < ActiveRecord::Base
   has_many :artists
   has_many :tickets
   has_many :seats
+  has_many :reservations, :through => :seats
 
   do_not_validate_attachment_file_type :image1, :image2, :front
 

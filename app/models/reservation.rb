@@ -2,6 +2,7 @@ class Reservation < ActiveRecord::Base
 	attr_accessible :order_id, :seat_id
 	belongs_to :order
 	belongs_to :seat
+	belongs_to :concert
 
 	validate :ensure_seat_is_free, on: :create
 	validate :ensure_seat_belongs_to_order, on: :destroy

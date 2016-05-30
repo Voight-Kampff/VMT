@@ -1,33 +1,18 @@
 
 @import "bootstrap";
 
-.seat_button {
-		width:8px;
-		form {
-		margin: 0 0 0px;
-		}
-		p {
-		margin: 0 0 0px;
-		}
-		btn-mini {
-		width: 30px
-		}
+.table-seats td {
+	padding:2px;
 }
 
 body { 
   padding-top: 4%;
 	}
 
-.unresp-container {
-	width: 750px;
-	margin:0 auto;
-}
-
 .modal.large {
     width: 800px; /* respsonsive width */
     margin-left:-400px; /* width/2) */ 
 }
-
 
 $linkColor: #C33;
 $darklinkColor: #8f2424;

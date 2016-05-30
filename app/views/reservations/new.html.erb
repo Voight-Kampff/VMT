@@ -5,6 +5,8 @@
 			<h3>BILLETTERIE</h3>
 		</div>
 		<div class="span9">
+			<p class="lead"><%=@concert.subhead%></br><strong><%=@concert.head%></strong></p>
+			<p>Cliquez sur les sièges que vous souhaitez réserver</p>
 		</div>
 	</div>
 </div>
@@ -14,50 +16,25 @@
 </script>
 
 <script>
-	function getdiv(button) {
-		parent=button.parentNode
-		if (parent.id == "new_reservation") {
-			parent=parent.parentNode
-			current_seat=parent.id
-		} else {
-			current_seat=parent.id
+	function pushseat(button) {
+		current_seat=button.id
+		if ($(button).attr("class")=="btn btn-mini create") {
+			$(button).addClass('btn-primary')
+			$('input#new_reservation_seat_id')[0].value=current_seat
+			$('form#new_reservation').trigger('submit.rails')
 		}
-		if (document.getElementById("test") != null) {
-			parent.id=current_seat
-		}
-		document.getElementById(current_seat).id="test"
-		parent.getElementsByClassName("seat_id")[0].value= current_seat.slice(5);
-	}
-</script>
-<script>
-	function getdiv2(button) {
-		if (document.getElementById("test") != null) {
-			parent.id=current_seat
-		}
-		parent2=button.parentNode.parentNode
-		current_seat=parent2.id
-		document.getElementById(current_seat).id="test"
-		parent2.getElementsByClassName("seat_id")[0].value= current_seat.slice(5);
-	}
-</script>
-
-<script>
-	function afteraction() {
-		document.getElementById("test").id=current_seat
-		if (current_seat.slice(5)%25==0) {
-			parent.getElementsByClassName("btn")[0].value="25";
-		} else {
-			parent.getElementsByClassName("btn")[0].value=current_seat.slice(5)%25;
+		else {
+			$(button).removeClass('btn-primary')
+			$('input#seat_id')[0].value=current_seat
+			$('form#delete_reservation_seat_id').trigger('submit.rails')
 		}
 	}
 </script>
 
 <div class="main-row">
-	<table class="table table-hover">
-		<tbody>
-			<tr>
-				<td class="span4"><%=@concert.subhead%></td>
-				<td class="span4"><strong><%=@concert.shortname%></strong></td>
+	<div class="row">
+		<div class="span9 offset3">
+
 				<% if @concert.free == true %>
 					<td class="span2"></td>
 					<td class="span2"></td>
@@ -65,62 +42,109 @@
 				<% elsif @concert.not_numbered == true %>
 					<td class="span2"></td>
 					<td class="span2"></td>
-					<td class="span2">Prix unique<br><%=@concert.seats.first.price/100%>.-</td>
+					<td class="span2">Prix unique<br><%=@first_seat.price/100%>.-</td>
 				<% else %>
-					<td class="span2">Catégorie A:<br><%=@concert.seats.first.price/100%>.-</td>
-					<td class="span2">Catégorie B:<br><%=@concert.seats.last.price/100%>.-</td>
-					<td class="span3"><a href=<%="#concert_"+"#{@concert.id}"%> role="button" class="btn" data-toggle="modal"><small><strong>CHOIX DE PLACES</strong></small></a></td>
-					<div id=<%="concert_"+"#{@concert.id}"%> class="modal large hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel caps"><%=@concert.shortname%> <small>Cliquez sur les places que vous souhaitez réserver</small></h3>
-							<p><strong>CAT A:</strong> <%=@seats.where('concert_id=?',@concert.id).first.price/100%>.- <br><strong>CAT B:</strong> <%=@seats.where('concert_id=?',@concert.id).last.price/100%>.-</p>
-						</div>
-						<div class="modal-body">
-							<div class="row">
-								<% @seats.where('concert_id=?',@concert.id).each do |seat| %>
-									<% if seat.id % 25 == 14 %>
-										<div class="span1 seat_button">
-											<p></p>
-										</div>
-									<% elsif seat.id % 25 == 1 %>
-										</br>
-										<div class="span1 seat_button">
-											<p><%=@rows[(seat.id % 475)/25]%></p>
-										</div>
-									<% end%>
-										<%if seat.reservation.nil? == true %>
-											<div id=<%="seat_"+"#{seat.id}"%>  class="span1 seat_button">
-												<%= render partial: 'selection', locals: {seat: seat} %>
-											</div>
-										<% elsif seat.reservation.order_id == @order.id %>
-											<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
-												<%= render partial: 'selection3', locals: {seat: seat} %> 
-											</div>
-										<% else %>
-											<div id=<%="seat_"+"#{seat.id}"%> class="span1 seat_button">
-												<button class="btn btn-mini disabled"><%=seat.id%></button>
-											</div>
-										<% end %>
-										<% if seat.id % 250 == 0 %>
-											<div>
-												<br><br><br>
-											</div>
-										<% end %>
-								<%end%>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button class="btn" data-dismiss="modal" aria-hidden="true">Valider</button>
-						</div>
-					</div>
+				<td class="span2"></td>
+				<td class="span2"></td>
+				<td class="span2"></td>
+		</div>
+	</div>
+	<table class="table table-hover table-seats">
+		<tbody>
+					<tr>	
+							<td><strong></br>Cat. A:</strong></td>
+							<td></br><%=@first_seat.price/100%>.-</td>
+							<% 25.times do %>
+								<td>
+								</td>
+							<% end %> 
+						</tr>
+					<% @first_seat.id..@last_seat.id.times do |seat| %>
+						<% if seat % 25 == 0  && seat %475 !=250 %>
+									<tr>
+										<td>
+											<%=@rows[(seat % 475)/25]%>
+										</td>
+							<td>
+								<% if @taken_seat_array[seat+1]==seat+1 %>
+									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% else %>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% end%>
+							</td>
+						<% elsif seat % 25 == 13 %>
+							<td>
+								<p style="margin-left:5em"></p>
+							</td>
+							<td>
+								<% if @taken_seat_array[seat+1]==seat+1 %>
+									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% else %>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% end%>
+							</td>
+						<% elsif seat == 250 %>
+						<tr>
+							<td><strong></br>Cat. B:</strong></td>
+							<td></br><%=@last_seat.price/100%>.-</td>
+							<% 26.times do %>
+								<td></br>
+								</td>
+							<% end %> 
+						</tr>
+						<tr>
+							<td>
+								<%=@rows[(seat % 475)/25]%>
+							</td>
+							<td>
+								<% if @taken_seat_array[seat+1]==seat+1 %>
+									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% else %>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% end%>
+							</td>
+						<% elsif seat % 25 == 24 %>
+							<td>
+								<% if @taken_seat_array[seat+1]==seat+1 %>
+									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% else %>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% end%>
+							</td>
+						</tr>
+						<% else %>
+							<td>
+								<% if @taken_seat_array[seat+1]==seat+1 %>
+									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% else %>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+								<% end%>
+							</td>
+						<% end %>
+					<% end %>
 				<% end%>
-			</tr>
-			
 		</tbody>
 	</table>
 	<div class="row span2 offset10">
-		</br>
+	<%= form_for(@reservation, remote: true ) do |f| %>
+		<%= f.hidden_field :seat_id, :value => "", :id => "new_reservation_seat_id"%>
+	<%= f.submit "create reservation", class: "btn btn-mini", :style => "display:none" %>
+	</form>
+	<%=form_tag({controller: "reservations", action: "custom"}, :id =>"delete_reservation_seat_id", remote: true, method: "post")%>
+		<%=hidden_field_tag("seat_id","", :class => "seat_id")%>
+	<%=submit_tag "delete reservation", class: "btn btn-primary btn-mini", id:"button", :style=> "display:none"%>
+
+	<% end %>
 			<%= button_to "Annuler (TBD)","", :class => "btn span2"%>
 			<%= button_to "Continuer", order_basket_path(@order.id), :class => "btn btn-primary span2", :method => "get"%>
 	</div>
