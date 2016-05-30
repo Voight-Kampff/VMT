@@ -12,9 +12,9 @@ class ReservationsController < ApplicationController
 		@taken_by_user_seat_array=Array.new(475)
 		Reservation.where(seat_id: (@first_seat.id..@last_seat.id)).each do |r|
 			if r.order_id==@order.id
-				@taken_by_user_seat_array[r.seat_id%475]=r.seat_id%475
+				@taken_by_user_seat_array[(r.seat_id-1)%475]=r.seat_id%475
 			else
-				@taken_seat_array[r.seat_id%475]=r.seat_id%475
+				@taken_seat_array[(r.seat_id-1)%475]=r.seat_id%475
 			end
 		end
 		@rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"]
