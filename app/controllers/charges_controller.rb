@@ -1,12 +1,12 @@
 class ChargesController < ApplicationController
 	
 	def new
-		@order = Order.find(cookies[:order_id])
+		@order = Order.find(cookies.signed[:order_id])
 	end
 
 	def create
 		# Amount in cents
-		@order = Order.find(cookies[:order_id])
+		@order = Order.find(cookies.signed[:order_id])
 	  	@amount = @order.total
 
 		customer = Stripe::Customer.create(
