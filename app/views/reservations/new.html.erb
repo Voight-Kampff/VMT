@@ -59,7 +59,7 @@
 								</td>
 							<% end %> 
 						</tr>
-					<% @first_seat.id..@last_seat.id.times do |seat| %>
+					<% 1..475.times do |seat| %>
 						<% if seat % 25 == 0  && seat %475 !=250 %>
 									<tr>
 										<td>
@@ -69,9 +69,9 @@
 								<% if @taken_seat_array[seat+1]==seat+1 %>
 									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
 								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
-									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% else %>
-									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% end%>
 							</td>
 						<% elsif seat % 25 == 13 %>
@@ -80,11 +80,11 @@
 							</td>
 							<td>
 								<% if @taken_seat_array[seat+1]==seat+1 %>
-									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini disabled" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
-									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% else %>
-									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% end%>
 							</td>
 						<% elsif seat == 250 %>
@@ -102,32 +102,32 @@
 							</td>
 							<td>
 								<% if @taken_seat_array[seat+1]==seat+1 %>
-									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini disabled" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
-									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% else %>
-									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% end%>
 							</td>
 						<% elsif seat % 25 == 24 %>
 							<td>
 								<% if @taken_seat_array[seat+1]==seat+1 %>
-									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini disabled" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
-									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% else %>
-									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% end%>
 							</td>
 						</tr>
 						<% else %>
 							<td>
 								<% if @taken_seat_array[seat+1]==seat+1 %>
-									<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini disabled" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% elsif @taken_by_user_seat_array[seat+1]==seat+1%>
-									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% else %>
-									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=seat+1%>><%=seat%25+1%></button>
+									<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 								<% end%>
 							</td>
 						<% end %>
