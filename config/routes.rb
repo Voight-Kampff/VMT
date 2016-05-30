@@ -19,6 +19,7 @@ VMT::Application.routes.draw do
     collection do
       post :custom
       put :custom
+      post :cancel
     end
   end
 

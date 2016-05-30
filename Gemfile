@@ -16,6 +16,8 @@ gem 'roadie'
 #for payments
 gem 'stripe'
 
+gem 'mini_magick'
+
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise', '~> 3.2' #used with active admin
 

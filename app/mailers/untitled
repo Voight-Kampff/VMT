@@ -34,3 +34,8 @@ class TicketMailer < ActionMailer::Base
 
 
 end
+
+
+
+
+<!--<%= #button_to "Annuler (TBD)", :action =>"cancel", :controller => "reservations" , :class => "btn span2"%>-->

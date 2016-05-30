@@ -72,11 +72,18 @@ class ReservationsController < ApplicationController
 		end
 	end
 
-	def cancel
-		@order = Order.find(cookies.signed[:order_id])
-		@concert=Concert.find_by_id(params[:concert_id])
-		Reservations.find()
-		redirect_to order_basket_path(@order)
-	end
+	# def cancel
+	# 	@order = Order.find(cookies.signed[:order_id])
+	# 	@concert=Concert.find_by_id(params[:concert_id])
+	# 	@reservations=Reservation.where(order_id: @order.id)
+	# 	@reservations_to_delete=Array.new
+	# 	@reservations.each do |f|
+	# 		if f.seat.concert == @concert
+	# 		@reservations_to_delete.push(f.id)
+	# 		end
+	# 	end
+	# 	Reservation.where(:id => @reservations_to_delete).destroy_all
+	# 	redirect_to order_basket_path(@order)
+	# end
 
 end
