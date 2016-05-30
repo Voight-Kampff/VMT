@@ -28,7 +28,7 @@ class TicketMailer < ActionMailer::Base
         c.geometry "+350+310" # copy second_image onto first_image from (500, 100)
     end
 
-    result = ticket__code_and_column.composite(row_image) do |c|
+    result = ticket_with_code_and_column.composite(row_image) do |c|
         c.compose "Over"    # OverCompositeOp
         c.geometry "+150+310" # copy second_image onto first_image from (500, 100)
     end
