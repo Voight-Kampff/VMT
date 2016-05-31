@@ -37,6 +37,7 @@ class Order < ActiveRecord::Base
         if self.code.nil?
           self.code = SecureRandom.urlsafe_base64(20)
           self.paid = 1
+          self.save
         end
   	end
 
