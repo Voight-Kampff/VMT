@@ -19,9 +19,9 @@ class TicketMailer < ActionMailer::Base
         row_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/#{reservation.seat.row}.png")
 
         #ticket_with_code = ticket_image.composite(qr_image) do |c|
-            c.compose "Over"    # OverCompositeOp
-            c.geometry "+500+100" # copy second_image onto first_image from (500, 100)
-        end
+           # c.compose "Over"    # OverCompositeOp
+           # c.geometry "+500+100" # copy second_image onto first_image from (500, 100)
+        #end
 
         #ticket_with_code_and_column = ticket_with_code.composite(column_image) do |c|
         #    c.compose "Over"    # OverCompositeOp
