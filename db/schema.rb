@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160528165317) do
+ActiveRecord::Schema.define(version: 20160531132441) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -86,19 +86,16 @@ ActiveRecord::Schema.define(version: 20160528165317) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "name",          limit: 255
-    t.string   "email",         limit: 255
-    t.string   "street",        limit: 255
-    t.string   "NPA",           limit: 255
-    t.string   "Ville",         limit: 255
-    t.boolean  "released"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "total"
-    t.string   "code",          limit: 255
-    t.integer  "membership_id"
+    t.string   "name",       limit: 255
+    t.string   "email",      limit: 255
+    t.string   "street",     limit: 255
+    t.string   "NPA",        limit: 255
+    t.string   "Ville",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "code",       limit: 255
     t.boolean  "paid"
-    t.boolean  "transfer"
+    t.boolean  "held"
   end
 
   add_index "orders", ["code"], name: "index_orders_on_code", unique: true
