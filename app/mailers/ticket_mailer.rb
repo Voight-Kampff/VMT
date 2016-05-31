@@ -8,14 +8,14 @@ class TicketMailer < ActionMailer::Base
 
     @reservations.each do |reservation|
 
-      @qr = RQRCode::QRCode.new("musicales-tannay.ch/orders/#{@order.code}/validate")
+        @qr = RQRCode::QRCode.new("musicales-tannay.ch/orders/#{@order.code}/validate")
 
-         png = @qr.to_img
-         png.resize(200,200).save("#{@order.code}.png")
-         qr_image = MiniMagick::Image.open("#{@order.code}.png")
+        png = @qr.to_img
+        png.resize(200,200).save("#{@order.code}.png")
+        qr_image = MiniMagick::Image.open("#{@order.code}.png")
 
-      #   ticket_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/ticket_#{reservation.seat.concert_id}.png")
-      #   column_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/#{reservation.seat.column}.png")
+        ticket_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/ticket_#{reservation.seat.concert_id}.png")
+        column_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/#{reservation.seat.column}.png")
       #   row_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/#{reservation.seat.row}.png")
 
       #   ticket_with_code = ticket_image.composite(qr_image) do |c|
@@ -35,7 +35,7 @@ class TicketMailer < ActionMailer::Base
 
         #result.write("reservation_#{reservation.id}.png")
 
-        attachments.inline["reservation_#{reservation.id}.png"] =File.read(qr_image.tempfile)
+        attachments.inline["reservation_#{reservation.id}.png"] =File.read(column_image.tempfile)
     end
 
     mail(:to => @order.email, :from => "Billetterie@musicales-tannay.ch", :bcc => "webmaster@musicales-tannay.ch", :subject => "Vos billets pour les variations musicales de Tannay")
