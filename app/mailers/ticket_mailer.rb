@@ -28,12 +28,12 @@ class TicketMailer < ActionMailer::Base
             c.geometry "+350+310" # copy second_image onto first_image from (500, 100)
         end
 
-        result = ticket_with_code_and_column.composite(row_image) do |c|
-            c.compose "Over"    # OverCompositeOp
+        #result = ticket_with_code_and_column.composite(row_image) do |c|
+         #   c.compose "Over"    # OverCompositeOp
             c.geometry "+150+310" # copy second_image onto first_image from (500, 100)
-        end
+        #end
 
-        result.write("reservation_#{reservation.id}.png")
+        ticket_with_code_and_column.write("reservation_#{reservation.id}.png")
 
         attachments.inline["reservation_#{reservation.id}.png"] =File.read("reservation_#{reservation.id}.png")
     end
