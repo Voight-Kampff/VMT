@@ -12,7 +12,7 @@ class TicketMailer < ActionMailer::Base
 
         png = @qr.to_img
         png.resize(200,200).save("#{@order.code}.png")
-        qr_image = MiniMagick::Image.open("#{@order.code}.png")
+        #qr_image = MiniMagick::Image.open("#{@order.code}.png")
 
         ticket_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/ticket_#{reservation.seat.concert_id}.png")
         column_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/#{reservation.seat.column}.png")
@@ -33,7 +33,7 @@ class TicketMailer < ActionMailer::Base
          #   c.geometry "+150+310" # copy second_image onto first_image from (500, 100)
         #end
 
-       qr_image.write("reservation_#{reservation.id}.png")
+        ticket_image.write("reservation_#{reservation.id}.png")
 
         attachments.inline["reservation_#{reservation.id}.png"] =File.read("reservation_#{reservation.id}.png")
     end
