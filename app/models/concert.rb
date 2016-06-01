@@ -3,7 +3,6 @@ class Concert < ActiveRecord::Base
   serialize :playlist, Array
   attr_accessible :date, :description, :head, :subhead, :shortname, :playlist, :category
   has_many :artists
-  has_many :tickets
   has_many :seats
   has_many :reservations, :through => :seats
 

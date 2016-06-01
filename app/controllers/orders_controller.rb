@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
   def new
     @concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
     @order = Order.new
-    tickets = @order.tickets.build
   end
 
 

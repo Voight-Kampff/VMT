@@ -6,7 +6,6 @@ VMT::Application.routes.draw do
   resources :orders do
     get :basket
   end
-  resources :reservations
   resources :concerts do
     resources :reservations
   end
@@ -39,12 +38,6 @@ VMT::Application.routes.draw do
   get '/association', to: 'static#association'
   get '/contact',     to: 'static#contact'
   get '/status', to: 'static#status'
-  get '/arthus_piano_trio', to: 'static#arthus'
-  get '/ophelie_gaillard', to: 'static#ophelie'
-  get '/intermezzo', to: 'static#intermezzo'
-  get '/nemanja_radulovic_et_laure_favre_kahn', to: 'static#nemanja'
-  get '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
-  get '/espacepresse', to: 'static#espacepresse'
   get '/Y0yNFY88', to: 'static#Y0yNFY88' #ssl identity thing
 
 

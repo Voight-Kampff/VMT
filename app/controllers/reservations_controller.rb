@@ -17,6 +17,7 @@ class ReservationsController < ApplicationController
 				@taken_seat_array[(r.seat_id-1)%475]=r.seat_id%475
 			end
 		end
+
 		@rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"]
 
 	end
@@ -25,8 +26,10 @@ class ReservationsController < ApplicationController
 		@reservation=Reservation.new(params[:reservation])
 		@order = Order.find(cookies.signed[:order_id])
 		@reservation.order_id=@order.id
+
 		if @reservation.save
 		end
+		
 		respond_to do |format|
 			format.html { render nothing: true } 
 			format.js { } 

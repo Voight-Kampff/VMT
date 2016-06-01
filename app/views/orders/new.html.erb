@@ -29,7 +29,7 @@
 
 <div class="main-row">
 
-		<table class="table table-hover">
+	<table class="table table-hover">
 		<tbody>
 			<% @concerts.each do |concert| %>
 			<tr>
@@ -41,8 +41,11 @@
 					<td class="span2">Gratuit</td>
 				<% elsif concert.not_numbered == true %>
 					<td class="span2"></td>
-					<td class="span2"></td>
 					<td class="span2">Prix unique<br><%=concert.seats.first.price/100%>.-</td>
+					<td class="span2">
+						<%= form_for @order do |f| %>
+						<%= hidden_field_tag 'concert_id', concert.id %>
+						<%= f.submit "Acheter", :class => 'btn btn-primary' %><% end %></td>
 				<% else %>
 					<td class="span2">Catégorie A<br><%=concert.seats.first.price/100%>.-</td>
 					<td class="span2">Catégorie B<br><%=concert.seats.last.price/100%>.-<br></td>
@@ -54,15 +57,12 @@
 			</tr>
 			<%end%>
 		</tbody>
-		</table>
-		<!-- Button to trigger modal -->
-	
+	</table>
 </div>
 
 
 	 
-		<!-- Modal -->
 
-	</div>
+</div>
 <% end %><!--end of if condition-->
 </div>

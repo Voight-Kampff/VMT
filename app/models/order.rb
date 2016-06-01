@@ -1,13 +1,9 @@
 class Order < ActiveRecord::Base
 
-  has_many :tickets, :dependent => :destroy
-  accepts_nested_attributes_for :tickets #, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
-
   has_many :reservations, :dependent => :destroy
+  has_many :seats, :through => :reservations
 
-  attr_accessible :tickets_attributes, :NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released
-  has_one :ccpayment
-  belongs_to :membership
+  attr_accessible :NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released
 
 
   #validates :code, uniqueness: true
@@ -42,5 +38,5 @@ class Order < ActiveRecord::Base
   	end
 
     
-
+    
 end
