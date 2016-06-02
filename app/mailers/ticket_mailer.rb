@@ -16,28 +16,32 @@ class TicketMailer < ActionMailer::Base
 
         ticket_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/ticket_#{reservation.seat.concert_id}.png")
 
-        result = ticket_image.composite(qr_image) do |c|
+         ticket_with_code = ticket_image.composite(qr_image) do |c|
             c.compose "Over"    # OverCompositeOp
             c.geometry "+500+100" # copy second_image onto first_image from (500, 100)
         end
 
 
-        unless reservation.seat.concert.not_numbered?
+        if reservation.seat.concert.not_numbered == true
+
+            result = ticket_with_code
+
+        else 
+
             column_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/#{reservation.seat.column}.png")
             row_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/#{reservation.seat.row}.png")
 
-            result = result(column_image) do |c|
+            ticket_with_code_and_column = ticket_with_code.composite(column_image) do |c|
                 c.compose "Over"    # OverCompositeOp
             c.geometry "+350+310" # copy second_image onto first_image from (500, 100)
             end
 
-            result = result(row_image) do |c|
+            result = ticket_with_code_and_column.composite(row_image) do |c|
                 c.compose "Over"    # OverCompositeOp
                 c.geometry "+150+310" # copy second_image onto first_image from (500, 100)
             end
         end
 
-       
 
         #result.write("reservation_#{reservation.id}.png")
 
