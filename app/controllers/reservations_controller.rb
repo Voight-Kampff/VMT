@@ -4,6 +4,22 @@ class ReservationsController < ApplicationController
 	def new
 		@order = Order.find(cookies.signed[:order_id])
 		@concert=Concert.find_by_id(params[:concert_id])
+
+
+		if @concert.not_numbered?
+			if @concert.reservations == []
+				@start=@concert.seats.first.id-1
+			else
+				@start=@concert.reservations.last.seat_id
+			end
+			@order_seats=@order.reservations
+			@seat_count=@order_seats.select{concert_id=@concert.id}.count
+			if @seat_count==[]
+				@seat_count = 0
+			end
+		end
+
+
 		@reservation=@order.reservations.build
 		@seats= @concert.seats
 		@first_seat = @concert.seats.first
@@ -18,6 +34,13 @@ class ReservationsController < ApplicationController
 			end
 		end
 
+		#if no reservations for concert .find{ |reservation| reservation.seat.concert_id = 44}
+		#@order_seats=@order.reservations
+		#@seat_count=@order_seats.select{concert_id=@concert.id}.count
+		#@count= @array.where{|item|  item.seat.concert.id >44}
+		#.where{ |reservation| reservation.seat.concert_id = 44}
+
+
 		@rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"]
 
 	end
@@ -29,7 +52,7 @@ class ReservationsController < ApplicationController
 
 		if @reservation.save
 		end
-		
+
 		respond_to do |format|
 			format.html { render nothing: true } 
 			format.js { } 

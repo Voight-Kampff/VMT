@@ -15,21 +15,59 @@
 	current_seat=0;
 </script>
 
-<script>
-	function pushseat(button) {
-		current_seat=button.id
-		if ($(button).attr("class")=="btn btn-mini create") {
-			$(button).addClass('btn-primary')
-			$('input#new_reservation_seat_id')[0].value=current_seat
-			$('form#new_reservation').trigger('submit.rails')
+<% if @concert.not_numbered==true %>
+	<script>
+		count=<%=escape_javascript(@seat_count.to_s)%>;
+		function pushseat_not_numbered(button) {
+			current_seat=button.id
+			if ($(button).attr("class")=="btn btn-mini create") {
+				$('input#new_reservation_seat_id')[0].value=current_seat
+
+				$("#"+(current_seat-1)).attr("id",current_seat)
+				
+				current_seat = parseInt(current_seat)+1
+				$(button).attr("id",current_seat)
+				
+				count = parseInt(count)+1
+				$(seat_count).html(count)
+				
+				$('form#new_reservation').trigger('submit.rails')
+			}
+			else {
+				
+				if (parseInt(count) <=0) {
+					alert: "vous n'avez pas de sièges"
+				} else {
+					$('input#seat_id')[0].value=current_seat
+
+					current_seat = parseInt(current_seat)-1
+					$(button).attr("id",current_seat)
+					count = parseInt(count)-1
+					$(seat_count).html(count)
+					$('form#delete_reservation_seat_id').trigger('submit.rails')
+					$("#"+(current_seat+2)).attr("id", parseInt(current_seat)+1)
+				}
+
+			}
 		}
-		else {
-			$(button).removeClass('btn-primary')
-			$('input#seat_id')[0].value=current_seat
-			$('form#delete_reservation_seat_id').trigger('submit.rails')
+	</script>
+<% else %>
+	<script>
+		function pushseat(button) {
+			current_seat=button.id
+			if ($(button).attr("class")=="btn btn-mini create") {
+				$(button).addClass('btn-primary')
+				$('input#new_reservation_seat_id')[0].value=current_seat
+				$('form#new_reservation').trigger('submit.rails')
+			}
+			else {
+				$(button).removeClass('btn-primary')
+				$('input#seat_id')[0].value=current_seat
+				$('form#delete_reservation_seat_id').trigger('submit.rails')
+			}
 		}
-	}
-</script>
+	</script>
+<% end %>
 
 <div class="main-row">
 	<div class="row">
@@ -45,18 +83,16 @@
 							<tr>
 								<td class="span2">Prix unique:</td>
 								<td class="span2"><%=@first_seat.price/100%>.-</td>
-								<td class="span2"></td>
+								<td class="span2">
+									<button class="btn btn-mini destroy" onclick="pushseat_not_numbered(this)" id=<%=@start%>>-</button>
+									<div id="seat_count"><%=@seat_count%></div>
+									<button class="btn btn-mini create" onclick="pushseat_not_numbered(this)" id=<%=@start+1%>>+</button>
+								</td>
 							</tr>
 						</tbody>
 					</table>
 		</div>
-		</div>	
-					<div class="row span2 offset10">
-						<br><%= submit_tag 'Ajouter au panier', :controller => "reservations", :action => "create", :method => "put", :class => 'btn btn-primary span2' %>
-						<br><br>
-						<%= button_to "Annuler", order_basket_path(@order.id), :class => "btn btn-primary span2", :method => "get"%>
-					</div>
-
+	</div>	
 				<% else %>
 				<td class="span2"></td>
 				<td class="span2"></td>
@@ -148,18 +184,18 @@
 			<% end %>
 		</tbody>
 	</table>
+	<% end%>
 	<div class="row span2 offset10">
-	<%= form_for(@reservation, remote: true ) do |f| %>
-		<%= f.hidden_field :seat_id, :value => "", :id => "new_reservation_seat_id"%>
-	<%= f.submit "create reservation", class: "btn btn-mini", :style => "display:none" %>
-	<% end %>
-	<%=form_tag({controller: "reservations", action: "custom"}, :id =>"delete_reservation_seat_id", remote: true, method: "post")%>
-		<%=hidden_field_tag("seat_id","", :class => "seat_id")%>
-	<%=submit_tag "delete reservation", class: "btn btn-primary btn-mini", id:"button", :style=> "display:none"%>
-	</form>
+		<%= form_for(@reservation, remote: true ) do |f| %>
+			<%= f.hidden_field :seat_id, :value => "", :id => "new_reservation_seat_id"%>
+		<%= f.submit "create reservation", class: "btn btn-mini", :style => "display:none" %>
+		<% end %>
+		<%=form_tag({controller: "reservations", action: "custom"}, :id =>"delete_reservation_seat_id", remote: true, method: "post")%>
+			<%=hidden_field_tag("seat_id","", :class => "seat_id")%>
+		<%=submit_tag "delete reservation", class: "btn btn-primary btn-mini", id:"button", :style=> "display:none"%>
+		</form>
 
 	<%= button_to "Continuer", order_basket_path(@order), :class => "btn btn-primary span2", :method => "get"%>
-	<% end%>
 			
 	</div>
 	

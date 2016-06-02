@@ -6,10 +6,6 @@ class OrdersController < ApplicationController
   	@order = Order.new(params[:order])
     @concerts = Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
     if @order.save
-      #emptyticket = @order.tickets.where("normal = ? AND student=?",0,0)
-      #emptyticket.each do |item|
-      #  item.delete
-      #end
       cookies.signed[:order_id] = @order.id
       redirect_to new_concert_reservation_path(params[:concert_id])
     else
