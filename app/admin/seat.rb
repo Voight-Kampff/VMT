@@ -27,6 +27,13 @@ index do
   		""
   	end
   end
+  column :reservation do |seat|
+  	unless seat.order.nil?
+  		link_to seat.reservation.id, admin_reservation_path(seat.reservation)
+  	else
+  		""
+  	end
+  end
   actions do |seat|
   	unless seat.order.nil?
     	link_to seat.order.id, admin_order_path(seat.order)
@@ -39,6 +46,7 @@ end
 controller do
 	def scoped_collection
 		super.includes :order
+		super.includes :concert
 	end
 end
 
