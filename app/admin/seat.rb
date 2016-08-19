@@ -13,5 +13,33 @@ ActiveAdmin.register Seat do
 #   permitted
 # end
 
+index do
+  selectable_column
+  column :id
+  column :column
+  column :row
+  column :price
+  column :concert
+  column :order do |seat|
+  	unless seat.order.nil?
+  		link_to seat.order.email, admin_order_path(seat)
+  	else
+  		""
+  	end
+  end
+  actions do |seat|
+  	unless seat.order.nil?
+    	link_to seat.order.id, admin_order_path(seat.order)
+    else
+  		""
+  	end
+  end
+end
+
+controller do
+	def scoped_collection
+		super.includes :order
+	end
+end
 
 end
