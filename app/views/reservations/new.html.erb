@@ -7,6 +7,11 @@
 		<div class="span9">
 			<p class="lead"><%=@concert.subhead%></br><strong><%=@concert.head%></strong></p>
 			<p>Cliquez sur les sièges que vous souhaitez réserver</p>
+			<p><strong>Légende:</strong>
+				<button class="btn btn-mini btn-success">Libre</button>
+				<button class="btn btn-mini btn-primary">Sélectionné</button>
+				<button class="btn btn-mini disabled">Indisponible</button>
+			</p>
 		</div>
 	</div>
 </div>
@@ -55,13 +60,15 @@
 	<script>
 		function pushseat(button) {
 			current_seat=button.id
-			if ($(button).attr("class")=="btn btn-mini create") {
+			if ($(button).attr("class")=="btn btn-mini btn-success create") {
+				$(button).removeClass('btn-success create')
 				$(button).addClass('btn-primary')
 				$('input#new_reservation_seat_id')[0].value=current_seat
 				$('form#new_reservation').trigger('submit.rails')
 			}
 			else {
 				$(button).removeClass('btn-primary')
+				$(button).addClass('btn-success create')
 				$('input#seat_id')[0].value=current_seat
 				$('form#delete_reservation_seat_id').trigger('submit.rails')
 			}
@@ -86,7 +93,7 @@
 								<td class="span2">
 									<button class="btn btn-mini destroy" onclick="pushseat_not_numbered(this)" id=<%=@start%>>-</button>
 									<div id="seat_count"><%=@seat_count%></div>
-									<button class="btn btn-mini create" onclick="pushseat_not_numbered(this)" id=<%=@start+1%>>+</button>
+									<button class="btn btn-mini btn-success create" onclick="pushseat_not_numbered(this)" id=<%=@start+1%>>+</button>
 								</td>
 							</tr>
 						</tbody>
@@ -121,7 +128,7 @@
 							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
 								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% else %>
-								<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% end%>
 						</td>
 				<% elsif seat % 25 == 13 %>
@@ -134,7 +141,7 @@
 							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
 								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% else %>
-								<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% end%>
 						</td>
 				<% elsif seat == 250 %>
@@ -156,7 +163,7 @@
 							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
 								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% else %>
-								<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% end%>
 						</td>
 				<% elsif seat % 25 == 24 %>
@@ -166,7 +173,7 @@
 							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
 								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% else %>
-								<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% end%>
 						</td>
 					</tr>
@@ -177,7 +184,7 @@
 							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
 								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% else %>
-								<button class="btn btn-mini create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
 							<% end%>
 						</td>
 				<% end %>
