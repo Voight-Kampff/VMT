@@ -12,6 +12,18 @@ ActiveAdmin.register Concert do
 #   permitted << :other if resource.something?
 #   permitted
 # end
+index do
+ selectable_column
+  column :id
+  column :head
+  column :subhead
+  column :description
+  column :free
+actions do |concert|
+end
+
+
+end
 
 
 end
