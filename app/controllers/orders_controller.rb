@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(cookies.signed[:order_id])
-    if @order.update(params[:order])
+    if @order.update(order_params)
       redirect_to '/charges/new'
     else
       render 'basket', :flash => { :danger => "Votre commande contient #{@order.errors.count} erreur(s). Merci de ressayer" }
@@ -44,6 +44,10 @@ class OrdersController < ApplicationController
   def destroy
   end
 
+  private
+    def order_params
+      params.require(:order).permit(:NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released)
+    end
 
 
 end

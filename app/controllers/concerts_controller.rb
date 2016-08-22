@@ -40,7 +40,7 @@ class ConcertsController < ApplicationController
   end
 
   def create
-  	@concert= Concert.new(params[:concert])
+  	@concert= Concert.new(concert_params)
 
   		if @concert.save
         	redirect_to @concert, notice: 'Le concert à été ajouté avec succès.'
@@ -48,5 +48,10 @@ class ConcertsController < ApplicationController
         	render action: "new"
       	end
   end
+
+  private
+    def concert_params
+      params.require(:concert).permit(:date, :description, :head, :subhead, :shortname, :playlist, :category, :image1, :image2, :front)
+    end
 
 end

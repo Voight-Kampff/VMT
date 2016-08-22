@@ -46,11 +46,14 @@ class ReservationsController < ApplicationController
 	end
 
 	def create
-		@reservation=Reservation.new(params[:reservation])
+		@reservation=Reservation.create!(reservation_params)
 		@order = Order.find(cookies.signed[:order_id])
 		@reservation.order_id=@order.id
 
 		if @reservation.save
+
+		else
+			notice[:error] = 'test'
 		end
 
 		respond_to do |format|
@@ -84,6 +87,7 @@ class ReservationsController < ApplicationController
 	def custom
 		seat_id = params[:seat_id]
 		@order = Order.find(cookies.signed[:order_id])
+		#@reservations=@order.reservations
 		if Seat.find(seat_id).reservation.order==@order
 			Seat.find(seat_id).reservation.destroy
 			respond_to do |format|
@@ -97,6 +101,8 @@ class ReservationsController < ApplicationController
 			end
 		end
 	end
+
+	def index
 
 
 		#used to display seats taken in a live display for tickets. Shares most code with new action
@@ -144,5 +150,11 @@ class ReservationsController < ApplicationController
 	# 	Reservation.where(:id => @reservations_to_delete).destroy_all
 	# 	redirect_to order_basket_path(@order)
 	# end
+
+	private
+		
+		def reservation_params
+			params.require(:reservation).permit(:seat_id,:order_id)
+		end
 
 end

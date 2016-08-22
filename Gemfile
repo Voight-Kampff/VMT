@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.3.1"
 
-gem 'rails', '4.2.3'
+gem 'rails', '5.0.0.1' 
 gem 'puma' #heroku recommended
 gem 'jquery-rails'
 gem 'fancybox2-rails', '~> 0.2.4'
@@ -18,11 +18,12 @@ gem 'stripe'
 
 gem 'mini_magick'
 
-gem 'activeadmin', '~> 1.0.0.pre2'
-gem 'devise', '~> 3.2' #used with active admin
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'devise'  #used with active admin
 
 #for compatability with rails 4
-gem 'protected_attributes'
+#gem 'protected_attributes'
 
 #for photo processing and storage
 gem 'paperclip'

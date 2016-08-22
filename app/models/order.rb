@@ -3,7 +3,6 @@ class Order < ActiveRecord::Base
   has_many :reservations, :dependent => :destroy
   has_many :seats, :through => :reservations
 
-  attr_accessible :NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released
 
 
   #validates :code, uniqueness: true
