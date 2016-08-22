@@ -6,12 +6,16 @@
 		</div>
 		<div class="span9">
 			<p class="lead"><%=@concert.subhead%></br><strong><%=@concert.head%></strong></p>
-			<p>Cliquez sur les sièges que vous souhaitez réserver</p>
-			<p><strong>Légende:</strong>
-				<button class="btn btn-mini btn-success">Libre</button>
-				<button class="btn btn-mini btn-primary">Sélectionné</button>
-				<button class="btn btn-mini disabled">Indisponible</button>
-			</p>
+			<% if @concert.not_numbered==true %>
+				<p>Cliquez sur <button class="btn btn-mini btn-success">+</button> et <button class="btn btn-mini">-</button> pour chosir le nombre de billets souhaités</p>
+			<% else %>
+				<p>Cliquez sur les sièges que vous souhaitez réserver</p>
+				<p><strong>Légende:</strong>
+					<button class="btn btn-mini btn-success">Libre</button>
+					<button class="btn btn-mini btn-primary">Sélectionné</button>
+					<button class="btn btn-mini disabled">Indisponible</button>
+				</p>
+			<% end %>
 		</div>
 	</div>
 </div>
