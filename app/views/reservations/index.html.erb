@@ -1,7 +1,7 @@
 <script>
 	this.App = {};
 
-	App.cable = ActionCable.createConsumer();  
+	App.cable = ActionCable.createConsumer("wss://musicales-tannay.ch/cable");  
 
 	App.reservations = App.cable.subscriptions.create('ReservationsChannel', {  
 	  received: function(data) {

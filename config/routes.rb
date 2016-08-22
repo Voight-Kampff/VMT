@@ -4,7 +4,6 @@ VMT::Application.routes.draw do
   mount ActionCable.server => '/cable'
 
   resources :reservations, param: :slug
-  resources :messages
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
