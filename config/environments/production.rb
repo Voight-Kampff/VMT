@@ -23,6 +23,10 @@ VMT::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Webscotk URL
+  config.action_cable.url = "wss://musicales-tannay.ch/cable"
+
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
