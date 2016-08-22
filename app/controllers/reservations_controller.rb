@@ -51,9 +51,9 @@ class ReservationsController < ApplicationController
 		@reservation.order_id=@order.id
 
 		if @reservation.save
-
-		else
-			notice[:error] = 'test'
+			ActionCable.server.broadcast 'reservations',
+				seat: @reservation.seat_id
+			head :ok
 		end
 
 		respond_to do |format|
@@ -87,9 +87,14 @@ class ReservationsController < ApplicationController
 	def custom
 		seat_id = params[:seat_id]
 		@order = Order.find(cookies.signed[:order_id])
-		#@reservations=@order.reservations
+		@reservations=@order.reservations
 		if Seat.find(seat_id).reservation.order==@order
 			Seat.find(seat_id).reservation.destroy
+
+			ActionCable.server.broadcast 'reservations',
+				seat: seat_id
+			head :ok
+
 			respond_to do |format|
 				format.html { render nothing: true } 
 				format.js { }

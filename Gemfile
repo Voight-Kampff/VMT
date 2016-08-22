@@ -15,6 +15,8 @@ gem 'rqrcode_png'
 gem 'roadie'
 #for payments
 gem 'stripe'
+#for action-calbe
+gem 'redis'
 
 gem 'mini_magick'
 

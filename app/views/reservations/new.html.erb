@@ -194,11 +194,11 @@
 	<% end%>
 	<div class="row span2 offset10">
 		<%= form_for(@reservation, remote: true ) do |f| %>
-			<%= f.number_field :seat_id, :value => "", :id => "new_reservation_seat_id"%>
+			<%= f.hidden_field :seat_id, :value => "", :id => "new_reservation_seat_id"%>
 		<%= f.submit "create reservation", class: "btn btn-mini", :style => "display:none" %>
 		<% end %>
 		<%=form_tag({controller: "reservations", action: "custom"}, :id =>"delete_reservation_seat_id", remote: true, method: "post")%>
-			<%=hidden_field_tag("seat_id","", :class => "seat_id")%>
+			<%=number_field_tag("seat_id","", :class => "seat_id")%>
 		<%=submit_tag "delete reservation", class: "btn btn-primary btn-mini", id:"button", :style=> "display:none"%>
 		</form>
 

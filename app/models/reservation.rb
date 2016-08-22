@@ -4,7 +4,7 @@ class Reservation < ActiveRecord::Base
 	belongs_to :seat
 
 	validate :ensure_seat_is_free, on: :create
-	#validate :ensure_seat_belongs_to_order, on: :destroy
+	validate :ensure_seat_belongs_to_order, on: :destroy
 
 	#not required due to the way associations are set up?
 	def ensure_seat_is_free
@@ -14,11 +14,11 @@ class Reservation < ActiveRecord::Base
 	 	end
 	end
 
-	# def ensure_Seat_belongs_to_order
-	# 	unless(self.order==@order)
-	# 		self.errors.add(:alert,"Not your order")
-	# 	end
-	# end
+	def ensure_seat_belongs_to_order
+		unless(self.order==@order)
+		self.errors.add(:alert,"Not your order")
+		end
+	end
 
 
 end

@@ -1,3 +1,21 @@
+<script>
+	this.App = {};
+
+	App.cable = ActionCable.createConsumer();  
+
+	App.reservations = App.cable.subscriptions.create('ReservationsChannel', {  
+	  received: function(data) {
+	  	var seat = data.seat;
+
+	  	if ($('#'+seat).attr("class")=="btn btn-mini disabled") {
+			$('#'+seat).attr('class', 'btn btn-mini btn-success create')
+		}
+		else {
+			$('#'+seat).attr('class', 'btn btn-mini disabled')
+		}
+	  }
+	});
+</script>
 <div class="main-row">
 	<div class="row">
 		<div class="span3">

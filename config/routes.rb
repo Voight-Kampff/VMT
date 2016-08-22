@@ -1,5 +1,11 @@
 VMT::Application.routes.draw do
 
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
+  resources :reservations, param: :slug
+  resources :messages
+
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
