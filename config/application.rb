@@ -63,6 +63,8 @@ module VMT
     config.assets.precompile += %w( active_admin.js active_admin.css.scss )
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
+
+    config.middleware.delete Rack::Lock
     
     end
 end

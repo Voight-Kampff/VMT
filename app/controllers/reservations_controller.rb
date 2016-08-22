@@ -98,6 +98,7 @@ class ReservationsController < ApplicationController
 		end
 	end
 
+	def index
 
 		#used to display seats taken in a live display for tickets. Shares most code with new action
 
