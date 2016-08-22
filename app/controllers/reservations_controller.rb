@@ -98,6 +98,39 @@ class ReservationsController < ApplicationController
 		end
 	end
 
+
+		#used to display seats taken in a live display for tickets. Shares most code with new action
+
+		@concert=Concert.find_by_id(params[:concert_id])
+
+		if @concert.not_numbered?
+			if @concert.reservations == []
+				@start=@concert.seats.first.id-1
+			else
+				@start=@concert.reservations.last.seat_id
+			end
+			@order_seats=@order.reservations
+			@seat_count=@order_seats.select{concert_id=@concert.id}.count
+			if @seat_count==[]
+				@seat_count = 0
+			end
+		end
+
+		@seats= @concert.seats
+		@first_seat = @concert.seats.first
+		@last_seat = @concert.seats.last
+		@taken_seat_array=Array.new(475)
+		@taken_by_user_seat_array=Array.new(475)
+		Reservation.where(seat_id: (@first_seat.id..@last_seat.id)).each do |r|
+				@taken_seat_array[(r.seat_id-1)%475]=r.seat_id%475
+		end
+
+
+		@rows=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"]
+
+	end
+
+
 	# def cancel
 	# 	@order = Order.find(cookies.signed[:order_id])
 	# 	@concert=Concert.find_by_id(params[:concert_id])

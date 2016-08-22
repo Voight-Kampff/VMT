@@ -1,0 +1,141 @@
+<div class="main-row">
+	<div class="row">
+		<div class="span3">
+			<h3>BILLETTERIE</h3>
+		</div>
+		<div class="span9">
+			<p class="lead"><%=@concert.subhead%></br><strong><%=@concert.head%></strong></p>
+			<p>Cliquez sur les sièges que vous souhaitez réserver</p>
+			<p><strong>Légende:</strong>
+				<button class="btn btn-mini btn-success">Libre</button>
+				<button class="btn btn-mini btn-primary">Sélectionné</button>
+				<button class="btn btn-mini disabled">Indisponible</button>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="main-row">
+	<div class="row">
+		<div class="span9 offset3">
+
+				<% if @concert.free == true %>
+					<td class="span2"></td>
+					<td class="span2"></td>
+					<td class="span2">Gratuit</td>
+				<% elsif @concert.not_numbered == true %>
+					<table  class="table table-hover table-seats">
+						<tbody>
+							<tr>
+								<td class="span2">Prix unique:</td>
+								<td class="span2"><%=@first_seat.price/100%>.-</td>
+								<td class="span2">
+									<button class="btn btn-mini destroy" onclick="pushseat_not_numbered(this)" id=<%=@start%>>-</button>
+									<div id="seat_count"><%=@seat_count%></div>
+									<button class="btn btn-mini btn-success create" onclick="pushseat_not_numbered(this)" id=<%=@start+1%>>+</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+		</div>
+	</div>	
+				<% else %>
+				<td class="span2"></td>
+				<td class="span2"></td>
+				<td class="span2"></td>
+		</div>
+	</div>
+	<table class="table table-hover table-seats">
+		<tbody>
+			<tr>	
+				<td><strong></br>Cat. A:</strong></td>
+				<td></br><%=@first_seat.price/100%>.-</td>
+				<% 25.times do %>
+					<td>
+					</td>
+				<% end %> 
+			</tr>
+			<% 1..475.times do |seat| %>
+				<% if seat % 25 == 0  && seat %475 !=250 %>
+					<tr>
+						<td>
+							<%=@rows[(seat % 475)/25]%>
+						</td>
+						<td>
+							<% if @taken_seat_array[seat]==seat+1 %>
+								<button class="btn btn-mini disabled" id=<%=seat+1%>><%=seat%25+1%></button>
+							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% else %>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% end%>
+						</td>
+				<% elsif seat % 25 == 13 %>
+						<td>
+							<p style="margin-left:5em"></p>
+						</td>
+						<td>
+							<% if @taken_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini disabled" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% else %>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% end%>
+						</td>
+				<% elsif seat == 250 %>
+					<tr>
+						<td><strong></br>Cat. B:</strong></td>
+						<td></br><%=@last_seat.price/100%>.-</td>
+							<% 26.times do %>
+								<td></br>
+								</td>
+							<% end %> 
+					</tr>
+					<tr>
+						<td>
+							<%=@rows[(seat % 475)/25]%>
+						</td>
+						<td>
+							<% if @taken_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini disabled" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% else %>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% end%>
+						</td>
+				<% elsif seat % 25 == 24 %>
+						<td>
+							<% if @taken_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini disabled" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% else %>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% end%>
+						</td>
+					</tr>
+				<% else %>
+						<td>
+							<% if @taken_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini disabled" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% elsif @taken_by_user_seat_array[seat]==seat+1%>
+								<button class="btn btn-mini btn-primary" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% else %>
+								<button class="btn btn-mini btn-success create" onclick="pushseat(this)" id=<%=@seats[seat].id%>><%=seat%25+1%></button>
+							<% end%>
+						</td>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+	<% end%>
+	<div class="row span2 offset10">
+			
+	</div>
+	
+
+
+
+
+</div>
