@@ -53,10 +53,6 @@ group :production do
   gem 'rails_12factor' #update for rails 4 for heroku
 end
 
-# Added Websockets 
-gem 'websocket-rails'
-
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

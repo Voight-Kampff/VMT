@@ -15,6 +15,5 @@
 //= require bootstrap
 //= require fancybox
 //= requrire jquery.mousewheel-3.0.6.pack.js
-//= require websocket_rails/main
 //= require_tree .
 
