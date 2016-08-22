@@ -23,7 +23,7 @@ VMT::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  # Webscotk URL
+  # Websocket URL
   config.action_cable.url = "wss://musicales-tannay.ch/cable"
 
 
@@ -48,8 +48,6 @@ VMT::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
-
-  config.action_cable.url = "ws://localhost:3000/cable"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
