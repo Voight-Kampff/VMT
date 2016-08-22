@@ -25,7 +25,7 @@
 		count=<%=escape_javascript(@seat_count.to_s)%>;
 		function pushseat_not_numbered(button) {
 			current_seat=button.id
-			if ($(button).attr("class")=="btn btn-mini create") {
+			if ($(button).attr("class")=="btn btn-mini btn-success create") {
 				$('input#new_reservation_seat_id')[0].value=current_seat
 
 				$("#"+(current_seat-1)).attr("id",current_seat)
