@@ -8,7 +8,7 @@ class ArtistsController < ApplicationController
 	end
 
 	def create
-		@artist = Artist.new(params[:artist])
+		@artist = Artist.create(artist_params)
 		
     	if @artist.save
         	redirect_to 'artists/new', notice: "L'artiste à été ajouté avec succès" 
