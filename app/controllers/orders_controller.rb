@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def edit
   end
 
@@ -48,11 +49,24 @@ class OrdersController < ApplicationController
     TicketMailer.payment_info(@order).deliver
     redirect_to root_path, :flash => { :success => "Vous recevrez prochainement votre facture par e-mail" }
     cookies.delete(:order_id)
+=======
+  def basket
+    @order = Order.find(cookies.signed[:order_id])
+    @reservations = @order.reservations 
+    @concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
+>>>>>>> parent of 16d11f6... Added Admin functions
   end
 
   def destroy
   end
 
+<<<<<<< HEAD
+=======
+  private
+    def order_params
+      params.require(:order).permit(:NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released)
+    end
+>>>>>>> parent of 16d11f6... Added Admin functions
 
 
 end

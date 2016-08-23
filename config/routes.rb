@@ -8,6 +8,14 @@ VMT::Application.routes.draw do
     
     get "presse/login", :to => "devise/sessions#new"
 
+<<<<<<< HEAD
+=======
+  resources :orders do
+    get :basket
+  end
+  resources :concerts do
+    resources :reservations
+>>>>>>> parent of 16d11f6... Added Admin functions
   end
 
   ActiveAdmin.routes(self)

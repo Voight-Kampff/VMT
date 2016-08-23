@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
 		"/espacepresse"
 	end
 
+<<<<<<< HEAD
+=======
+	def after_sign_in_path_for(admin)
+		"/espacepresse"
+	end
+
+>>>>>>> parent of 16d11f6... Added Admin functions
 end

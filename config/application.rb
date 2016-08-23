@@ -57,8 +57,13 @@ module VMT
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
 
+<<<<<<< HEAD
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
     end
+=======
+    config.assets.precompile += %w( active_admin.js active_admin.css.scss )
+  end
+>>>>>>> parent of 16d11f6... Added Admin functions
 end
