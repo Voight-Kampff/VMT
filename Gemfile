@@ -28,7 +28,7 @@ gem 'devise'  #used with active admin
 #gem 'protected_attributes'
 
 #for photo processing and storage
-gem 'paperclip'
+gem "paperclip", github: "thoughtbot/paperclip", ref: "c38bb31"
 gem 'aws-sdk', '1.29.1'
 
 # Bundle edge Rails instead:
