@@ -41,12 +41,30 @@ class OrdersController < ApplicationController
     @concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
   end
 
+  def cash_sale
+    @order = Order.find(cookies.signed[:order_id])
+    @order.update_attributes(order_params)
+    @order.paid=1
+    if @order.save
+      redirect_to '/orders/new'
+    end
+  end
+
+  def hold
+    @order = Order.find(cookies.signed[:order_id])
+    @order.update_attributes(order_params)
+    @order.held=1
+    if @order.save
+      redirect_to '/orders/new'
+    end
+  end
+
   def destroy
   end
 
   private
     def order_params
-      params.require(:order).permit(:NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released)
+      params.require(:order).permit(:NPA, :Ville, :email, :name, :street, :membership_id, :paid, :transfer, :released, :held)
     end
 
 

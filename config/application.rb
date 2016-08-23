@@ -14,5 +14,8 @@ module VMT
 
 
     config.assets.precompile += %w( active_admin.js active_admin.css.scss )
+
+    config.action_controller.include_all_helpers = false
+    
   end
 end

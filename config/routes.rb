@@ -9,6 +9,8 @@ VMT::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :orders do
+    patch :hold
+    patch :cash_sale
     get :basket
   end
   resources :concerts do
