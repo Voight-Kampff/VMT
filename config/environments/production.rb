@@ -24,7 +24,7 @@ VMT::Application.configure do
   config.assets.digest = true
 
   # Websocket URL
-  config.web_socket_server_url = "wss://vmt.herokuapp.com/cable"
+  config.web_socket_server_url = "wss://www.musicales-tannay.ch/cable"
   config.action_cable.allowed_request_origins = ['https://musicales-tannay.ch', 'http://musicales-tannay.ch']
 
 
