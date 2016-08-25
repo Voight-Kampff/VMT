@@ -28,7 +28,7 @@ index do
   	end
   end
   column :reservation do |seat|
-  	unless seat.order.nil?
+  	unless seat.reservation.nil?
   		link_to seat.reservation.id, admin_reservation_path(seat.reservation)
   	else
   		""
