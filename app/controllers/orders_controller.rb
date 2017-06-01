@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
+    @concerts=Concert.where(:date => Concert.find(52).date..Concert.find(57).date) & Concert.where('date >?', Time.now)
     @order = Order.new
   end
 
@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
   def basket
     @order = Order.find(cookies.signed[:order_id])
     @reservations = @order.reservations 
-    @concerts=Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
+    @concerts=Concert.where(:date => Concert.find(52).date..Concert.find(57).date) & Concert.where('date >?', Time.now)
   end
 
   def cash_sale

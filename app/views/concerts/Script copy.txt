@@ -178,4 +178,29 @@ s=Seat.find(2725)
 s.price=5500
 s.save
 
+(2726..2825).each do |i|
+	s=Seat.new
+	s.id=i
+	s.concert_id= 52
 
+
+	rownum=i%475
+
+	s.price= 5000
+
+	s.save
+end
+
+
+(2825..2726).each do |i|
+	s=Seat.new
+	s.id=i
+	s.concert_id= 56
+
+
+	rownum=i%475
+
+	s.price= 5000
+
+	s.save
+end
