@@ -46,7 +46,10 @@
 						<%= hidden_field_tag 'concert_id', concert.id %>
 						<%= f.submit "Acheter", :class => 'btn btn-primary' %><% end %></td>
 				<% else %>
-					<td class="span2">Un nombre limité de places sont encore disponibles à la billetterie avant le concert</td>
+					<td class="span2">
+						<%= form_for @order do |f| %>
+						<%= hidden_field_tag 'concert_id', concert.id %>
+						<%= f.submit "Acheter", :class => 'btn btn-primary' %><% end %></td>
 					<td class="span2">
 						<td class="span2">
 				<% end%>

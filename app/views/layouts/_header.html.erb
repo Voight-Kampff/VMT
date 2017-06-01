@@ -10,33 +10,22 @@
       <div class="nav-collapse pull-right">
         <ul class="nav" style="align:right">
           <li class= "<%=cp(root_path)%>" >
-          <%=link_to("Accueil", root_path) %></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Programme</a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li><%=link_to("Programme 2016", programme2016_path)%></li>
-                <li><%=link_to("Programme 2015", programme2015_path)%></li>
-                <li><%=link_to("Programme 2014", programme2014_path)%></li>
-                <li><%=link_to("Programme 2013", programme2013_path)%></li>
-                <li><%=link_to("Programme 2012", programme2012_path)%></li>
-                <li><%=link_to("Programme 2011", programme2011_path)%></li>
-              </ul>
+          <%=link_to("Accueil", "musicales-tannay.ch) %></li>
           </li>
+          <li class= "<%=cp(billetterie_path)%>" >
+          <%=link_to("Billetterie", "musicales-tannay.ch/programme/programme-2017") %></li>
           <li class= "<%=cp(billetterie_path)%>" >
           <%=link_to("Billetterie", billetterie_path) %></li>
           <li class= "<%=cp(photos_path)%>" >
-          <%=link_to("Photos", photos_path) %></li>
+          <%=link_to("En Images", "musicales-tannay.ch/en-images") %></li>
           <li class= "<%=cp(presse_path)%>" >
-          <%=link_to("Presse", presse_path)%></li>
-          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">L'Association</a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <li><%=link_to("Bénévolat & Soutien", association_path)%></li>
-              <li><%=link_to("Comité & Statuts", status_path)%></li>
-            </ul>
-          </li>
-          <li class= "<%=cp(contact_path)%>" >
-          <%=link_to("Contact", contact_path) %></li>
+          <%=link_to("L'Association", "musicales-tannay.ch/l-association/partenaires-amis") %></li>
+          <li class= "<%=cp(presse_path)%>" >
+          <%=link_to("Presse", "musicales-tannay.ch/presse")%></li>
+          <li class= "<%=cp(presse_path)%>" >
+          <%=link_to("Newsletter", "musicales-tannay.ch/newsletter")%></li>
+          <li class= "<%=cp(presse_path)%>" >
+          <%=link_to("Contact", "musicales-tannay.ch/contact")%></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -49,33 +38,7 @@
         <%= image_tag "vmt_logo_2014_270.png", :stlye => "position:center" %>
       </div>
       <div class="span9">
-        <div id="myCarousel" class="carousel slide" >
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-            <div class="active item"><%= image_tag "http://photos.musicales-tannay.ch/Ban_2017_01.jpg"%>
-              <!--<div class="carousel-caption">
-                <h4>Laure Favre-Kahn</h4>
-              </div>-->
-            </div>
-            <div class="item"><%= image_tag "http://photos.musicales-tannay.ch/Ban_2017_02.jpg"%>
-              <!--<div class="carousel-caption">
-                <h4>Ophélie Gaillard</h4>
-              </div>-->
-            </div>
-            <div class="item"><%= image_tag "http://photos.musicales-tannay.ch/Ban_2017_03.jpg"%>
-              <!--<div class="carousel-caption">
-                <h4>Ophélie Gaillard</h4>
-              </div>-->
-            </div>
-            <div class="item"><%= image_tag "http://photos.musicales-tannay.ch/Ban_2017_04.jpg"%>
-              <!--<div class="carousel-caption">
-                <h4>Khatia Buniatishvili</h4>
-              </div>-->
-            </div>
-          <!-- Carousel nav 
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>-->
-        </div>
+        
       </div>
       <div id="fb-root"></div>
           <script>(function(d, s, id) {
