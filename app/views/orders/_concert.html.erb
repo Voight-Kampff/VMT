@@ -10,7 +10,7 @@
 					<td class="span2">Gratuit</td>
 				<% elsif concert.not_numbered == true %>
 					<td class="span2"></td>
-					<td class="span2">Prix unique<br><%=concert.seats.first.price/100%>.-</td>
+					<td class="span2">Prix unique<br><%=concert.price/100%>.-</td>
 					<td class="span2">
 						<%= button_to "Acheter", new_concert_reservation_path(concert.id), :class => "btn btn-primary span2", :method => "get"%>
 					</td>
