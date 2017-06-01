@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
  
   def create
   	@order = Order.new(params[:order])
-    @concerts = Concert.where(:date => Concert.find(44).date..Concert.find(51).date) & Concert.where('date >?', Time.now)
+    @concerts = Concert.where(:date => Concert.find(52).date..Concert.find(57).date) & Concert.where('date >?', Time.now)
     if @order.save
       cookies.signed[:order_id] = @order.id
       redirect_to new_concert_reservation_path(params[:concert_id])
