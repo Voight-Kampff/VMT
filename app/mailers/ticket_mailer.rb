@@ -11,9 +11,9 @@ class TicketMailer < ActionMailer::Base
         qr_image = MiniMagick::Image.open("#{@order.code}.png")
 
 
-        qr_image.write("order_#{@order.id}.png")
+        qr_image.write("order_#{order.id}.png")
 
-        attachments["order_#{@order.id}.png"] =File.read(qr_image.tempfile)
+        attachments["order_#{order.id}.png"] =File.read(qr_image.tempfile)
 
 
 
