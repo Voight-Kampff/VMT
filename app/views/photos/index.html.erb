@@ -1,0 +1,36 @@
+<% provide(:title, "Photos") %>
+
+
+  <div class="main-row">
+    <div class="row">
+      <div class="span3">
+         <h3>PHOTOS</h3>
+      </div>
+      <div class="span9">
+      </div>
+    </div>
+  </div>
+  <% Photo.select(:gallery).distinct.each do |f| %>
+  <% @gallery=Photo.where('gallery' => f.gallery) %>
+    <div class="main-row">
+      <div class="row">
+        <div class="span3">
+          <h3><%=f.gallery%></h3>
+        </div>
+      </div>
+      <% @gallery.each_slice(6) do |row| %>
+        <div class="row-fluid">
+          <ul class="thumbnails">
+          <% row.each do |pic| %>
+            <li class="span2">
+              <a class="thumbnail" rel="<%=pic.gallery%>" href="<%=pic.image.url%>">
+                <%= image_tag pic.image.url(:thumb) %>
+              </a>
+            </li>
+          <%end%>
+          </ul>
+        </div>
+      <%end%>
+    </div>
+  <%end%>  
+  </div>

@@ -1,0 +1,33 @@
+  <% provide(:title, 'Paiement') %>
+  <div class="main-row">
+    <div class="row">
+      <div class="span3">
+         <h3>SUCCÈS</h3>
+      </div>
+      <div class="span9">
+        <p class="lead">Votre paiement a été enregistré avec succès</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span3">
+      </div>
+      <div class="span9">
+      </div>
+    </div>
+  </div>
+  <div class="main-row">
+    <div class="row">
+      <div class="span3">
+        <a href="#" class="thumbnail">
+          <%= image_tag "1Presse260.jpg" %>
+        </a>
+      </div>
+      <div class="span9">
+        <p class="lead">Un courrier électronique avec la facture a été envoyé à <%= mail_to (@order.email)%>. Nous vous prions de l'avoir soit imprimée soit accessible sur votre smartphone lors des concerts</p>
+        <p class="lead">Si vous ne trouvez pas ce courrier dans votre boîte mail, vérifiez qu'il n'ait pas atterri dans vos courriers indésirables</p>
+        <p class="lead">En cas de problème, n'hésitez pas à nous contacter à <%= mail_to ('billetterie@musicales-tannay.ch')%>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

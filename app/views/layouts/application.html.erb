@@ -2,21 +2,35 @@
 <html>
   <head>
     <title>Variations Musicales Tannay | <%= yield(:title) %></title>
-    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
     <%= render 'layouts/shim' %>
     <%= favicon_link_tag '/favicon.ico' %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/header' unless yield(:title) == "NoHeader" %>
     <div class="container">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
       
     </div>
   </body>
+  <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-39386010-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
 </html>

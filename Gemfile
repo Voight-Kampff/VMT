@@ -1,28 +1,59 @@
 source 'https://rubygems.org'
+ruby "2.3.1"
 
-gem 'rails', '3.2.3'
-gem 'bootstrap-sass', '2.0.0'
-gem 'jquery-rails', '2.1.2'
-gem 'thin'
+gem 'rails', '5.0.0.1' 
+gem 'puma' #heroku recommended
+gem 'jquery-rails'
+gem 'fancybox2-rails', '~> 0.2.4'
+
+#for qr code gneration
+gem 'rqrcode'
+#for the .to_img method
+gem 'rqrcode_png'
+
+#to make e-mail styles easier
+gem 'roadie'
+#for payments
+gem 'stripe'
+#for action-calbe
+gem 'redis'
+
+gem 'mini_magick'
+
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'devise'  #used with active admin
+
+#for compatability with rails 4
+#gem 'protected_attributes'
+
+#for photo processing and storage
+gem "paperclip", github: "thoughtbot/paperclip", ref: "c38bb31"
+gem 'aws-sdk', '1.29.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+group :development do
+  gem 'sqlite3'
+  gem 'seed_dump' #not useful anymore I think
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.4'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor' #update for rails 4 for heroku
 end
 
 # To use ActiveModel has_secure_password

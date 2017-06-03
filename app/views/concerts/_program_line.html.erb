@@ -1,0 +1,29 @@
+<div class="row sub-row">
+      <div class="span3">
+        <% unless program_line.front.file? == false %>
+              <%= image_tag program_line.front.url(:thumb) %>
+        <% end %>
+      </div>
+      <div class="span9">
+        <h4 class="red date"><%=program_line.subhead%></h4>
+        <h3><%=link_to(program_line.head, program_line, :class => 'hlink')%> </h3>
+        <div class="span8 offset1">
+          <div class="music">
+            <ul class="unstyled">
+              <% program_line.playlist.each.with_index do |composition, index| %>
+                <li>
+                  <% if index % 2 == 0 %>
+                    <b><%=composition%></b>
+                  <% else %>
+                    <%=composition%>
+                  <% end %>
+                </li>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+        <p>
+         <%= program_line.description %> <%=link_to("En savoir plus...", program_line)%>
+        </p>
+      </div>
+</div>

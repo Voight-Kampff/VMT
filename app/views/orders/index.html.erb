@@ -1,0 +1,63 @@
+<% provide(:title, "Aperçu") %>
+<div class="main-row">
+	<div class="row">
+		<div class="span3">
+			<h3>VOTRE COMMANDE</h3>
+		</div>
+		<div class="span9">
+			<p class="lead">Vérifiez ci-dessous que cette commande correspond bien aux billets que vous souhaitez avant de passer au paiement</p>
+		</div>
+	</div>
+</div>
+<div class="sub-row">
+	<table class="table table-hover">
+		<% unless @tickets.nil? %>
+		<thead>
+			<tr>
+				<th>Concert</th>
+				<th>Date & Lieu</th>
+				<th></th>
+				<th>Billets Ordinaires</th>
+				<th>Billets Etudiants</th>
+			</tr>
+		</thead>
+			<%= render :partial => "checkline", :collection => @tickets %>
+		<% end %>
+		<% unless @order.membership.nil? %>
+			<%= render :partial => "member"%>
+		<% end %>
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th>TOTAL</th>
+				<th><%=@order.total/100%> CHF</th>
+			</tr>
+		</thead>
+	</table>
+	<p>En procédant à l'achat des billets, vous acceptez les <%=link_to('conditions générales de vente', '/conditionsgenerales') %> </p>
+</div>
+
+<div class="sub-row">
+	<div class="row">
+	<%= link_to "Modifier la Commande", redirect_to = 'billetterie', :class => "btn span3" %>
+	<a href="#myModal" role="button" class="btn span3 offset1" data-toggle="modal">Payer par virement bancaire</a>
+	<%= link_to "Payement par carte de crédit disponbile prochainement", redirect_to = '#', :class => "btn span3 disabled" %>
+		
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h3 id="myModalLabel"> PAIEMENT PAR VIREMENT BANCAIRE</h3>
+		  </div>
+		  <div class="modal-body">
+		    <p class="lead">En appuyant sur "commander", nous vous enverrons récapitualtif de votre commande à l'addresse <%= mail_to(@order.email) %>. Vous recevrez très prochainement une facture par courrier électronique, contenant toutes les coordonnées bancaires nécessaires au paiement.</p>
+		    <p class="lead">Une fois le paiement validé, vous recevrez un courrier électronique contenant votre code d'accès. Veuillez noter que ce processus peut prendre plusieurs jours. Nous vous remercions de votre patience. Votre commande sera considérée  comme étant terminée qu'une fois que vous aurez reçu le courrier électronique contenant votre code d'accès.</p>
+		    <p class="lead">En cas de problème, n'hésitez pas à nous contacter en envoyant un courrier à <%= mail_to('billetterie@musicales-tannay.ch')%></p>
+		  </div>
+		  <div class="modal-footer">
+		  	<a href="send_payment_info" role="button" class="btn">Confirmer</a>
+		    <button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+		  </div>
+		</div>
+</div>

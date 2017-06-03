@@ -1,0 +1,18 @@
+<%= form_for(@artist) do |f| %>
+
+  <div class="field span3">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field span3">
+    <%= f.label :concert_id, "Concert" %>
+    <%= f.select :concert_id, options_from_collection_for_select(Concert.all, :id, :shortname)%>
+  </div>  
+  <div class="field span6">
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+  </div>
+  <div class="actions span3">
+    <%= f.button 'Ajouter', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

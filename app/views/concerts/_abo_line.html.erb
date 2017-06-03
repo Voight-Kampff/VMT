@@ -1,0 +1,12 @@
+<div class="row sub-row">
+      <div class="span3">
+        <%=link_to(image_tag("260/#{abo_line.id}.png"), 'billetterie', :class => 'thumbnail')%>
+      </div>
+      <div class="span9">
+        <h4 class="red date"><%=abo_line.head%></h4>
+        <h3><%=link_to(abo_line.subhead, 'billetterie', :class => 'hlink')%> </h3>
+        <p>
+         <%= abo_line.description %> <%=link_to("Acheter...", 'billetterie')%>
+        </p>
+      </div>
+</div>

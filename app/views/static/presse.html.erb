@@ -1,12 +1,18 @@
   <% provide(:title, 'Presse') %>
-  <div class="title-row">
+  <div class="main-row">
     <div class="row">
       <div class="span3">
          <h3>LES VARIATIONS DANS LA PRESSE</h3>
       </div>
-      <div class="span9">
+      <div class="span9" align="justify">
+        <p class="lead">Contact presse:</p>
+        <address>
+          <strong>Illyria Pfyffer</strong><br>
+          +41 79 217 15 63<br>
+          <%= mail_to "illyria@illyria.ch"%><br>
+        </address>
+        <p class="lead">Le dossier de presse est téléchargeable <%=link_to('ici', 'http://photos.musicales-tannay.ch/VMT_dossier_presse_2016_L.pdf')%>. Des photos en haute résolution sont disponibles en contactant <%=mail_to "webmaster@musicales-tannay.ch" %></p>
         <p class="lead">Cette page vous permet de consulter un choix d'articles concernant les Variations Musicales de Tannay. Les articles les plus récents figurent en premier.</p>
-        <p class="lead">Nos amis journalistes qui souhaitent prendre contact avec l'association des « Variations Musicales de Tannay » peuvent nous contacter au +41 79 662 54 05 ou à l'adresse <%= mail_to ('presse@musicales-tannay.ch')%>.</p>
       </div>
     </div>
     <div class="row">
@@ -26,6 +32,81 @@
       <div class="span9">
         <dl class="dl-horizontal">
           <dt>
+            Le Temps
+          </dt>
+          <dd>
+            vendredi 29 mai 2015 : « Variations en sol majeur à Tannay »<br />» <a href="http://www.letemps.ch/Page/Uuid/133ce696-0560-11e5-a2d8-dac5eea792f9/Variations_en_sol_majeur_%C3%A0_Tannay">Afficher</a>
+          </dd>
+          <dt>
+            Espace 2
+          </dt>
+          <dd>
+            émission « L'été des festivals » du jeudi 28 août 2014, le concert de Edgar Moreau et Pierre-Yves Hodique en direct du Château de Tannay<br />» <a href="http://www.rts.ch/espace-2/programmes/l-ete-des-festivals/6064417-l-ete-des-festivals-du-28-08-2014.html">Écouter sur rts.ch</a>
+          </dd>
+          <dt>
+            Espace 2
+          </dt>
+          <dd>
+            émission « Magma » du jeudi 28 août 2014, « Les Variations Msicales de Tannay »<br />» <a href="http://www.rts.ch/espace-2/programmes/magma/6064408-magma-du-28-08-2014.html">Écouter sur rts.ch</a>
+          </dd>
+          <dt>
+            La Côte
+          </dt>
+          <dd>
+            jeudi 28 août 2014, « Les Variations musicales affichen le sourire »<br />» <a href="http://photos.musicales-tannay.ch/La_COTE_28.08.2014_Variations.pdf">Afficher</a>
+          </dd>
+          <dt>
+            L'Hebdo
+          </dt>
+          <dd>
+            jeudi 21 août 2014, « Classique: les Variations de Tannay »<br />» <a href="http://www.hebdo.ch/hebdo/culture/detail/classique-les-variations-de-tannay">Afficher</a>
+          </dd>
+          <dt>
+            Espace 2
+          </dt>
+          <dd>
+            émission « Avant-scène » du samedi 28 juin 2014, « Variations Musicales de Tannay »<br />» <a href="http://www.rts.ch/espace-2/programmes/avant-scene/5928608-avant-scene-du-28-06-2014.html">Écouter sur rts.ch</a>
+          </dd>
+          <dt>
+            Le Temps
+          </dt>
+          <dd>
+            vendredi 27 juin 2014 : « Les Variations Musicales de Tannay »<br />» <a href="http://www.letemps.ch/Page/Uuid/5f697296-fe13-11e3-b606-e345e71cec86/Les_Variations_musicales_de_Tannay">Afficher</a>
+          <dt>
+            RTS La 1ère
+          </dt>
+          <dd>
+            émission « Vertigo » du mercredi 28 août 2013, « Béatrice Berrut aux Variations Musicales de Tannay »<br />» <a href="http://http://www.rts.ch/la-1ere/programmes/vertigo/5104989-beatrice-berrut-aux-variations-musicales-de-tannay-28-08-2013.html">Écouter sur rts.ch</a>
+          </dd>
+          <dt>
+            Espace 2
+          </dt>
+          <dd>
+            émission « Magma » du mardi 27 août 2013, « Variations Musicales de Tannay »<br />» <a href="http://www.rts.ch/espace-2/programmes/magma/5129145-magma-du-27-08-2013.html">Écouter sur rts.ch</a>
+          </dd>
+          <dt>
+            Le Courrier
+          </dt>
+          <dd>
+            jeudi 22 août 2013 : « Le piano domine les Variations musicales de Tannay » <br />» <a href="/presse/12.Culture_Greilsammer.pdf">Afficher</a>
+          </dd>
+          <dt>
+            sortir.ch
+          </dt>
+          <dd>
+            août 2013 <br />» <a href="http://www.sortir.ch/musique/event.T.135640-variations-musicales-de-tannay">Afficher</a>
+          <dt>
+            La Côte
+          </dt>
+          <dd>
+            jeudi 18 juillet 2013 : « Les sœurs Labèque en ouverture » <br />» <a href="/presse/LaCoteVariationsMusicales.pdf">Afficher</a>
+          </dd>
+          <dt>
+            Le Temps
+          </dt>
+          <dd>
+            mardi 2 juillet 2013 : « L’été classique au fil des petits festivals » <br />» <a href="http://www.letemps.ch/Page/Uuid/1cf67d50-e27b-11e2-a1bc-a080f29191c6%7C2#.UhHqRmSQdKU">Afficher</a>
+          <dt>
             Espace 2
           </dt>
           <dd>
@@ -36,12 +117,6 @@
           </dt>
           <dd>
             août 2012 : « sorties en Romandie, festivals » <br />» <a href="http://www.auvernierjazz.ch/pdf/MC_2012.pdf">Afficher</a>
-          </dd>
-          <dt>
-            La Côte
-          </dt>
-          <dd>
-            jeudi 16 août 2012 : « Babar s'invite au festival » <br />» <a href="http://www.lacote.ch/fr/regions/terre-sainte/babar-s-invite-au-festival-585-1011394">Afficher</a>
           </dd>
           <dt>
             La Côte
@@ -89,7 +164,7 @@
             sortir.ch
           </dt>
           <dd>
-            août 2011, rubrique « Nos choix » (en page d'accueil)<br />» <a href="http://www.musicales-tannay.ch/uploads/images/presse/sortir.ch.html">Afficher</a>
+            août 2011, rubrique « Nos choix » (en page d'accueil)<br />» <a href="/presse/sortir.ch.jpg">Afficher</a>
           </dd>
           <dt>
             Tribune de Genève
@@ -101,19 +176,13 @@
             24 heures
           </dt>
           <dd>
-            jeudi 28 avril 2011 : « Le piano à l'honneur des Variations de Tannay »<br />» <a href="http://www.musicales-tannay.ch/uploads/images/presse/24h-28042011.html">Afficher</a>
+            jeudi 28 avril 2011 : « Le piano à l'honneur des Variations de Tannay »<br />» <a href="/presse/24h-28042011.jpg">Afficher</a>
           </dd>
           <dt>
             La Côte
           </dt>
           <dd>
-            vendredi 15 avril 2011 : « De grands pianistes invités aux Variations musicales »<br /> » <a href="http://www.musicales-tannay.ch/uploads/images/presse/lacote-15042011.html">Afficher</a>
-          </dd>
-          <dt>
-            RSR – La 1ère
-          </dt>
-          <dd>
-            émission « Dare-Dare » du vendredi 27 août 2010<br /> » <a href="http://www.rsr.ch/#/espace-2/programmes/dare-dare/?date=27-08-2010">Écouter sur rsr.ch</a>
+            vendredi 15 avril 2011 : « De grands pianistes invités aux Variations musicales »<br /> » <a href="/presse/lacote-15042011.jpg">Afficher</a>
           </dd>
           <dt>
             RSR – La 1ère
@@ -125,29 +194,28 @@
             La Côte
           </dt>
           <dd>
-            jeudi 26 août 2010 : « Deux jours de musique classique et baroque dans la cour du château »<br /> » <a href="http://www.musicales-tannay.ch/uploads/images/presse/26082010.html">Afficher</a>
+            jeudi 26 août 2010 : « Deux jours de musique classique et baroque dans la cour du château »<br /> » <a href="/presse/lacote-18052010.jpg">Afficher</a>
           </dd>
           <dt>
             Le Courrier
           </dt>
           <dd>
-            jeudi 26 août 2010 : « Tannay compose ses Variations Musicales »<br /> » <a href="http://www.musicales-tannay.ch/uploads/images/presse/lecourrier-26082010.html">Afficher</a>
+            jeudi 26 août 2010 : « Tannay compose ses Variations Musicales »<br /> » <a href="/presse/26082010.jpg">Afficher</a>
           </dd>
           <dt>
             20 Minutes
           </dt>
           <dd>
-            mercredi 25 août 2010 : « Du classique dans un décor idyllique »<br /> » <a href="http://www.musicales-tannay.ch/uploads/images/presse/20min-25082010.html">Afficher</a>
+            mercredi 25 août 2010 : « Du classique dans un décor idyllique »<br /> » <a href="/presse/20min-25082010.jpg">Afficher</a>
           </dd>
           <dt>
             La Côte
           </dt>
           <dd>
-            mercredi 26 mai 2010 : « La musique classique a son festival »<br /> » <a href="http://www.musicales-tannay.ch/uploads/images/presse/26052010.html">Afficher</a>
+            mercredi 26 mai 2010 : « La musique classique a son festival »<br /> » <a href="/presse/26052010.jpg">Afficher</a>
           </dd>
         </dl>
       </div>
     </div>
   </div>
-</div>
 </div>

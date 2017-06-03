@@ -1,16 +1,51 @@
 VMT::Application.routes.draw do
 
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
+  resources :reservations, param: :slug
+
+  devise_for :users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  resources :orders do
+    patch :hold
+    patch :cash_sale
+    get :basket
+  end
+  resources :concerts do
+    resources :reservations
+  end
+  resources :charges
+  resources :artists, only: [:new, :create]
+  resources :photos, only: [:index,:new, :create]
+
+
+  resources :reservations do
+    collection do
+      post :custom
+      put :custom
+      post :cancel
+    end
+  end
+
   root to: "static#home"
-  match '/programme',   to: 'static#programme'
-  match '/presse',   to: 'static#presse'
-  match '/association', to: 'static#association'
-  match '/contact',     to: 'static#contact'
-  match '/association/status', to: 'static#status'
-  match '/arthus_piano_trio', to: 'static#arthus'
-  match '/ophelie_gaillard', to: 'static#ophelie'
-  match '/intermezzo', to: 'static#intermezzo'
-  match '/nemanja_radulovic_et_laure_favre_kahn', to: 'static#nemanja'
-  match '/khatia_et_gvantsa_buniatishvili', to: 'static#khatia'
+  
+  get '/send_payment_info', to: 'orders#payment_info_mail'
+  get '/succes', to: 'static#succes'
+  get '/billetterie',   to: 'orders#new'
+  get '/programme',   to: 'concerts#programme2016'
+  get '/programme2012', to: 'concerts#programme2012'
+  get '/programme2013', to: 'concerts#programme2013'
+  get '/programme2011', to: 'concerts#programme2011'
+  get '/programme2014', to: 'concerts#programme2014'
+  get '/programme2015', to: 'concerts#programme2015'
+  get '/programme2016', to: 'concerts#programme2016'
+  get '/presse',   to: 'static#presse'
+  get '/association', to: 'static#association'
+  get '/contact',     to: 'static#contact'
+  get '/status', to: 'static#status'
+  get '/Y0yNFY88', to: 'static#Y0yNFY88' #ssl identity thing
 
 
   # The priority is based upon order of creation:

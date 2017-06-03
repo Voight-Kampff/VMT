@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require fancybox
+//= requrire jquery.mousewheel-3.0.6.pack.js
+//= require_tree ./channels
 //= require_tree .
+

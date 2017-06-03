@@ -1,11 +1,11 @@
 <% provide(:title, "Contact") %>
-  <div class="title-row">
+  <div class="main-row">
     <div class="row">
       <div class="span3">
          <h3>CONTACT</h3>
       </div>
       <div class="span9">
-        <p class="lead">Les coordonnées de l'association des « Variations Musicales de Tannay » sont les suivantes :</p>
+        
       </div>
     </div>
   </div>
@@ -17,17 +17,37 @@
         </a>
       </div>
       <div class="span9">
+        <p class="lead">A l'exception du concert du samedi 20 août qui a lieu à la plage de Gland, les concerts ont lieu à l'adresse suivante:</p>
+         <address>
+          <strong>Château de Tannay</strong><br>
+          route François-Louis Duvillard,6-<br>
+          1295 Tannay (VD)<br>
+        </address>
+        <p class="lead">Les coordonnées de l'association des « Variations Musicales de Tannay » sont les suivantes:</p>
         <address>
           <strong>Variations Musicales de Tannay</strong><br>
           case postale 19<br>
           1295 Tannay<br>
           <%=mail_to('info@musicales-tannay.ch')%>
         </address>
+        <p class="lead">Pour toute question concernant la billetterie:</p>
+        <address>
+          <strong>079 584 55 94</strong><br>
+          <%=mail_to('billetterie@musicales-tannay.ch')%>
+        </address>
         <p class="lead">Pour suivre les actualités des Variations, vous pouvez nous rejoindre sur Facebook ou Twitter :</p>
-        <p><a href="http://fr-fr.facebook.com/pages/Variations-Musicales-de-Tannay/111762248875526"><img src="http://www.musicales-tannay.ch/uploads/images/fb-button.gif" alt="" width="144" height="44" /></a> <a href="http://www.twitter.com/musicalestannay"><img src="http://twitter-badges.s3.amazonaws.com/twitter-a.png" alt="S'abonner à musicalestannay sur Twitter" /></a></p>
+        <div id="fb-root"></div>
+          <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            <div class="fb-follow" data-href="https://www.facebook.com/musicalestannay" data-show-faces="true" data-width="150"></div>
+          <a href="http://www.twitter.com/musicalestannay"><img src="http://twitter-badges.s3.amazonaws.com/twitter-a.png" alt="S'abonner à musicalestannay sur Twitter" /></a></p>
         <p class="lead">Pour faire part de vos suggestions concernant le site Internet ou signaler un problème, vous pouvez contacter le webmaster à l'adresse <%=mail_to('webmaster@musicales-tannay.ch')%></p>
       </div>
     </div>
   </div>
-</div>
 </div>

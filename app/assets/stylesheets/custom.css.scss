@@ -1,29 +1,71 @@
+
 @import "bootstrap";
-@import "bootstrap-responsive";
+
+.table-seats td {
+	padding:2px;
+}
+
+body { 
+  padding-top: 4%;
+	}
+
+.modal.large {
+    width: 800px; /* respsonsive width */
+    margin-left:-400px; /* width/2) */ 
+}
+
 $linkColor: #C33;
 $darklinkColor: #8f2424;
+
+.lone-row {
+	border-top-style:solid;
+	border-top-color: $darklinkColor;
+	border-top-width:1px;
+	border-bottom-style:solid;
+	border-bottom-color: $darklinkColor;
+	border-bottom-width:1px;
+	padding-top:10px;
+	
+}
+
+.main-row {
+	border-bottom-style:solid;
+	border-bottom-color: $darklinkColor;
+	border-bottom-width:1px;
+	padding-top:10px;
+	
+}
+
 
 a {
 	color: $linkColor;
 	&:link{
     color: $linkColor;
   }
-	 &:active, &:hover {
+	 &:active, &:hover, &:visited {
     color: $darklinkColor;
   }
 
 }
 
-body {
-  padding-top: 60px;
+p {font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;}
+h1,h2,h3,h4 {font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;}
+
+h1 {
+	font-size:60px
 }
+
+h3 {
+	font-size:22px;
+	margin:0 0 10px
+	}
 
 .red {
 	color: #C33;
 	font-weight:normal;
 	letter-spacing: 0px;
 	font-size: 18px;
-	text-align:center;
+	text-align:left;
 
 }
 
@@ -37,24 +79,13 @@ body {
 }
 
 
-
-.main-row {
-	border-top:solid;
-	border-bottom:solid;
-	border-color: $darklinkColor;
-	border-width:1px;
-	padding-top:10px;
-	
-}
-
 .sub-row {
 	padding-bottom:30px;
 }
 
 .music{
-	font-family: Georgia;
-	font-style: italic;
-	font-size:20px;
+	font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+	font-size:16px;
 	li {line-height:30px}
 	padding-top:5px;
 	padding-bottom:10px;
@@ -63,22 +94,10 @@ body {
 
 
 .hlink {
+	font-weight:bold;
 	color: #333;
-	&:hover {color:$darklinkColor;}
-	&:link {color:#333;}
-}
+	&:link {color:#333; &:hover {color:$darklinkColor;}}
+	&:visited {color:#333; &:hover {color:$darklinkColor;} }
 
-.dl-horizontal dt {
-  float: left;
-  width: 120px;
-  overflow: hidden;
-  clear: left;
-  text-align: right;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.dl-horizontal dd {
-  margin-left: 130px;
 }
 

@@ -1,0 +1,15 @@
+<% provide(:title, 'Programme 2016') %>
+  <div class="main-row">
+    <div class="row">
+      <div class="span3">
+         <h3>PROGRAMME 2016</h3>
+      </div>
+      <div class="span9">
+        <p class="lead">C'est avec grand plaisir que nous vous proposons les concerts suivants pour l'édition 2016 des Variations Musicales de Tannay. Vous pouvez acheter vos billets à la <%=link_to('billetterie.', 'billetterie')%> ou sur <%=link_to('Ticketcorner.', 'http://www.ticketcorner.ch')%></p>
+        <p class="lead">Une version imprimable du programme, ainsi que la liste des prix se trouve dans le document <%=link_to("ci-joint", "http://photos.musicales-tannay.ch/VMT_Flyer_A5_2016_K.pdf")%></p>
+      </div>
+    </div>
+  </div>
+  <div class="main-row">
+    <%= render :partial => "program_line", :collection => @concerts %>
+  </div>

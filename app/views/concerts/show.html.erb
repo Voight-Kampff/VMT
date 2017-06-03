@@ -1,0 +1,57 @@
+<% provide(:title, @concert.shortname) %>
+
+  <div class="main-row">
+    <div class="row">
+      <div class="span6">
+         <h3><%=@concert.head%></h3>
+      </div>
+      <div class="span6">
+        <p class="lead"><%=@concert.subhead%></p>
+      </div>
+    </div>
+  </div>
+  <div class="main-row">
+    <div class="row">
+      <div class="span6">
+        <ul class="thumbnails">
+          <li class="span6">
+            <% unless @concert.image1.file? == false %>
+              <%= image_tag @concert.image1.url(:full) %>
+            <% end %>
+            </br>
+            <% unless @concert.image2.file? == false %>
+              </br>
+              <%= image_tag @concert.image2.url(:full) %>
+            <% end %>
+          </li>
+        </ul>
+        <div class="music">
+            <ul class="unstyled">
+              <% @concert.playlist.each.with_index do |composition, index| %>
+              <li>
+                <% if index % 2 == 0 %>
+                  <b><%=composition%></b>
+                  </li>
+                <% else %>
+                  <%=composition%>
+                  </li>
+                <% end %>
+              <%end%>
+            </ul>
+          </div>
+          <% if @concert.id == 2%>
+          </br>
+              <%=image_tag "GECA.jpg"%>
+              <%=image_tag "FEAC.png"%></br>
+            <% end %>
+      </div>
+      <div class="span6">
+        <% if @concert.id == 4 %>
+          <p align="justify"><%=@concert.description%></p>
+        <% end %>
+      	<%= render :partial => "artist", :collection => @artists %>
+      </div>
+    </div>
+  </div>
+
+
