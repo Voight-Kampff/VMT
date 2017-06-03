@@ -21,11 +21,11 @@ class TicketMailer < ActionMailer::Base
 
     # @reservations.each do |reservation|
 
-        @qr = RQRCode::QRCode.new("musicales-tannay.ch/orders/#{@order.code}/validate")
+        # @qr = RQRCode::QRCode.new("musicales-tannay.ch/orders/#{@order.code}/validate")
 
-        png = @qr.to_img
-        png.resize(200,200).save("#{@order.code}.png")
-        qr_image = MiniMagick::Image.open("#{@order.code}.png")
+        # png = @qr.to_img
+        # png.resize(200,200).save("#{@order.code}.png")
+        # qr_image = MiniMagick::Image.open("#{@order.code}.png")
 
         #ticket_image = MiniMagick::Image.open("http://photos.musicales-tannay.ch/tickets/ticket_#{reservation.seat.concert_id}.png")
 
