@@ -13,7 +13,7 @@ class TicketMailer < ActionMailer::Base
 
         qr_image.write("order_#{order.id}.png")
 
-        attachments["order_#{order.id}.png"] =File.read(qr_image.tempfile)
+        attachments =RQRCode::QRCode.new("musicales-tannay.ch/orders/#{@order.code}/validate")
 
 
 
