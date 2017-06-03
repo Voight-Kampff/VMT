@@ -192,7 +192,7 @@ s.save
 end
 
 
-(2825..2726).each do |i|
+(2826..2925).each do |i|
 	s=Seat.new
 	s.id=i
 	s.concert_id= 56
