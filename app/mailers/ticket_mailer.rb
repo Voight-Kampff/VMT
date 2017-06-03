@@ -59,7 +59,7 @@ class TicketMailer < ActionMailer::Base
         # qr_image.write("reservation_#{reservation.id}.png")
 
         # attachments["reservation_#{reservation.id}.png"] =File.read(result.tempfile)
-    end
+   #  end
 
     mail(:to => @order.email, :from => "Billetterie@musicales-tannay.ch", :bcc => "webmaster@musicales-tannay.ch", :subject => "Vos billets pour les variations musicales de Tannay")
   
